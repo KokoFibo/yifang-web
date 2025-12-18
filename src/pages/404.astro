@@ -1,0 +1,131 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - Page Not Found">
+  <main
+    class="relative min-h-screen w-full flex items-center justify-center bg-[#050505] overflow-hidden"
+  >
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-125 h-125 bg-primary/10 rounded-full blur-[120px] z-0"
+    >
+    </div>
+
+    <div class="relative z-10 text-center px-6">
+      <div class="relative inline-block">
+        <h1
+          id="error-code"
+          class="text-[120px] md:text-[200px] font-black text-white leading-none tracking-tighter opacity-0"
+        >
+          404
+        </h1>
+        <div
+          id="error-line"
+          class="absolute bottom-4 left-0 w-0 h-2 bg-primary"
+        >
+        </div>
+      </div>
+
+      <div id="error-text" class="opacity-0 mt-8">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-white uppercase tracking-widest"
+        >
+          Lost in Space?
+        </h2>
+        <p
+          class="text-gray-400 mt-4 max-w-md mx-auto text-sm md:text-base leading-relaxed"
+        >
+          Oops! The page you’re looking for isn’t available or has been moved.
+          Let’s get you back on track.
+        </p>
+      </div>
+
+      <div id="error-action" class="opacity-0 mt-10">
+        <a
+          href="/"
+          class="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-white/20 text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 group"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 transform group-hover:-translate-x-2 transition-transform"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="absolute bottom-10 left-10 text-[10px] text-white/20 font-mono tracking-widest hidden md:block uppercase"
+    >
+      Error_Type: NULL_REFERENCE
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import gsap from "gsap";
+
+  const init404 = () => {
+    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+
+    tl.to("#error-code", {
+      opacity: 1,
+      duration: 1.5,
+      y: -20,
+    })
+      .to(
+        "#error-line",
+        {
+          width: "100%",
+          duration: 1,
+        },
+        "-=1"
+      )
+      .to(
+        "#error-text",
+        {
+          opacity: 1,
+          y: -10,
+          duration: 1,
+        },
+        "-=0.5"
+      )
+      .to(
+        "#error-action",
+        {
+          opacity: 1,
+          y: -10,
+          duration: 1,
+        },
+        "-=0.8"
+      );
+
+    // Efek floating pada angka 404
+    gsap.to("#error-code", {
+      y: "+=15",
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", init404);
+  document.addEventListener("astro:page-load", init404);
+</script>
+
+<style>
+  /* Menghilangkan scrollbar pada halaman 404 */
+  body {
+    overflow: hidden;
+  }
+</style>

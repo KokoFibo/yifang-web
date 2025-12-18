@@ -1,0 +1,163 @@
+---
+import Button from "../../components/Button.astro";
+---
+
+<section
+  id="company-section"
+  class="bg-section flex items-center justify-center mt-10 lg:mt-24 p-6 lg:p-12 overflow-hidden"
+>
+  <div class="w-full max-w-7xl mx-auto">
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 items-center"
+    >
+      <div id="company-text" class="flex flex-col gap-5 text-left order-1">
+        <div class="space-y-2">
+          <h5
+            class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs"
+          >
+            Who We Are
+          </h5>
+          <h2
+            class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-slate-900"
+          >
+            One Stop Solution Company
+          </h2>
+        </div>
+
+        <div class="space-y-4 text-yfgrey text-sm sm:text-base leading-relaxed">
+          <p>
+            Established in 2014, Yifang Group is a company specializing in
+            assembling smartphones, electric bicycles, and accessories.
+          </p>
+          <p>
+            We provide comprehensive services as a one-stop solution for foreign
+            companies looking to invest in Indonesia, from market entry to
+            regulatory approvals.
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <Button title="Learn More" />
+        </div>
+      </div>
+
+      <div
+        id="company-img-container"
+        class="flex items-center justify-center order-2 md:order-3 lg:order-2"
+      >
+        <img
+          src="/images/YIFANG-5-1.webp"
+          alt="yifang-company"
+          class="w-full h-auto max-h-[350px] lg:max-h-[500px] object-contain drop-shadow-xl"
+          loading="lazy"
+        />
+      </div>
+
+      <div
+        id="company-stats"
+        class="flex flex-col gap-4 order-3 md:order-2 lg:order-3"
+      >
+        <div
+          class="stat-card bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-slate-100 text-center"
+        >
+          <h2 class="text-primary text-3xl md:text-4xl font-bold">3K+</h2>
+          <p
+            class="text-yfgrey text-xs md:text-sm font-medium uppercase tracking-wide"
+          >
+            Employees
+          </p>
+        </div>
+
+        <div
+          class="stat-card bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-slate-100 text-center"
+        >
+          <h2 class="text-primary text-3xl md:text-4xl font-bold">3 Mio+</h2>
+          <p
+            class="text-yfgrey text-xs md:text-sm font-medium uppercase tracking-wide"
+          >
+            Annual Units
+          </p>
+        </div>
+
+        <div
+          class="stat-card bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-slate-100 text-center"
+        >
+          <h2 class="text-primary text-3xl md:text-4xl font-bold">10+</h2>
+          <p
+            class="text-yfgrey text-xs md:text-sm font-medium uppercase tracking-wide"
+          >
+            Years Experience
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#company-section",
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  tl.from("#company-text", {
+    x: -30,
+    opacity: 0,
+    duration: 0.8,
+    ease: "power2.out",
+  })
+    .from(
+      "#company-img-container",
+      {
+        scale: 0.9,
+        opacity: 0,
+        duration: 1,
+        ease: "back.out(1.7)",
+      },
+      "-=0.4"
+    )
+    .from(
+      ".stat-card",
+      {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "power2.out",
+      },
+      "-=0.6"
+    );
+</script>
+
+<style>
+  .bg-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      url("/images/bg_frame3.png"),
+      linear-gradient(
+        to top right,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 1)
+      );
+    background-repeat: repeat;
+    background-size:
+      20px 20px,
+      cover;
+  }
+
+  .bg-section > * {
+    position: relative;
+    z-index: 1;
+  }
+</style>

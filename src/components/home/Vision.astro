@@ -1,0 +1,123 @@
+<section class="flex justify-center mt-12 md:mt-20 px-4 mb-16">
+  <div
+    class="w-full max-w-7xl bg-slate-50 rounded-[2.5rem] p-6 sm:p-10 lg:p-14 border border-slate-100 shadow-sm"
+  >
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div
+        class="vision-card bg-white flex flex-col items-center text-center py-10 px-6 gap-5 rounded-3xl shadow-sm border border-slate-50 transition-all duration-300 hover:shadow-xl group"
+      >
+        <div
+          class="h-16 w-16 sm:h-20 sm:w-20 bg-slate-50 p-4 rounded-2xl group-hover:bg-primary/10 transition-colors duration-300"
+        >
+          <img
+            src="/images/icons/lightbulb.png"
+            alt="Vision"
+            class="w-full h-full object-contain"
+          />
+        </div>
+
+        <h2
+          class="text-xl sm:text-2xl font-bold text-slate-800 group-hover:text-primary transition-colors"
+        >
+          Our Vision
+        </h2>
+
+        <p class="text-sm sm:text-base text-yfgrey leading-relaxed">
+          Become a platform that empowers businesses to grow
+        </p>
+      </div>
+
+      <div
+        class="vision-card bg-white flex flex-col items-center text-center py-10 px-6 gap-5 rounded-3xl shadow-sm border border-slate-50 transition-all duration-300 hover:shadow-xl group"
+      >
+        <div
+          class="h-16 w-16 sm:h-20 sm:w-20 bg-slate-50 p-4 rounded-2xl group-hover:bg-primary/10 transition-colors duration-300"
+        >
+          <img
+            src="/images/icons/office-building.png"
+            alt="Mission"
+            class="w-full h-full object-contain"
+          />
+        </div>
+
+        <h2
+          class="text-xl sm:text-2xl font-bold text-slate-800 group-hover:text-primary transition-colors"
+        >
+          Our Mission
+        </h2>
+
+        <p class="text-sm sm:text-base text-yfgrey leading-relaxed">
+          Solve the pain points of development together with enterprises
+        </p>
+      </div>
+
+      <div
+        class="vision-card bg-white flex flex-col items-center text-center py-10 px-6 gap-5 rounded-3xl shadow-sm border border-slate-50 transition-all duration-300 hover:shadow-xl group sm:col-span-2 lg:col-span-1"
+      >
+        <div
+          class="h-16 w-16 sm:h-20 sm:w-20 bg-slate-50 p-4 rounded-2xl group-hover:bg-primary/10 transition-colors duration-300"
+        >
+          <img
+            src="/images/icons/pentool.png"
+            alt="Spirit"
+            class="w-full h-full object-contain"
+          />
+        </div>
+
+        <h2
+          class="text-xl sm:text-2xl font-bold text-slate-800 group-hover:text-primary transition-colors"
+        >
+          The Spirit of Exchange
+        </h2>
+
+        <div class="text-sm sm:text-base text-yfgrey font-medium space-y-1">
+          <p class="hover:text-primary transition-colors">
+            Investing in Indonesia
+          </p>
+          <p class="hover:text-primary transition-colors">
+            Development in Indonesia
+          </p>
+          <p class="hover:text-primary transition-colors">
+            Services in Indonesia
+          </p>
+          <p class="hover:text-primary transition-colors">
+            Win-win in Indonesia
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Pendekatan GSAP yang lebih aman untuk mencegah tampilan kosong
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  function initAnimation() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const cards = document.querySelectorAll(".vision-card");
+
+    // Hanya jalankan jika elemen ditemukan
+    if (cards.length > 0) {
+      gsap.from(cards, {
+        scrollTrigger: {
+          trigger: cards[0],
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.15,
+        ease: "power2.out",
+        clearProps: "all", // Penting: Menghapus inline styles setelah animasi selesai
+      });
+    }
+  }
+
+  // Menjalankan script dengan aman di Astro
+  initAnimation();
+  document.addEventListener("astro:after-swap", initAnimation);
+</script>

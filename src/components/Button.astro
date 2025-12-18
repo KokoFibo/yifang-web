@@ -1,0 +1,22 @@
+---
+interface Props {
+  bgColor?: string;
+  textColor?: string;
+  hoverColor?: string;
+  title: string;
+}
+const {
+  bgColor = "bg-primary",
+  textColor = "text-white",
+  hoverColor = "hover:bg-red-800",
+  title,
+} = Astro.props;
+---
+
+<div>
+  <button
+    class={`${textColor} ${bgColor} ${hoverColor} px-4 py-2 inline-block cursor-pointer`}
+  >
+    {title}
+  </button>
+</div>

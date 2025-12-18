@@ -1,0 +1,145 @@
+---
+import { Instagram, Mail, Phone } from "lucide-astro";
+
+const socialLinks = [
+  {
+    name: "instagram",
+    url: "https://instagram.com/yifang_academy",
+    icon: "/images/sos-med-logos/instagram.svg",
+  },
+  {
+    name: "tiktok",
+    url: "https://tiktok.com/@yifang_academy",
+    icon: "/images/sos-med-logos/tiktok.svg",
+  },
+  {
+    name: "youtube",
+    url: "https://youtube.com/@yifangacademy",
+    icon: "/images/sos-med-logos/youtube.svg",
+  },
+  {
+    name: "linkedin",
+    url: "https://linkedin.com/company/yifang_investment_group",
+    icon: "/images/sos-med-logos/linkedin.webp",
+  },
+];
+---
+
+<div class="bg-[rgb(37,37,38)]">
+  <section class="max-w-7xl mx-auto px-6 py-12 md:py-20">
+    <div class="text-white border-l-4 border-primary py-2 mb-12 md:mb-20">
+      <h1 class="text-3xl md:text-5xl font-bold ml-4 leading-tight">
+        Harmonizing Company Culture<br />
+        Enhancing Employees Happiness
+      </h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
+      <div class="flex flex-col text-white">
+        <h3
+          class="text-lg font-bold mb-4 text-primary uppercase tracking-widest"
+        >
+          Locations
+        </h3>
+        <div class="space-y-1 text-base md:text-lg opacity-90">
+          <p class="font-bold text-xl mb-2">PT. Yifang C.M.E</p>
+          <p>Jl. Millenium 23 Blok Q1 No.2A</p>
+          <p>Kadu Agung, Tigaraksa,</p>
+          <p>Tangerang, Banten</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col text-white">
+        <h3
+          class="text-lg font-bold mb-4 text-primary uppercase tracking-widest"
+        >
+          Free Consultation
+        </h3>
+        <div class="space-y-4">
+          <a
+            href="tel:+6285959424777"
+            class="flex items-center gap-3 hover:text-primary transition-colors text-base md:text-lg group"
+          >
+            <div
+              class="bg-gray-700 p-2 rounded group-hover:bg-primary/20 transition-colors"
+            >
+              <Phone size={20} class="text-primary" />
+            </div>
+            +62 859-5942-4777
+          </a>
+          <a
+            href="mailto:bd@yifang.id"
+            class="flex items-center gap-3 hover:text-primary transition-colors text-base md:text-lg group"
+          >
+            <div
+              class="bg-gray-700 p-2 rounded group-hover:bg-primary/20 transition-colors"
+            >
+              <Mail size={20} class="text-primary" />
+            </div>
+            bd@yifang.id
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col text-white">
+        <h3
+          class="text-lg font-bold mb-4 text-primary uppercase tracking-widest"
+        >
+          Get in touch
+        </h3>
+        <div class="space-y-4">
+          <a
+            href="tel:+6283899598999"
+            class="flex items-center gap-3 hover:text-primary transition-colors text-base md:text-lg group"
+          >
+            <div
+              class="bg-gray-700 p-2 rounded group-hover:bg-primary/20 transition-colors"
+            >
+              <Phone size={20} class="text-primary" />
+            </div>
+            +62 838-9959-8999
+          </a>
+          <a
+            href="mailto:buildyourfuture@yifang.co.id"
+            class="flex items-center gap-3 hover:text-primary transition-colors text-base md:text-lg group"
+          >
+            <div
+              class="bg-gray-700 p-2 rounded group-hover:bg-primary/20 transition-colors"
+            >
+              <Mail size={20} class="text-primary" />
+            </div>
+            buildyourfuture@yifang.co.id
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-gray-700 mb-8" />
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="flex gap-4">
+        {
+          socialLinks.map((social) => (
+            <a
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-gray-600 hover:bg-primary transition-all duration-300 flex justify-center items-center rounded-sm group"
+            >
+              <img
+                src={social.icon}
+                alt={social.name}
+                class="w-5 h-5 brightness-0 invert group-hover:scale-110 transition-transform"
+              />
+            </a>
+          ))
+        }
+      </div>
+
+      <p class="text-sm text-gray-500 text-center md:text-right">
+        Copyright © 2025, <span class="text-white">Yifang Group</span>. All
+        rights reserved.
+      </p>
+    </div>
+  </section>
+</div>

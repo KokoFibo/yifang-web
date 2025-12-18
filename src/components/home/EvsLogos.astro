@@ -1,0 +1,167 @@
+---
+const logos = [
+  "1smoot.png",
+  "2Ofero-Logo.webp",
+  "3Sunra-Logo.png",
+  "4tailg_logo.png",
+  "5Omoway-Logo.jpeg",
+  "6Swap.jpg",
+  "7electrum-logo.webp",
+  "8Tangkas-Logo.png",
+  "9LISGO-Logo.png",
+  "10Kilats-logo.png",
+  "11Beam.png",
+  "12PHYLION-YNE_page-0001.jpg",
+];
+---
+
+<section class="logo-scroller py-10 md:py-16 bg-white overflow-hidden">
+  <h2
+    class="reveal-text-evs text-center text-xl md:text-3xl font-bold mb-10 text-slate-800"
+  >
+    EVS Partners
+  </h2>
+
+  <div class="marquee-container relative w-full overflow-hidden group">
+    <div class="marquee-inner flex w-max">
+      <div class="track flex items-center gap-6 md:gap-12 px-6">
+        {
+          logos.map((file) => (
+            <div class="logo-card">
+              <img
+                src={`/images/logo-evs/${file}`}
+                alt={file}
+                loading="lazy"
+                class="transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="track flex items-center gap-6 md:gap-12 px-6"
+        aria-hidden="true"
+      >
+        {
+          logos.map((file) => (
+            <div class="logo-card">
+              <img
+                src={`/images/logo-evs/${file}`}
+                alt={file}
+                loading="lazy"
+                class="transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animasi Judul
+  gsap.from(".reveal-text-evs", {
+    scrollTrigger: ".reveal-text-evs",
+    y: 20,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+  });
+</script>
+
+<style>
+  /* Fade kiri & kanan */
+  .marquee-container::before,
+  .marquee-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+  }
+
+  .marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+  }
+
+  /* Logo Card Modern & Clean */
+  .logo-card {
+    flex: 0 0 auto;
+    width: 120px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: transparent;
+  }
+
+  .logo-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Memberikan efek pop sedikit agar logo terlihat tajam */
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.03));
+  }
+
+  /* Marquee Animation */
+  .marquee-inner {
+    /* Durasi disesuaikan: karena logo EVS lebih sedikit, kita buat durasi lebih cepat sedikit agar flow tetap pas */
+    animation: marquee 30s linear infinite;
+  }
+
+  /* Pause on hover */
+  .marquee-container:hover .marquee-inner {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Responsif Tablet */
+  @media (min-width: 768px) {
+    .logo-card {
+      width: 160px;
+      height: 90px;
+    }
+    .marquee-inner {
+      animation-duration: 40s;
+    }
+  }
+
+  /* Responsif Mobile */
+  @media (max-width: 640px) {
+    .logo-card {
+      width: 90px;
+      height: 55px;
+    }
+    .marquee-inner {
+      animation-duration: 20s;
+    }
+    .marquee-container::before,
+    .marquee-container::after {
+      width: 50px;
+    }
+  }
+</style>

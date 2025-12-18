@@ -1,0 +1,143 @@
+---
+import Button from "../Button.astro";
+import Carousel from "./Carousel.astro";
+---
+
+<section
+  id="business-section"
+  class="bg-section relative flex flex-col items-center justify-center mt-10 lg:mt-24 p-4 lg:p-12 overflow-hidden"
+>
+  <div class="w-full max-w-7xl mx-auto relative z-10">
+    <div class="business-header flex flex-col gap-6 text-center mb-12 md:mb-16">
+      <h5
+        class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
+      >
+        Our Business
+      </h5>
+
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900 max-w-3xl mx-auto"
+      >
+        We Create High Value and Sustainable Enterprises.
+      </h2>
+
+      <p
+        class="text-yfgrey text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed"
+      >
+        Creating high-value enterprises that respect nature, prioritize
+        sustainability, and foster a positive impact on the environment and
+        society.
+      </p>
+
+      <div class="mt-4">
+        <a
+          href="/"
+          class="inline-block hover:scale-105 transition-transform duration-300"
+        >
+          <Button title="Discover More" />
+        </a>
+      </div>
+    </div>
+
+    <div class="business-carousel-wrapper w-full overflow-visible">
+      <Carousel />
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  function initBusinessAnim() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const headerParts = document.querySelectorAll(".business-header > *");
+    const carousel = document.querySelector(".business-carousel-wrapper");
+
+    if (headerParts.length > 0) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#business-section",
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Animasi Teks Muncul Berurutan
+      tl.from(headerParts, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+      })
+        // Animasi Carousel Muncul Halus
+        .from(
+          carousel,
+          {
+            opacity: 0,
+            y: 40,
+            duration: 1,
+            ease: "power2.out",
+          },
+          "-=0.4"
+        );
+    }
+  }
+
+  // Jalankan inisialisasi
+  initBusinessAnim();
+  // Support untuk Astro View Transitions
+  document.addEventListener("astro:after-swap", initBusinessAnim);
+</script>
+
+<style>
+  .bg-section {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  /* Layer background menggunakan variabel Tailwind v4 Anda */
+  .bg-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      url("/images/bg_frame3.png"),
+      linear-gradient(
+        to top right,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 1)
+      );
+    background-repeat: repeat, no-repeat;
+    background-size:
+      20px 20px,
+      cover;
+    opacity: 0.8;
+  }
+
+  /* Memastikan Carousel tidak terpotong secara visual namun tetap dalam container */
+  .business-carousel-wrapper {
+    position: relative;
+    z-index: 20;
+  }
+
+  @media (min-width: 768px) {
+    .bg-section::before {
+      background-size:
+        25px 25px,
+        cover;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bg-section::before {
+      background-size:
+        30px 30px,
+        cover;
+    }
+  }
+</style>

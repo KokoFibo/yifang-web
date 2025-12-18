@@ -1,0 +1,84 @@
+---
+const { company1, company2, description, url } = Astro.props;
+---
+
+<!-- sebaiknya image size 1920 X 600px -->
+<section
+  class="relative h-screen max-h-150 flex items-center overflow-hidden
+         bg-cover bg-center bg-no-repeat"
+  style={`background-image: url(${url});`}
+>
+  <div class="absolute inset-0 bg-black/60"></div>
+
+  <div class="relative z-10 container mx-auto px-6 md:px-12 pt-20">
+    <div
+      id="hero-content"
+      class="text-white border-l-2 border-primary pl-6 opacity-0"
+    >
+      <h1
+        class="hero-title text-3xl md:text-5xl font-bold tracking-tight leading-tight uppercase text-white"
+      >
+        {company1}
+        <br />
+        {company2}
+      </h1>
+
+      <p
+        class="hero-text mt-4 max-w-md md:max-w-xl text-sm md:text-base text-white/90 font-light leading-relaxed tracking-wide"
+      >
+        {description}
+      </p>
+
+      <div class="hero-button mt-6">
+        <div class="h-px w-12 bg-white/50 mb-4"></div>
+        <button
+          class="text-xs md:text-sm font-bold tracking-[0.2em] uppercase hover:text-gray-300 transition-colors"
+        >
+          Explore More
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import gsap from "gsap";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    // Container muncul duluan
+    tl.to("#hero-content", {
+      opacity: 1,
+      duration: 0.8,
+    })
+      // Judul muncul dengan sedikit pergeseran ke atas
+      .from(
+        ".hero-title",
+        {
+          y: 20,
+          opacity: 0,
+          duration: 1,
+        },
+        "-=0.4"
+      )
+      // Paragraf muncul setelahnya
+      .from(
+        ".hero-text",
+        {
+          y: 15,
+          opacity: 0,
+          duration: 0.8,
+        },
+        "-=0.6"
+      )
+      // Garis dekorasi dan tombol muncul terakhir
+      .from(
+        ".hero-button",
+        {
+          opacity: 0,
+          duration: 0.8,
+        },
+        "-=0.4"
+      );
+  });
+</script>

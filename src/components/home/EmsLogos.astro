@@ -1,0 +1,177 @@
+---
+const logos = [
+  "1Komdigi-Logo.webp",
+  "2Kemenperin-Logo.png",
+  "3Infinix-logo.png",
+  "4tecno-png.png",
+  "5Itel-png.png",
+  "6ZTE-logo.png",
+  "7Nubia_logo.svg.png",
+  "8HMD_Global-Logo.wine_.png",
+  "9Nokia-Logo.wine_.png",
+  "10Dahua_Technology_logo-white.png",
+  "11huawei-png.png",
+  "12redmagic-logo.webp",
+  "13iflytek-logo-1024x304.png",
+  "14xinxun-Logo.webp",
+  "15Visio-logo-only.png",
+  "16Inoi-Logo.png",
+  "17meizu-logo-vector-png-meizu-logo-512.png",
+  "18TPLINK_Logo_2.svg.png",
+  "19Edifier.png",
+];
+---
+
+<section class="logo-scroller py-10 md:py-16 mt-5 bg-white">
+  <h2
+    class="reveal-text text-center text-xl md:text-3xl font-bold mb-10 text-slate-800"
+  >
+    EMS Partners
+  </h2>
+
+  <div class="marquee-container relative w-full overflow-hidden">
+    <div class="marquee-inner flex w-max">
+      <div class="track flex items-center gap-6 md:gap-12 px-6">
+        {
+          logos.map((file) => (
+            <div class="logo-card">
+              <img
+                src={`/images/logo-ems/${file}`}
+                alt={file}
+                loading="lazy"
+                class="transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="track flex items-center gap-6 md:gap-12 px-6"
+        aria-hidden="true"
+      >
+        {
+          logos.map((file) => (
+            <div class="logo-card">
+              <img
+                src={`/images/logo-ems/${file}`}
+                alt={file}
+                loading="lazy"
+                class="transition-transform duration-300 hover:scale-110"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animasi Judul saat muncul
+  gsap.from(".reveal-text", {
+    scrollTrigger: ".logo-scroller",
+    y: 30,
+    opacity: 0,
+    duration: 1,
+    ease: "power2.out",
+  });
+</script>
+
+<style>
+  /* Efek Fade di sisi kiri dan kanan agar transisi logo terlihat halus */
+  .marquee-container::before,
+  .marquee-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee-container::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+  }
+
+  .marquee-container::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+  }
+
+  /* Logo Card - Fokus pada warna logo asli */
+  .logo-card {
+    flex: 0 0 auto;
+    width: 130px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Memberikan sedikit padding agar logo tidak mepet ke pinggir card */
+    padding: 0.5rem;
+    background: transparent; /* Background transparan agar warna logo lebih menonjol */
+  }
+
+  .logo-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Memastikan warna asli tetap tajam */
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.05));
+  }
+
+  /* Animasi Jalur Marquee */
+  .marquee-inner {
+    animation: marquee 40s linear infinite;
+  }
+
+  /* Berhenti saat kursor di atasnya (Desktop) */
+  .marquee-container:hover .marquee-inner {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* --- Responsif Tablet --- */
+  @media (min-width: 768px) {
+    .logo-card {
+      width: 170px;
+      height: 100px;
+    }
+    .marquee-inner {
+      animation-duration: 50s; /* Lebih lambat di desktop agar lebih profesional */
+    }
+  }
+
+  /* --- Responsif Mobile --- */
+  @media (max-width: 640px) {
+    .logo-card {
+      width: 100px;
+      height: 60px;
+    }
+    .marquee-inner {
+      animation-duration: 25s; /* Kecepatan pas untuk layar kecil */
+    }
+    .marquee-container::before,
+    .marquee-container::after {
+      width: 50px;
+    }
+    .reveal-text {
+      margin-bottom: 2rem;
+    }
+  }
+</style>

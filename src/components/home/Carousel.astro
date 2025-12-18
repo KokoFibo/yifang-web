@@ -1,0 +1,189 @@
+---
+import Card from "./Card.astro";
+
+// Contoh data, silakan sesuaikan dengan kebutuhan Anda
+const dataCards = [
+  {
+    head: "Management Services",
+    company: "PT Yifang Sejahtera Mandiri",
+    link: "/images/ysm-card.webp",
+    alt: "ysm-card",
+  },
+  {
+    head: "Mobile Phone Assembly",
+    company: "PT Yifang Cargo Mutiara Elektronik",
+    link: "/images/ycme-card.webp",
+    alt: "ycme-card",
+  },
+  {
+    head: "Electric Vehicle Assembly",
+    company: "PT Yifang Eco Vehicle",
+    link: "/images/yev-card.webp",
+    alt: "ev-card",
+  },
+  {
+    head: "Bulding Management",
+    company: "PT Yifang Asset Management",
+    link: "/images/yam-card.webp",
+    alt: "yam-card",
+  },
+  {
+    head: "Talent development",
+    company: "PT Yifang Academy",
+    link: "/images/yf-academy-card.webp",
+    alt: "yf-academy-card",
+  },
+];
+---
+
+<section class="relative max-w-7xl mx-auto px-4 md:px-6 py-12 overflow-hidden">
+  <button
+    id="prevBtn"
+    class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 bg-white shadow-xl rounded-full p-3 md:p-4 hover:scale-110 transition active:scale-95 group"
+    aria-label="Previous"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-6 h-6 stroke-slate-800 group-hover:stroke-primary"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2.5"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"
+      ></path>
+    </svg>
+  </button>
+
+  <button
+    id="nextBtn"
+    class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 bg-white shadow-xl rounded-full p-3 md:p-4 hover:scale-110 transition active:scale-95 group"
+    aria-label="Next"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="w-6 h-6 stroke-slate-800 group-hover:stroke-primary"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2.5"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"
+      ></path>
+    </svg>
+  </button>
+
+  <div class="overflow-hidden lg:mx-12">
+    <div id="cardSlider" class="flex gap-4 md:gap-6 px-2">
+      {
+        dataCards.map((card) => (
+          <Card
+            head={card.head}
+            company={card.company}
+            link={card.link}
+            alt={card.alt}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  // @ts-nocheck
+  import { gsap } from "gsap";
+
+  function initCarousel() {
+    const slider = document.getElementById("cardSlider");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    if (!slider || !nextBtn || !prevBtn) return;
+
+    let isAnimating = false;
+    let autoplayInterval;
+
+    function getScrollAmount() {
+      // Mengambil elemen anak pertama secara langsung (lebih aman daripada .card-item jika class lupa dipasang)
+      const firstCard = slider.firstElementChild;
+      if (!firstCard) return 0;
+
+      // getBoundingClientRect mengambil lebar presisi termasuk desimal
+      const cardWidth = firstCard.getBoundingClientRect().width;
+
+      const style = window.getComputedStyle(slider);
+      const gap = parseInt(style.gap) || 0;
+
+      return cardWidth + gap;
+    }
+
+    function slideNext() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const amount = getScrollAmount();
+
+      gsap.to(slider, {
+        x: -amount,
+        duration: 0.8,
+        ease: "power2.inOut", // Gunakan power2 agar lebih smooth daripada expo jika jarak pendek
+        onComplete: () => {
+          slider.appendChild(slider.firstElementChild);
+          gsap.set(slider, { x: 0 });
+          isAnimating = false;
+        },
+      });
+    }
+
+    function slidePrev() {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const amount = getScrollAmount();
+
+      // Pindahkan ke depan
+      slider.insertBefore(slider.lastElementChild, slider.firstElementChild);
+      // Set posisi minus agar slider mulai dari 'kiri' baru ke 0
+      gsap.set(slider, { x: -amount });
+
+      gsap.to(slider, {
+        x: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+        onComplete: () => {
+          isAnimating = false;
+        },
+      });
+    }
+
+    // Fungsi Autoplay yang dibersihkan
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayInterval = setInterval(slideNext, 2000);
+    }
+
+    function stopAutoplay() {
+      if (autoplayInterval) clearInterval(autoplayInterval);
+    }
+
+    nextBtn.onclick = () => {
+      slideNext();
+      startAutoplay();
+    };
+    prevBtn.onclick = () => {
+      slidePrev();
+      startAutoplay();
+    };
+
+    slider.addEventListener("mouseenter", stopAutoplay);
+    slider.addEventListener("mouseleave", startAutoplay);
+
+    startAutoplay();
+  }
+
+  // Lifecycle Astro
+  document.addEventListener("astro:page-load", initCarousel);
+  if (document.readyState !== "loading") {
+    initCarousel();
+  }
+</script>

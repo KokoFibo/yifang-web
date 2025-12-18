@@ -1,0 +1,164 @@
+<section
+  id="services-section"
+  class="bg-section relative mt-10 lg:mt-24 p-4 lg:p-12 overflow-visible"
+>
+  <div class="w-full max-w-7xl mx-auto relative z-10">
+    <div class="flex flex-col gap-6 text-center mb-12">
+      <div class="services-header space-y-4">
+        <h5
+          class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
+        >
+          What We Can Do for You
+        </h5>
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900 max-w-4xl mx-auto"
+        >
+          The Companies that Changed The World All Start With a Visionary
+        </h2>
+        <p
+          class="text-yfgrey text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed"
+        >
+          We offer comprehensive one-stop solutions for foreign companies
+          investing in Indonesia.
+        </p>
+      </div>
+    </div>
+
+    <div class="video-wrapper relative mx-auto w-full max-w-4xl mb-16 px-4">
+      <div class="absolute -inset-2 bg-primary/5 rounded-[2rem] blur-2xl -z-10">
+      </div>
+      <video
+        class="w-full h-auto rounded-2xl shadow-xl border border-white"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="/images/videos/logo-yifang-group.webm" type="video/webm" />
+      </video>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {
+        [
+          {
+            icon: "consultation.png",
+            title: "Initial Consultation",
+            desc: "Understand client needs and project scope for tailored solutions.",
+          },
+          {
+            icon: "labor.png",
+            title: "Supplier and Labor Sourcing",
+            desc: "Identify reliable suppliers and skilled labor to support project demands.",
+          },
+          {
+            icon: "strategy.png",
+            title: "Market Entry Strategy",
+            desc: "Develop strategies for seamless market entry into Indonesia.",
+          },
+          {
+            icon: "project.png",
+            title: "Project Execution",
+            desc: "Efficiently assemble smartphones, electric bicycles, and accessories.",
+          },
+          {
+            icon: "regulations.png",
+            title: "Regulatory Compliance",
+            desc: "Navigate regulatory requirements to ensure legal compliance.",
+          },
+          {
+            icon: "technical-support.png",
+            title: "Ongoing Support",
+            desc: "Provide continuous support to maintain operational efficiency.",
+          },
+        ].map((service) => (
+          <div class="service-card group flex flex-col sm:flex-row gap-5 items-center sm:items-start text-center sm:text-left bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-500">
+            <div class="w-14 h-14 shrink-0 bg-slate-50 rounded-xl p-3 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-500">
+              <img
+                src={`/images/icons/${service.icon}`}
+                alt={service.title}
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-slate-800 group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-sm text-yfgrey leading-relaxed mt-2">
+                {service.desc}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  function initSafeAnim() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Pastikan elemen ada
+    const header = document.querySelector(".services-header");
+    const video = document.querySelector(".video-wrapper");
+    const cards = document.querySelectorAll(".service-card");
+
+    if (header && video && cards.length > 0) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#services-section",
+          start: "top 80%",
+        },
+      });
+
+      tl.from(header, { opacity: 0, y: 30, duration: 0.8 })
+        .from(video, { opacity: 0, scale: 0.95, duration: 0.8 }, "-=0.4")
+        .from(
+          cards,
+          {
+            opacity: 0,
+            y: 40,
+            stagger: 0.1,
+            duration: 0.6,
+            clearProps: "all", // Penting: Menghapus filter/opacity setelah selesai
+          },
+          "-=0.4"
+        );
+    }
+  }
+
+  // Jalankan
+  initSafeAnim();
+  document.addEventListener("astro:after-swap", initSafeAnim);
+</script>
+
+<style>
+  .bg-section {
+    background-color: transparent;
+  }
+
+  /* Lapisan background yang aman */
+  .bg-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* Di bawah konten utama */
+    background-image:
+      url("/images/bg_frame3.png"), linear-gradient(to bottom, #fff, #f8fafc);
+    background-size:
+      30px 30px,
+      cover;
+    opacity: 0.7;
+  }
+
+  /* Menjamin konten utama di atas background */
+  .bg-section > .mx-auto {
+    position: relative;
+    z-index: 10;
+  }
+</style>
