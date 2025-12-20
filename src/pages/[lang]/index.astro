@@ -11,36 +11,31 @@ import Certification from "../../components/home/Certification.astro";
 import Company from "../../components/home/Company.astro";
 import Sustainable from "../../components/home/Sustainable.astro";
 
-// Import i18n & Content Utilities
-import { getEntry } from "astro:content";
-import { languages } from "../../i18n/utils.js";
+// Import icon Close untuk modal
+import { X } from "lucide-astro";
 
-// 1. Fungsi getStaticPaths agar satu file ini melayani /en/ dan /zh/
+import { getEntry } from "astro:content";
+
 export async function getStaticPaths() {
   return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
 }
 
 const { lang } = Astro.params;
-
 const entryId = lang || "en";
-
-// 3. Panggil getEntry dengan ID yang sudah divalidasi
 const entry = await getEntry("homepage", entryId);
 
-// 4. Jika file en.json atau zh.json tidak ditemukan di folder homepage
 if (!entry) {
-  throw new Error(
-    `File JSON tidak ditemukan di src/content/homepage/${entryId}.json`
-  );
+  throw new Error(`File JSON tidak ditemukan`);
 }
-// Gunakan data dari JSON, atau sediakan fallback kosong agar tidak error jika file belum ada
+
 const data = entry?.data || {
   hero: { title: "", subtitle: "", button: "" },
   company: { group: "", profile: "" },
   trusted: { title: "" },
 };
-// const { data } = entry;
-// const data = entry.data;
+
+// ID Video YouTube Anda
+const YOUTUBE_VIDEO_ID = "dQw4w9WgXcQ";
 ---
 
 <Layout title="Home">
@@ -64,13 +59,11 @@ const data = entry?.data || {
         >
           {data.hero.title}
         </h1>
-
         <p
           class="reveal text-sm sm:text-base md:text-lg mb-8 leading-relaxed opacity-90 max-w-3xl mx-auto"
         >
           {data.hero.subtitle}
         </p>
-
         <div class="reveal inline-block">
           <ButtonRipple bgColor="bg-primary" textColor="text-white">
             {data.hero.button}
@@ -83,7 +76,13 @@ const data = entry?.data || {
       id="profile-banner"
       class="absolute bottom-0 right-0 w-full sm:w-2/3 lg:w-1/2 bg-white shadow-lg border-t flex items-center p-3 sm:p-4 gap-4 z-20"
     >
-      <PlayRipple />
+      <div
+        id="play-video-trigger"
+        class="cursor-pointer hover:scale-105 transition-transform"
+      >
+        <PlayRipple />
+      </div>
+
       <div>
         <div
           class="font-medium text-red-500 text-xs sm:text-base uppercase tracking-wider"
@@ -96,6 +95,31 @@ const data = entry?.data || {
       </div>
     </div>
   </section>
+
+  <div
+    id="video-modal"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
+  >
+    <button
+      id="close-video"
+      class="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
+    >
+      <X size={48} />
+    </button>
+
+    <div
+      class="w-full max-w-5xl aspect-video bg-black shadow-2xl rounded-xl overflow-hidden"
+    >
+      <iframe
+        id="youtube-iframe"
+        class="w-full h-full"
+        src=""
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
+  </div>
 
   <div class="section-reveal">
     <OneStopSolution />
@@ -118,26 +142,57 @@ const data = entry?.data || {
       class="section-reveal w-full h-48 sm:h-52 md:h-64 bg-[url(/images/seragam-biru.webp)] bg-center bg-cover"
     >
     </div>
-
     <div class="section-reveal"><Vision /></div>
     <div class="section-reveal"><Achievement /></div>
     <div class="section-reveal"><Certification /></div>
     <div class="section-reveal"><Company /></div>
     <div class="section-reveal"><Sustainable /></div>
-
     <div class="mb-20 sm:mb-64"></div>
   </section>
 </Layout>
 
+<script is:inline define:vars={{ YOUTUBE_VIDEO_ID }}>
+  // LOGIKA MODAL VIDEO (JS Murni)
+  const trigger = document.getElementById("play-video-trigger");
+  const modal = document.getElementById("video-modal");
+  const closeBtn = document.getElementById("close-video");
+  const iframe = document.getElementById("youtube-iframe");
+
+  if (trigger && modal) {
+    // Buka Modal
+    trigger.addEventListener("click", () => {
+      iframe.src = `https://www.youtube.com/embed/7P-Xsyc2xU4?start=1`;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden"; // Kunci scroll
+    });
+
+    // Tutup Modal
+    const handleClose = () => {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      iframe.src = ""; // Stop video
+      document.body.style.overflow = ""; // Unlock scroll
+    };
+
+    closeBtn.addEventListener("click", handleClose);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) handleClose();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") handleClose();
+    });
+  }
+</script>
+
 <script>
+  // LOGIKA GSAP & BACKGROUND SLIDER
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-
   gsap.registerPlugin(ScrollTrigger);
 
   window.addEventListener("DOMContentLoaded", () => {
     const tl = gsap.timeline();
-
     tl.from(".reveal", {
       y: 30,
       opacity: 0,
@@ -146,21 +201,14 @@ const data = entry?.data || {
       ease: "power3.out",
       delay: 0.5,
     });
-
     tl.from(
       "#profile-banner",
-      {
-        x: 100,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-      },
+      { x: 100, opacity: 0, duration: 0.8, ease: "power2.out" },
       "-=0.5"
     );
   });
 
-  const sections = document.querySelectorAll(".section-reveal");
-  sections.forEach((section) => {
+  document.querySelectorAll(".section-reveal").forEach((section) => {
     gsap.from(section, {
       scrollTrigger: {
         trigger: section,
@@ -187,7 +235,6 @@ const data = entry?.data || {
 
   let currentIndex = 0;
   const heroBg = document.getElementById("hero-bg");
-
   if (heroBg) {
     heroBg.style.backgroundImage = `url(${images[0]})`;
     setInterval(() => {
