@@ -1,6 +1,12 @@
 ---
 import Button from "../Button.astro";
 import Carousel from "./Carousel.astro";
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("sustainable", lang);
+const { data } = entry;
 ---
 
 <section
@@ -12,21 +18,19 @@ import Carousel from "./Carousel.astro";
       <h5
         class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
       >
-        Our Business
+        {data.main.subtitle}
       </h5>
 
       <h2
         class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900 max-w-3xl mx-auto"
       >
-        We Create High Value and Sustainable Enterprises.
+        {data.main.title}
       </h2>
 
       <p
         class="text-yfgrey text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed"
       >
-        Creating high-value enterprises that respect nature, prioritize
-        sustainability, and foster a positive impact on the environment and
-        society.
+        {data.main.description}
       </p>
 
       <div class="mt-4">
@@ -34,7 +38,7 @@ import Carousel from "./Carousel.astro";
           href="/"
           class="inline-block hover:scale-105 transition-transform duration-300"
         >
-          <Button title="Discover More" />
+          <Button title={data.main.button} />
         </a>
       </div>
     </div>

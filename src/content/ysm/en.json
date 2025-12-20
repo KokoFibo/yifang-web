@@ -1,0 +1,65 @@
+{
+  "main": {
+    "companies": ["PT YIFANG", "SEJAHTERA MANDIRI"],
+    "description": "We are a professional service company focused on the Indonesian market. Our experienced team offers comprehensive solutions to help you overcome the daily challenges and issues you face.",
+    "button": "Explore More"
+  },
+
+  "provide": {
+    "subtitle": "Our Premium Services",
+    "title": "We provide expert services to create long-term value for you, enabling you to focus on your core business and stay ahead in emerging trends.",
+    "descriptions": [
+      "Our services include product certification (TKDN, SNI, Postel, NIK, SUT, NJKB, etc.), company registration and qualification processing, recruitment and labor dispatch, BPJS registration and maintenance, public relations management, financial and tax services, and legal consultation."
+    ]
+  },
+
+  "product": {
+    "subtitle": "Certifications",
+    "title": "Product Certification",
+    "descriptions": [
+      "Yifang is a manufacturing enterprise with a core business focused on the assembly of electronic products, including mobile phones, home appliances, precision electronics, communication base stations, and electric vehicles. To better serve our customers, Yifang has obtained certifications for hundreds of products, including but not limited to TKDN, SNI, Postel, NIK, SUT, NJKB, and has established good relationships with relevant regulatory authorities, accumulating extensive experience."
+    ]
+  },
+  "company": {
+    "subtitle": "Registration and Qualification",
+    "title": "Company Registration and Qualification Processing",
+    "descriptions": [
+      "Establishing a presence in Indonesia, company registration and qualification processing are among the most critical steps. The service provider you choose must be highly trustworthy, compliant, and professional. Over the past decade, Yifang has assisted dozens of companies with various types of registrations, changes, and qualification applications, making us a service provider you can trust."
+    ]
+  },
+  "recruitment": {
+    "subtitle": "Recruitment",
+    "title": "Recruitment and Labor Dispatch",
+    "descriptions": [
+      "We specialize in providing one-stop recruitment and labor dispatch services, helping you quickly find the right talent. We offer customized solutions tailored to your needs, ensuring the delivery of suitable employees. With extensive talent resources and a professional recruitment team, we can enhance recruitment efficiency, reduce labor risks for your business, and allow you to focus on core business development. By choosing us, your staffing challenges will become simple, efficient, and reliable."
+    ]
+  },
+  "bpjs": {
+    "subtitle": "Health Insurance",
+    "title": "BPJS Registration and Maintenance",
+    "descriptions": [
+      "We offer comprehensive BPJS registration and maintenance services, assisting employees with registration for BPJS health insurance and social security programs, resolving BPJS-related benefit issues, and handling claims. Our services include managing the registration process, accurately submitting data, and updating employee information, ensuring continuous compliance with BPJS regulations to effectively support employees’ health and social security needs."
+    ]
+  },
+  "public": {
+    "subtitle": "Relation and Communication",
+    "title": "Public Relations Management",
+    "descriptions": [
+      "We are dedicated to helping businesses thrive in a complex policy environment. Through our deep understanding of government operations and extensive resource network, we assist companies in establishing strong communication channels with government departments, ensuring an edge in policy interpretation, project approvals, and regulatory compliance."
+    ]
+  },
+  "financial": {
+    "subtitle": "Taxation",
+    "title": "Financial and Tax Services",
+    "descriptions": [
+      "We focus on providing customized financial and tax management solutions for businesses. We not only assist with daily accounting and tax filing, but also offer in-depth tax planning and financial consulting, helping you maximize tax benefits and financial efficiency while ensuring legal compliance. Our services effectively reduce tax risks, enhance financial transparency, and improve operational efficiency."
+    ]
+  },
+  "legal": {
+    "subtitle": "Legal",
+    "title": "Legal Consultation",
+    "descriptions": [
+      "We are committed to providing efficient and reliable legal support for businesses and individuals. Whether it’s contract review, business negotiations, compliance management, or dispute resolution and litigation representation, our professional legal team will offer tailored solutions to protect your legal rights. With deep legal knowledge and extensive practical experience, we help clients prevent legal risks and resolve complex legal issues."
+    ]
+  }
+}

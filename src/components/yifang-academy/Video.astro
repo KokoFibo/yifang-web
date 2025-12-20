@@ -1,0 +1,132 @@
+---
+const { subtitle, title1, title2, title3, p1a, p1b, p2, watch, real } =
+  Astro.props;
+---
+
+<section class="max-w-7xl mx-auto px-6 py-20">
+  <div
+    id="video-card"
+    class="relative bg-[#C83E3E] rounded-[2.5rem] overflow-hidden min-h-[500px] flex items-center shadow-2xl shadow-red-200"
+  >
+    <div
+      class="absolute top-0 right-0 w-1/2 h-full bg-black/5 -skew-x-12 translate-x-20"
+    >
+    </div>
+
+    <div
+      class="grid grid-cols-1 lg:grid-cols-2 gap-12 p-8 md:p-16 relative z-10 items-center"
+    >
+      <div id="video-wrapper" class="relative group">
+        <div
+          class="aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 group-hover:border-white/20 transition-all duration-500"
+        >
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/Ke7yErmqFq8?start=55"
+            title="
+            Yifang
+            Academy
+            Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+
+        <div
+          class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block animate-bounce"
+        >
+          <p class="text-red-600 font-bold text-sm">{real}</p>
+        </div>
+      </div>
+
+      <div id="video-content" class="text-white space-y-8">
+        <div class="space-y-4">
+          <p
+            class="inline-block px-4 py-1 bg-white/20 backdrop-blur-md rounded-full text-sm font-semibold tracking-wider uppercase"
+          >
+            {subtitle}
+          </p>
+          <h2 class="text-3xl md:text-4xl font-black leading-tight">
+            {title1}
+            <span class="underline decoration-white/30 italic">{title2}</span>
+            {title3}
+          </h2>
+        </div>
+
+        <div class="space-y-6 text-white/90 text-lg leading-relaxed font-light">
+          <p>
+            <strong class="font-bold text-white">{p1a}</strong>
+            {p1b}
+          </p>
+          <p>
+            {p2}
+          </p>
+        </div>
+
+        <div class="pt-4">
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            class="inline-flex items-center gap-3 bg-white text-red-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-slate-900 hover:text-white transition-all duration-300 transform hover:-translate-y-1 shadow-lg active:scale-95"
+          >
+            <i class="fa-brands fa-youtube text-2xl"></i>
+            {watch}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initVideoAnimation = () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#video-card",
+        start: "top 75%",
+      },
+    });
+
+    // Munculkan background card dulu
+    tl.from("#video-card", {
+      scale: 0.9,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    // Animasi Video (Slide In dari Kiri)
+    tl.from(
+      "#video-wrapper",
+      {
+        x: -100,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    );
+
+    // Animasi Teks (Slide Up satu per satu)
+    tl.from(
+      "#video-content > *",
+      {
+        y: 30,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      "-=0.4"
+    );
+  };
+
+  initVideoAnimation();
+</script>

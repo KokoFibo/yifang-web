@@ -1,0 +1,85 @@
+---
+import ContentCard from "../../../components/ContentCard.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+// 1. WAJIB: Tambahkan fungsi ini agar dynamic route [lang] bekerja
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+const { lang } = Astro.params;
+
+// 2. Ambil data dari content/ysm/en.json atau zh.json
+const entry = await getEntry("ycme", lang);
+
+// Jika data tidak ditemukan, berikan fallback agar tidak error
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+
+const { data } = entry;
+---
+
+<Layout title="YCME">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/HEADER-OUR-COMPANIES-YCME.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+
+  <ContentCard
+    subtitle={data.precision.subtitle}
+    title={data.precision.title}
+    descriptions={data.precision.descriptions}
+    imageUrl="/images/YCME-OUR-SERVICES-750x500-1.webp"
+    alt="YCME-OUR-SERVICES"
+  />
+
+  <ContentCard
+    subtitle={data.mobile.subtitle}
+    title={data.mobile.title}
+    descriptions={data.mobile.descriptions}
+    imageUrl="/images/YCME-MOBILE-PHONE-ASSEMBLY-SERVICES-750x500-1.webp"
+    alt="YCME-MOBILE-PHONE-ASSEMBLY-SERVICES"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.consumer.subtitle}
+    title={data.consumer.title}
+    descriptions={data.consumer.descriptions}
+    imageUrl="/images/YCME-CONSUMER-ELECTRONIC-ASSEMBLY-SERVICES-750x500-1.webp"
+    alt="YCME-CONSUMER-ELECTRONIC-ASSEMBLY-SERVICES"
+  />
+
+  <ContentCard
+    subtitle={data.base.subtitle}
+    title={data.base.title}
+    descriptions={data.base.descriptions}
+    imageUrl="/images/YCME-BASE-STATION-EQUIPMENT-ASSEMBLY-SERVICES-750x500-1.webp"
+    alt="YCME-BASE-STATION-EQUIPMENT-ASSEMBLY-SERVICES"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.import.subtitle}
+    title={data.import.title}
+    descriptions={data.import.descriptions}
+    imageUrl="/images/HEADER-2000x1125-D.webp"
+    alt="HEADER-2000x1125-D"
+  />
+</Layout>
+
+<!-- 
+<ContentCard
+  subtitle=""
+  title=""
+  descriptions={[""]}
+  imageUrl=""
+  alt=""
+  reverse="false"
+/> 
+-->

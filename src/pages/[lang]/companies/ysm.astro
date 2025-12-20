@@ -1,0 +1,107 @@
+---
+import ContentCard from "../../../components/ContentCard.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+// 1. WAJIB: Tambahkan fungsi ini agar dynamic route [lang] bekerja
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+const { lang } = Astro.params;
+
+// 2. Ambil data dari content/ysm/en.json atau zh.json
+const entry = await getEntry("ysm", lang);
+
+// Jika data tidak ditemukan, berikan fallback agar tidak error
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+
+const { data } = entry;
+---
+
+<Layout title="YSM">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/HEADER-OUR-COMPANIES-YSM.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+  <ContentCard
+    subtitle={data.provide.subtitle}
+    title={data.provide.title}
+    descriptions={data.provide.descriptions}
+    imageUrl="/images/OUR-PREMIUM-SERVICES.webp"
+    alt="OUR-PREMIUM-SERVICES"
+  />
+
+  <ContentCard
+    subtitle={data.product.subtitle}
+    title={data.product.title}
+    descriptions={data.product.descriptions}
+    imageUrl="/images/YSM-PUBLIC-CERTIFICATION-750x500-1.webp"
+    alt="YSM-PUBLIC-CERTIFICATION"
+    reverse="true"
+  />
+
+  <ContentCard
+    subtitle={data.company.subtitle}
+    title={data.company.title}
+    descriptions={data.company.descriptions}
+    imageUrl="/images/YSM-COMPANY-REGISTRATION-750x500-1.webp"
+    alt="YSM-COMPANY-REGISTRATION"
+  />
+  <ContentCard
+    subtitle={data.recruitment.subtitle}
+    title={data.recruitment.title}
+    descriptions={data.recruitment.descriptions}
+    imageUrl="/images/YSM-RECRUITMENT-AND-LABOR-DISPATCH-750x500-1.webp"
+    alt="YSM-RECRUITMENT-AND-LABOR-DISPATCH"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.bpjs.subtitle}
+    title={data.bpjs.title}
+    descriptions={data.bpjs.descriptions}
+    imageUrl="/images/YSM-BPJS-750x500-1.webp"
+    alt="YSM-BPJS"
+  />
+
+  <ContentCard
+    subtitle={data.public.subtitle}
+    title={data.public.title}
+    descriptions={data.public.descriptions}
+    imageUrl="/images/YSM-PUBLIC-RELATION-MAINTENANCE-750x500-1.webp"
+    alt="YSM-PUBLIC-RELATION-MAINTENANCE"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.financial.subtitle}
+    title={data.financial.title}
+    descriptions={data.financial.descriptions}
+    imageUrl="/images/YSM-FINANCIAL-AND-TAX-SERVICES-750x500-1.webp"
+    alt="YSM-FINANCIAL-AND-TAX-SERVICES"
+  />
+
+  <ContentCard
+    subtitle={data.legal.subtitle}
+    title={data.legal.title}
+    descriptions={data.legal.descriptions}
+    imageUrl="/images/YSM-LEGAL-CONSULTATION-750x500-1.webp"
+    alt="YSM-LEGAL-CONSULTATION-750x500-1"
+    reverse="false"
+  />
+</Layout>
+
+<!-- <ContentCard
+  subtitle=""
+  title=""
+  descriptions={[""]}
+  imageUrl=""
+  alt=""
+  reverse="false"
+/> -->

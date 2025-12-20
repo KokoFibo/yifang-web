@@ -1,0 +1,22 @@
+{
+  "ysm": {
+    "head": "管理服务",
+    "company": "PT Yifang Sejahtera Mandiri"
+  },
+  "ycme": {
+    "head": "手机组装",
+    "company": "PT Yifang Cargo Mutiara Elektronik"
+  },
+  "yev": {
+    "head": "电动车组装",
+    "company": "PT Yifang Eco Vehicle"
+  },
+  "yam": {
+    "head": "建筑管理",
+    "company": "PT Yifang Asset Management"
+  },
+  "talent": {
+    "head": "人才发展",
+    "company": "PT Yifang Academy"
+  }
+}

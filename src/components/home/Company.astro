@@ -1,3 +1,12 @@
+---
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("company", lang);
+const { data } = entry;
+---
+
 <section
   id="services-section"
   class="bg-section relative mt-10 lg:mt-24 p-4 lg:p-12 overflow-visible"
@@ -8,24 +17,23 @@
         <h5
           class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
         >
-          What We Can Do for You
+          {data.main.subtitle}
         </h5>
         <h2
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900 max-w-4xl mx-auto"
         >
-          The Companies that Changed The World All Start With a Visionary
+          {data.main.title}
         </h2>
         <p
           class="text-yfgrey text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed"
         >
-          We offer comprehensive one-stop solutions for foreign companies
-          investing in Indonesia.
+          {data.main.description}
         </p>
       </div>
     </div>
 
     <div class="video-wrapper relative mx-auto w-full max-w-4xl mb-16 px-4">
-      <div class="absolute -inset-2 bg-primary/5 rounded-[2rem] blur-2xl -z-10">
+      <div class="absolute -inset-2 bg-primary/5 rounded-4xl blur-2xl -z-10">
       </div>
       <video
         class="w-full h-auto rounded-2xl shadow-xl border border-white"
@@ -44,33 +52,33 @@
         [
           {
             icon: "consultation.png",
-            title: "Initial Consultation",
-            desc: "Understand client needs and project scope for tailored solutions.",
+            title: data.initial?.title,
+            desc: data.initial?.description,
           },
           {
             icon: "labor.png",
-            title: "Supplier and Labor Sourcing",
-            desc: "Identify reliable suppliers and skilled labor to support project demands.",
+            title: data.supplier?.title,
+            desc: data.supplier?.description,
           },
           {
             icon: "strategy.png",
-            title: "Market Entry Strategy",
-            desc: "Develop strategies for seamless market entry into Indonesia.",
+            title: data.market?.title,
+            desc: data.market?.description,
           },
           {
             icon: "project.png",
-            title: "Project Execution",
-            desc: "Efficiently assemble smartphones, electric bicycles, and accessories.",
+            title: data.project?.title,
+            desc: data.project?.description,
           },
           {
             icon: "regulations.png",
-            title: "Regulatory Compliance",
-            desc: "Navigate regulatory requirements to ensure legal compliance.",
+            title: data.regulatory?.title,
+            desc: data.regulatory?.description,
           },
           {
             icon: "technical-support.png",
-            title: "Ongoing Support",
-            desc: "Provide continuous support to maintain operational efficiency.",
+            title: data.ongoing?.title,
+            desc: data.ongoing?.description,
           },
         ].map((service) => (
           <div class="service-card group flex flex-col sm:flex-row gap-5 items-center sm:items-start text-center sm:text-left bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-500">

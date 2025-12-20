@@ -1,0 +1,31 @@
+{
+  "main": {
+    "subtitle": "What We Can Do for You",
+    "title": "The companies that changed the world all start with a visionary",
+    "description": "We offer comprehensive one-stop solutions for foreign companies investing in Indonesia, facilitating market entry, regulatory approvals, labor sourcing, and more."
+  },
+  "initial": {
+    "title": "Initial Consultation",
+    "description": "Understand client needs and project scope for tailored solutions."
+  },
+  "supplier": {
+    "title": "Supplier and Labor Sourcing",
+    "description": "Identify reliable suppliers and skilled labor to support project demands."
+  },
+  "market": {
+    "title": "Market Entry Strategy",
+    "description": "Develop strategies for seamless market entry into Indonesia."
+  },
+  "project": {
+    "title": "Project Execution",
+    "description": "Efficiently assemble smartphones, electric bicycles, and accessories according to specifications."
+  },
+  "regulatory": {
+    "title": "Regulatory Compliance",
+    "description": "Navigate regulatory requirements to ensure legal compliance and smooth operations."
+  },
+  "ongoing": {
+    "title": "Ongoing Support",
+    "description": "Provide continuous support to maintain operational efficiency and sustain business growth."
+  }
+}

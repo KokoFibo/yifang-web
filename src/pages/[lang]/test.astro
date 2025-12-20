@@ -1,0 +1,117 @@
+---
+import ContentCard from "../../components/ContentCard.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import ParaCard from "../../components/ParaCard.astro";
+import Para from "../../components/Para.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+const { lang } = Astro.params;
+const entry = await getEntry("yifang-academy", lang);
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+const { data } = entry;
+---
+
+<Layout title="Yifang Academy">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/Header-scaled.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+  <div class="bg-white h-full">
+    <!-- <Para
+      main={[
+        "Yifang Academy provides comprehensive Recruitment Solutions to help companies find the right candidates efficiently and effectively. ",
+        "Leadership Development services at Yifang Academy aim to identify and cultivate leadership potential within an organization. This can involve:",
+      ]}
+      list={[
+        "Job Posting and Advertisement: Reaching potential candidates through various platforms.",
+        "Screening and Interviewing: Conducting initial screenings and interviews to shortlist suitable candidates.",
+        "Onboarding Support: Assisting with the integration of new hires into the organization.",
+        "Employer Branding: Enhancing the company’s reputation as an employer to attract top talent.",
+      ]}
+      listStyle="ol"
+      defaultStyle={{ italic: true, fontSize: "lg" }}
+      thestyle={[
+        {
+          words: ["Recruitment Solutions"],
+          styles: ["underline", "italic"],
+        },
+        {
+          words: ["Yifang1"],
+          styles: ["underline"],
+        },
+        {
+          words: [
+            "Yifang Academy",
+            "Job Posting",
+            "Screening and Interviewing",
+            "Onboarding Support",
+            "Employer Branding",
+          ],
+          styles: ["italic", "bold"],
+        },
+      ]}
+    /> -->
+
+    <ParaCard
+      subtitle="Industrial Factory"
+      title="Industrial Factory Leasing"
+      main={[
+        "We provide you with the most suitable industrial factory solutions. We understand that for investors, having reliable partners to assist them during the investment and development process is crucial.",
+      ]}
+      list={[
+        "Leadership Training Programs: Focused on developing essential leadership skills.",
+        "Executive Coaching: One-on-one coaching sessions for senior leaders.",
+        "Succession Planning: Preparing for future leadership needs by developing a pipeline of qualified candidates.",
+        "Assessment and Feedback: Using tools and assessments to provide leaders with insights into their strengths and areas for improvement.",
+      ]}
+      listStyle="ol"
+      defaultStyle={{ fontSize: "lg" }}
+      thestyle={[
+        {
+          words: [
+            "Leadership Training Programs",
+            "Executive Coaching",
+            "Succession Planning",
+            "Assessment and Feedback",
+          ],
+          styles: ["bold"],
+        },
+        { words: ["Recruitment Solutions"], styles: ["underline"] },
+      ]}
+      imageUrl="/images/YAM-INDUSTRIAL-PLANT-LEASING-750x500-1.webp"
+      alt="YAM-INDUSTRIAL-PLANT-LEASING"
+      reverse="false"
+    />
+
+    <ContentCard
+      subtitle="Industrial Factory"
+      title="Industrial Factory Leasing"
+      descriptions={[
+        "We provide you with the most suitable industrial factory solutions. We understand that for investors, having reliable partners to assist them during the investment and development process is crucial.",
+      ]}
+      listItems={[
+        "Leadership Training Programs: Focused on developing essential leadership skills.",
+        "Executive Coaching: One-on-one coaching sessions for senior leaders.",
+        "Succession Planning: Preparing for future leadership needs by developing a pipeline of qualified candidates.",
+        "Assessment and Feedback: Using tools and assessments to provide leaders with insights into their strengths and areas for improvement.",
+      ]}
+      imageUrl="/images/YAM-INDUSTRIAL-PLANT-LEASING-750x500-1.webp"
+      alt="YAM-INDUSTRIAL-PLANT-LEASING"
+    />
+  </div>
+
+  <ParaCard />
+</Layout>
+<style>
+  body {
+    background-color: black;
+  }
+</style>

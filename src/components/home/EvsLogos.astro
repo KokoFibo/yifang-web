@@ -13,13 +13,21 @@ const logos = [
   "11Beam.png",
   "12PHYLION-YNE_page-0001.jpg",
 ];
+
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("evs-logos", lang);
+
+const { data } = entry;
 ---
 
 <section class="logo-scroller py-10 md:py-16 bg-white overflow-hidden">
   <h2
     class="reveal-text-evs text-center text-xl md:text-3xl font-bold mb-10 text-slate-800"
   >
-    EVS Partners
+    {data.title}
   </h2>
 
   <div class="marquee-container relative w-full overflow-hidden group">

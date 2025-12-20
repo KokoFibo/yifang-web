@@ -1,0 +1,113 @@
+---
+const {
+  main = [],
+  list = [],
+  listStyle = "ul", // "ul" | "ol"
+  thestyle = [],
+  defaultStyle = {
+    bold: false,
+    italic: false,
+    underline: false,
+    fontSize: "base", // sm | base | lg | xl | custom (ex: "18px")
+  },
+} = Astro.props;
+
+/**
+ * Resolve font size
+ */
+function resolveFontSize(size) {
+  const map = {
+    sm: "0.875rem",
+    base: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+  };
+
+  return map[size] || size;
+}
+
+/**
+ * Build inline CSS style string
+ */
+function buildStyle(styles = [], isDefault = false) {
+  const active = {
+    bold: isDefault ? defaultStyle.bold : styles.includes("bold"),
+    italic: isDefault ? defaultStyle.italic : styles.includes("italic"),
+    underline: isDefault
+      ? defaultStyle.underline
+      : styles.includes("underline"),
+  };
+
+  let css = "";
+
+  if (isDefault && defaultStyle.fontSize) {
+    css += `font-size:${resolveFontSize(defaultStyle.fontSize)};`;
+  }
+
+  if (active.bold) css += "font-weight:700;";
+  if (active.italic) css += "font-style:italic;";
+  if (active.underline)
+    css += "border-bottom:2px solid currentColor;padding-bottom:2px;";
+
+  return css;
+}
+
+/**
+ * Apply inline styles to matched words
+ */
+function applyStyles(text) {
+  let result = text;
+
+  thestyle.forEach(({ words, styles }) => {
+    if (!words || !styles) return;
+
+    words.forEach((word) => {
+      const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(`(${escaped})`, "gi");
+
+      const style = buildStyle(styles);
+
+      result = result.replace(regex, `<span style="${style}">$1</span>`);
+    });
+  });
+
+  return result;
+}
+---
+
+<div class="space-y-4">
+  <!-- PARAGRAPHS -->
+  {
+    main.map((text) => (
+      <p
+        class="leading-relaxed"
+        style={buildStyle([], true)}
+        set:html={applyStyles(text)}
+      />
+    ))
+  }
+
+  <!-- LIST -->
+  {
+    list.length > 0 &&
+      (listStyle === "ol" ? (
+        <ol
+          style="list-style-type: decimal; padding-left: 1.5rem;"
+          class="space-y-2"
+        >
+          {list.map((item) => (
+            <li style={buildStyle([], true)} set:html={applyStyles(item)} />
+          ))}
+        </ol>
+      ) : (
+        <ul
+          style="list-style-type: disc; padding-left: 1.5rem;"
+          class="space-y-2"
+        >
+          {list.map((item) => (
+            <li style={buildStyle([], true)} set:html={applyStyles(item)} />
+          ))}
+        </ul>
+      ))
+  }
+</div>

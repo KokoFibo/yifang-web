@@ -1,35 +1,40 @@
 ---
 import Card from "./Card.astro";
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
 
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("carousel", lang);
+const { data } = entry;
 // Contoh data, silakan sesuaikan dengan kebutuhan Anda
 const dataCards = [
   {
-    head: "Management Services",
-    company: "PT Yifang Sejahtera Mandiri",
+    head: data.ysm?.head,
+    company: data.ysm?.company,
     link: "/images/ysm-card.webp",
     alt: "ysm-card",
   },
   {
-    head: "Mobile Phone Assembly",
-    company: "PT Yifang Cargo Mutiara Elektronik",
+    head: data.ycme?.head,
+    company: data.ycme?.company,
     link: "/images/ycme-card.webp",
     alt: "ycme-card",
   },
   {
-    head: "Electric Vehicle Assembly",
-    company: "PT Yifang Eco Vehicle",
+    head: data.yev?.head,
+    company: data.yev?.company,
     link: "/images/yev-card.webp",
     alt: "ev-card",
   },
   {
-    head: "Bulding Management",
-    company: "PT Yifang Asset Management",
+    head: data.yam?.head,
+    company: data.yam?.company,
     link: "/images/yam-card.webp",
     alt: "yam-card",
   },
   {
-    head: "Talent development",
-    company: "PT Yifang Academy",
+    head: data.talent?.head,
+    company: data.talent?.company,
     link: "/images/yf-academy-card.webp",
     alt: "yf-academy-card",
   },

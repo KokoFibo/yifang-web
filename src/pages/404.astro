@@ -1,5 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getLangFromUrl } from "../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const isZh = lang === "zh";
+
+// Teks multibahasa sederhana
+const content = {
+  title: isZh ? "页面未找到" : "Page Not Found",
+  desc: isZh
+    ? "抱歉，您访问的页面不存在或已被移动。"
+    : "Sorry, the page you are looking for doesn't exist or has been moved.",
+  button: isZh ? "返回首页" : "Back to Home",
+  homePath: isZh ? "/zh/" : "/en/",
+};
 ---
 
 <Layout title="404 - Page Not Found">

@@ -1,3 +1,12 @@
+---
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("certification", lang);
+const { data } = entry;
+---
+
 <section
   id="iso-section"
   class="bg-section flex items-center justify-center mt-10 lg:mt-24 p-6 lg:p-12 overflow-hidden"
@@ -8,19 +17,17 @@
         <h5
           class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
         >
-          Our Standard Operations
+          {data.main.subtitle}
         </h5>
         <h2
           class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900"
         >
-          ISO Certifications
+          {data.main.title}
         </h2>
         <p
           class="text-yfgrey text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed"
         >
-          We offer comprehensive one-stop solutions for foreign companies
-          investing in Indonesia, facilitating market entry, regulatory
-          approvals, and ensuring compliance with international standards.
+          {data.main.description}
         </p>
       </div>
 
@@ -32,32 +39,33 @@
             {
               img: "45001.png",
               code: "45001 : 2018",
-              desc: "Occupational Health and Safety Management Systems",
+              desc: data.iso45001?.description,
             },
             {
               img: "14001.png",
               code: "14001 : 2015",
-              desc: "Environmental Management Systems",
+              desc: data.iso14001?.description,
             },
             {
               img: "27001.png",
               code: "27001 : 2015",
-              desc: "Information Security Management Systems",
+              desc: data.iso27001?.description,
             },
             {
               img: "9001.png",
               code: "9001 : 2015",
-              desc: "Quality Management Systems",
+              desc: data.iso9001?.description,
             },
             {
               img: "20000.png",
               code: "20000 : 2018",
-              desc: "System Management Systems",
+              desc: data.iso20000?.description,
             },
             {
               img: "Apreciation.png",
               code: "APPRECIATION",
-              desc: "Occupational Safety and Health Management System",
+              // desc: "Occupational Safety and Health Management System",
+              desc: data.appreciation?.description,
               customTitle: "CERTIFICATE OF",
             },
           ].map((iso) => (
@@ -76,7 +84,7 @@
                 <h4 class="font-extrabold text-sm md:text-base text-primary leading-none">
                   {iso.code}
                 </h4>
-                <p class="text-yfgrey text-[10px] sm:text-xs leading-snug mt-2 max-w-[150px] mx-auto">
+                <p class="text-yfgrey text-[10px] sm:text-xs leading-snug mt-2 max-w-37.5 mx-auto">
                   {iso.desc}
                 </p>
               </div>

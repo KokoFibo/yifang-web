@@ -1,3 +1,12 @@
+---
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("vision", lang);
+const { data } = entry;
+---
+
 <section class="flex justify-center mt-12 md:mt-20 px-4 mb-16">
   <div
     class="w-full max-w-7xl bg-slate-50 rounded-[2.5rem] p-6 sm:p-10 lg:p-14 border border-slate-100 shadow-sm"
@@ -19,11 +28,11 @@
         <h2
           class="text-xl sm:text-2xl font-bold text-slate-800 group-hover:text-primary transition-colors"
         >
-          Our Vision
+          {data.vision.title}
         </h2>
 
         <p class="text-sm sm:text-base text-yfgrey leading-relaxed">
-          Become a platform that empowers businesses to grow
+          {data.vision.description}
         </p>
       </div>
 
@@ -43,11 +52,11 @@
         <h2
           class="text-xl sm:text-2xl font-bold text-slate-800 group-hover:text-primary transition-colors"
         >
-          Our Mission
+          {data.mission.title}
         </h2>
 
         <p class="text-sm sm:text-base text-yfgrey leading-relaxed">
-          Solve the pain points of development together with enterprises
+          {data.mission.description}
         </p>
       </div>
 
@@ -67,21 +76,21 @@
         <h2
           class="text-xl sm:text-2xl font-bold text-slate-800 group-hover:text-primary transition-colors"
         >
-          The Spirit of Exchange
+          {data.spirit.title}
         </h2>
 
         <div class="text-sm sm:text-base text-yfgrey font-medium space-y-1">
           <p class="hover:text-primary transition-colors">
-            Investing in Indonesia
+            {data.spirit.description1}
           </p>
           <p class="hover:text-primary transition-colors">
-            Development in Indonesia
+            {data.spirit.description2}
           </p>
           <p class="hover:text-primary transition-colors">
-            Services in Indonesia
+            {data.spirit.description3}
           </p>
           <p class="hover:text-primary transition-colors">
-            Win-win in Indonesia
+            {data.spirit.description4}
           </p>
         </div>
       </div>

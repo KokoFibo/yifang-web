@@ -1,0 +1,46 @@
+---
+// src/components/LanguagePicker.astro
+const { pathname } = Astro.url;
+
+// Ambil bahasa saat ini dari URL (segmen pertama setelah /)
+const currentLang = pathname.split("/").filter(Boolean)[0] || "en";
+
+// Tentukan bahasa target (kebalikan dari bahasa sekarang)
+const targetLang = currentLang === "en" ? "zh" : "en";
+
+// Tentukan label tampilan
+const label = currentLang === "en" ? "中文" : "英文";
+
+/**
+ * Fungsi untuk mengganti bahasa di URL
+ */
+const getLocalizedPath = (lang) => {
+  const segments = pathname.split("/").filter(Boolean);
+
+  if (segments.length === 0) {
+    return `/${lang}/`;
+  }
+
+  // Ganti kode bahasa di segmen pertama
+  segments[0] = lang;
+  return `/${segments.join("/")}/`;
+};
+---
+
+<a
+  href={getLocalizedPath(targetLang)}
+  class="flex items-center justify-center px-3 py-2 text-white hover:bg-primary hover:scale-105 active:scale-95 transition-all hover:rounded-xl duration-300"
+  title={currentLang === "en" ? "Switch to Chinese" : "切换到英文"}
+>
+  {label}
+</a>
+
+<style>
+  a {
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>

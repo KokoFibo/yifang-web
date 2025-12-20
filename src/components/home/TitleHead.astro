@@ -1,0 +1,103 @@
+---
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("company", lang);
+const { data } = entry;
+const { subtitle, title, description } = Astro.props;
+---
+
+<section
+  id="services-section"
+  class="bg-section relative mt-10 lg:mt-24 p-4 lg:p-12 overflow-visible"
+>
+  <div class="w-full max-w-7xl mx-auto relative z-10">
+    <div class="flex flex-col gap-6 text-center mb-12">
+      <div class="services-header space-y-4">
+        <h5
+          class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
+        >
+          {subtitle}
+        </h5>
+        <h2
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900 max-w-4xl mx-auto"
+        >
+          {title}
+        </h2>
+        <p
+          class="text-yfgrey text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed"
+        >
+          {description}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  function initSafeAnim() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Pastikan elemen ada
+    const header = document.querySelector(".services-header");
+    const video = document.querySelector(".video-wrapper");
+    const cards = document.querySelectorAll(".service-card");
+
+    if (header && video && cards.length > 0) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#services-section",
+          start: "top 80%",
+        },
+      });
+
+      tl.from(header, { opacity: 0, y: 30, duration: 0.8 })
+        .from(video, { opacity: 0, scale: 0.95, duration: 0.8 }, "-=0.4")
+        .from(
+          cards,
+          {
+            opacity: 0,
+            y: 40,
+            stagger: 0.1,
+            duration: 0.6,
+            clearProps: "all", // Penting: Menghapus filter/opacity setelah selesai
+          },
+          "-=0.4"
+        );
+    }
+  }
+
+  // Jalankan
+  initSafeAnim();
+  document.addEventListener("astro:after-swap", initSafeAnim);
+</script>
+
+<style>
+  .bg-section {
+    background-color: transparent;
+  }
+
+  /* Lapisan background yang aman */
+  .bg-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1; /* Di bawah konten utama */
+    background-image:
+      url("/images/bg_frame3.png"), linear-gradient(to bottom, #fff, #f8fafc);
+    background-size:
+      30px 30px,
+      cover;
+    opacity: 0.7;
+  }
+
+  /* Menjamin konten utama di atas background */
+  .bg-section > .mx-auto {
+    position: relative;
+    z-index: 10;
+  }
+</style>

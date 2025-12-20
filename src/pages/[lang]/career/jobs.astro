@@ -1,0 +1,78 @@
+---
+import ContentCard from "../../../components/ContentCard.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+const { lang } = Astro.params;
+const entry = await getEntry("jobs", lang);
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+const { data } = entry;
+---
+
+<Layout title="Jobs">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/Edit-HEADER-CAREER-JOBS.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+
+  <ContentCard
+    subtitle={data.why.subtitle}
+    title={data.why.title}
+    descriptions={data.why.descriptions}
+    imageUrl="/images/WHY-JOIN-US.webp"
+    alt="WHY-JOIN-US"
+  />
+
+  <ContentCard
+    subtitle={data.start.subtitle}
+    title={data.start.title}
+    descriptions={data.start.descriptions}
+    imageUrl="/images/internship.webp"
+    alt="internship"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.mandarin.subtitle}
+    title={data.mandarin.title}
+    descriptions={data.mandarin.descriptions}
+    imageUrl="/images/mandarin-translator.webp"
+    alt="mandarin-translator"
+  />
+
+  <ContentCard
+    subtitle={data.mechanical.subtitle}
+    title={data.mechanical.title}
+    descriptions={data.mechanical.descriptions}
+    imageUrl="/images/mechanical-enginerring.webp"
+    alt="mechanical-enginerring"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.legal.subtitle}
+    title={data.legal.title}
+    descriptions={data.legal.descriptions}
+    imageUrl="/images/legal-staff.webp"
+    alt="legal-staff"
+  />
+</Layout>
+
+<!-- 
+<ContentCard
+  subtitle=""
+  title=""
+  descriptions={[""]}
+  imageUrl=""
+  alt=""
+  reverse="false"
+/> 
+-->

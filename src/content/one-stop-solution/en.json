@@ -1,0 +1,14 @@
+{
+  "badge": "Who We Are",
+  "title": "One Stop Solution Company",
+  "description": [
+    "Established in 2014, Yifang Group is a company specializing in assembling smartphones, electric bicycles, and accessories.",
+    "We provide comprehensive services as a one-stop solution for foreign companies looking to invest in Indonesia, from market entry to regulatory approvals."
+  ],
+  "buttonText": "Learn More",
+  "stats": [
+    { "value": "3K+", "label": "Employees" },
+    { "value": "3 Mio+", "label": "Annual Units" },
+    { "value": "10+", "label": "Years Experience" }
+  ]
+}

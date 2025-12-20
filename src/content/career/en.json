@@ -1,0 +1,72 @@
+{
+  "main": {
+    "companies": ["Career"],
+    "description": "Join us to innovate, create, and turn your dreams into reality.",
+    "button": "Explore More"
+  },
+
+  "career": {
+    "subtitle": "Career",
+    "title": "Career @Yifang",
+    "descriptions": [
+      "A career at Yifang offers you a chance to join a creative and innovative team. We focus on making products that help people achieve their dreams. You’ll work with skilled professionals who are passionate about making a positive impact. At Yifang, we value creativity, teamwork, and dedication.",
+      "When you join us, you’ll be part of exciting projects and cutting-edge technology. We provide a supportive environment for learning and growth. Whether you’re experienced or just starting, we offer opportunities to advance your career and make a difference. Join us and help turn dreams into reality."
+    ]
+  },
+
+  "honesty": {
+    "subtitle": "Who are we?",
+    "title": "Honesty and authenticity are the hallmarks of great human resources",
+    "description": [
+      "Honesty and authenticity in human resources build trust and align practices with the organization’s true values. These qualities foster a positive workplace environment, nurture strong employee relationships, and maintain high morale, contributing to overall organizational success."
+    ]
+  },
+  "talent": {
+    "subtitle": "Export",
+    "title": "Talent Export",
+    "descriptions": [
+      "Yifang Academy offers Talent Export services, which likely involve sourcing and supplying skilled professionals to organizations worldwide.",
+      "This service ensures that companies have access to a global talent pool, allowing them to fill crucial roles with the best candidates regardless of geographical boundaries."
+    ]
+  },
+
+  "development": {
+    "subtitle": "Development",
+    "title": "Talent Development",
+    "descriptions": [
+      "In Talent Development, Yifang Academy focuses on nurturing and enhancing the skills and capabilities of individuals within an organization. This might include:"
+    ],
+    "points": [
+      "Training Programs: Structured programs to develop specific skills.",
+      "Workshops and Seminars: Short-term, intensive learning sessions.",
+      "Coaching and Mentoring: Personalized guidance to help employees reach their full potential.",
+      "Continuous Learning: Creating a culture of ongoing education and skill improvement."
+    ]
+  },
+  "recruitment": {
+    "subtitle": "Recruitment",
+    "title": "Recruitment Solutions",
+    "descriptions": [
+      "Yifang Academy provides comprehensive Recruitment Solutions to help companies find the right candidates efficiently and effectively. This might include:"
+    ],
+    "points": [
+      "Job Posting and Advertisement: Reaching potential candidates through various platforms.",
+      "Screening and Interviewing: Conducting initial screenings and interviews to shortlist suitable candidates.",
+      "Onboarding Support: Assisting with the integration of new hires into the organization.",
+      "Employer Branding: Enhancing the company’s reputation as an employer to attract top talent."
+    ]
+  },
+  "leadership": {
+    "subtitle": "Leadership",
+    "title": "Leadership Development",
+    "descriptions": [
+      "Leadership Development services at Yifang Academy aim to identify and cultivate leadership potential within an organization. This can involve:"
+    ],
+    "points": [
+      "Leadership Training Programs: Focused on developing essential leadership skills.",
+      "Executive Coaching: One-on-one coaching sessions for senior leaders.",
+      "Succession Planning: Preparing for future leadership needs by developing a pipeline of qualified candidates.",
+      "Assessment and Feedback: Using tools and assessments to provide leaders with insights into their strengths and areas for improvement."
+    ]
+  }
+}

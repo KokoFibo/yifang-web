@@ -1,0 +1,76 @@
+---
+import ContentCard from "../../../components/ContentCard.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+// 1. WAJIB: Tambahkan fungsi ini agar dynamic route [lang] bekerja
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+const { lang } = Astro.params;
+
+// 2. Ambil data dari content/ysm/en.json atau zh.json
+const entry = await getEntry("yam", lang);
+
+// Jika data tidak ditemukan, berikan fallback agar tidak error
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+
+const { data } = entry;
+---
+
+<Layout title="YAM">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/OUR-COMPANIES-HEADER-YAM.webp"
+    description={data.main.description}
+  />
+
+  <ContentCard
+    subtitle={data.industrial.subtitle}
+    title={data.industrial.title}
+    descriptions={data.industrial.descriptions}
+    imageUrl="/images/YAM-INDUSTRIAL-PLANT-LEASING-750x500-1.webp"
+    alt="YAM-INDUSTRIAL-PLANT-LEASING"
+  />
+
+  <ContentCard
+    subtitle={data.property.subtitle}
+    title={data.property.title}
+    descriptions={data.property.descriptions}
+    imageUrl="/images/YAM-PROPERTY-SERVICES-750x500-1.webp"
+    alt="YAM-PROPERTY-SERVICES"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.restaurant.subtitle}
+    title={data.restaurant.title}
+    descriptions={data.restaurant.descriptions}
+    imageUrl="/images/YAM-CATERING-750x500-1.webp"
+    alt="YAM-CATERING"
+  />
+
+  <ContentCard
+    subtitle={data.local.subtitle}
+    title={data.local.title}
+    descriptions={data.local.descriptions}
+    imageUrl="/images/YAM-LOCAL-LOGISTIC-750x500-1.webp"
+    alt="YAM-LOCAL-LOGISTIC"
+    reverse="false"
+  />
+</Layout>
+
+<!-- 
+<ContentCard
+  subtitle=""
+  title=""
+  descriptions={[""]}
+  imageUrl=""
+  alt=""
+  reverse="false"
+/> 
+-->

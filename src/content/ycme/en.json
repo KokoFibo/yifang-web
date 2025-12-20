@@ -1,0 +1,45 @@
+{
+  "main": {
+    "companies": ["PT YIFANG", "CARGO MUTIARA ELEKTRONIK"],
+    "description": [
+      "We are dedicated to provide exceptional solutions in mobile phone, home appliance, consumer electronics, and base station equipment assembly services."
+    ],
+    "button": "Explore More"
+  },
+
+  "precision": {
+    "subtitle": "Our Services",
+    "title": "Precision Electronics Assembly and International Trade Solutions",
+    "descriptions": [
+      "We have over ten years of experience in the precision electronics manufacturing industry in Indonesia and have established the Yifang Local Assembly Management System, which helps customers’ products quickly enter the Indonesian market. Additionally, we offer export and import services to support global delivery for our clients."
+    ]
+  },
+  "mobile": {
+    "subtitle": "Mobile Phones",
+    "title": "Mobile Phone Assembly Services",
+    "descriptions": [
+      "We assemble approximately 5 million mobile phones annually, supported by an experienced mobile assembly management team and thousands of skilled workers. Using advanced assembly processes, our technical experts rigorously inspect each device to ensure that every product meets quality standards."
+    ]
+  },
+  "consumer": {
+    "subtitle": "Consumer Electronics",
+    "title": "Consumer Electronics Assembly Services",
+    "descriptions": [
+      "We specialize in the assembly of consumer electronics, ensuring the delivery of high-quality and reliable electronic products. Our team carefully manages every aspect of the process, utilizing advanced technology and precise manufacturing to provide cost-effective solutions that meet industry standards, from component integration to final testing. Whether for personal or commercial use, our consumer electronics assembly services deliver reliable, cutting-edge equipment that meets modern demands."
+    ]
+  },
+  "base": {
+    "subtitle": "Assembly Services",
+    "title": "Base Station Equipment Assembly Services",
+    "descriptions": [
+      "We offer professional base station equipment assembly services, utilizing advanced manufacturing processes to ensure that each component meets industry standards and supports robust communication networks. Our technical team meticulously controls every assembly stage, from initial component integration to final quality inspection, delivering precise and durable base station equipment."
+    ]
+  },
+  "import": {
+    "subtitle": "Import and Export",
+    "title": "Import and Export Services",
+    "descriptions": [
+      "We have a deep understanding of import and export operations in Indonesia, backed by years of practical experience in customs and international trade. We can provide you with advice and services related to the import and export of goods, creating value while ensuring compliance and managing risks. Our import and export services include importation, customs clearance, logistics, and export services."
+    ]
+  }
+}

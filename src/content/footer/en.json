@@ -1,0 +1,29 @@
+{
+  "main": {
+    "title1": "Harmonizing Company Culture",
+    "title2": "Enhancing Employees Happiness",
+    "description": "We are always ready for you",
+    "button": "Explore More"
+  },
+  "location": {
+    "title": "Locations",
+    "addr1": "PT. Yifang C.M.E",
+    "addr2": "Jl. Millenium 23 Blok Q1 No.2A",
+    "addr3": "Kadu Agung, Tigaraksa,",
+    "addr4": "Tangerang, Banten"
+  },
+  "consultation": {
+    "title": "Free Consultation",
+    "hreftelp": "tel:+6285959424777",
+    "telp": "+62 859 5942 4777",
+    "hrefemail": "mailto:bd@yifang.id",
+    "email": "bd@yifang.id"
+  },
+  "touch": {
+    "title": "Get in touch",
+    "hreftelp": "tel:6283899598999",
+    "telp": "+62 838-9959-8999",
+    "hrefemail": "mailto:buildyourfuture@yifang.co.id",
+    "email": "buildyourfuture@yifang.co.id"
+  }
+}

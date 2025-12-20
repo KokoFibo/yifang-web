@@ -1,0 +1,171 @@
+<section class="max-w-7xl mx-auto px-6 py-24 bg-[#fcfcfc]">
+  <div class="text-center mb-20 overflow-hidden">
+    <h2
+      id="title"
+      class="text-3xl md:text-5xl font-black text-slate-900 mb-8 tracking-tight"
+    >
+      Banyak Profesional Muda <span class="text-red-600"
+        >Bisa Bahasa Mandarin, Tapi...</span
+      >
+    </h2>
+
+    <div
+      class="flex flex-wrap justify-center gap-6 text-slate-500 font-medium mb-10"
+    >
+      <div
+        class="problem-item flex items-center gap-3 bg-white px-5 py-3 rounded-full shadow-sm border border-slate-100"
+      >
+        <span
+          class="w-6 h-6 flex items-center justify-center bg-red-100 text-red-600 rounded-full text-xs"
+          >✕</span
+        >
+        <span>Cuma dipakai bantu translate</span>
+      </div>
+      <div
+        class="problem-item flex items-center gap-3 bg-white px-5 py-3 rounded-full shadow-sm border border-slate-100"
+      >
+        <span
+          class="w-6 h-6 flex items-center justify-center bg-red-100 text-red-600 rounded-full text-xs"
+          >✕</span
+        >
+        <span>Tidak tahu cara dapat promosi</span>
+      </div>
+      <div
+        class="problem-item flex items-center gap-3 bg-white px-5 py-3 rounded-full shadow-sm border border-slate-100"
+      >
+        <span
+          class="w-6 h-6 flex items-center justify-center bg-red-100 text-red-600 rounded-full text-xs"
+          >✕</span
+        >
+        <span>Karier stagnan & mudah digantikan</span>
+      </div>
+    </div>
+
+    <p
+      id="sub-quote"
+      class="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed font-light italic"
+    >
+      "Kalau tidak segera berubah, kamu akan tetap di posisi yang sama tanpa
+      pembinaan dan tanpa masa depan yang jelas."
+    </p>
+  </div>
+
+  <div
+    id="solution-container"
+    class="bg-white rounded-[3rem] shadow-2xl shadow-slate-200/50 p-10 md:p-16 border border-slate-50 relative overflow-hidden"
+  >
+    <div
+      class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-red-50 rounded-full blur-3xl opacity-50"
+    >
+    </div>
+
+    <h3
+      id="solution-title"
+      class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-16 relative z-10"
+    >
+      Yang Kamu Dapat Jika Kamu Bergabung Dengan <span class="text-red-600"
+        >Yifang Academy</span
+      >
+    </h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-10">
+      {/* Array data untuk mempermudah mapping di Astro */}
+      {
+        [
+          {
+            icon: "📖",
+            text: "Belajar langsung cara kerja & ekspektasi perusahaan Tiongkok.",
+          },
+          {
+            icon: "👨‍🏫",
+            text: "Dibimbing oleh praktisi senior dan mentor internal.",
+          },
+          { icon: "🤝", text: "Terlibat dalam proyek nyata dan strategis." },
+          { icon: "📈", text: "Naik level, bukan cuma ganti kerjaan." },
+          {
+            icon: "⭐",
+            text: "Peluang dipromosikan dari dalam, bukan dari luar.",
+          },
+        ].map((item) => (
+          <div class="benefit-card group cursor-default">
+            <div class="w-16 h-16 bg-slate-50 text-3xl rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-600 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm group-hover:shadow-red-200 group-hover:shadow-lg">
+              {item.icon}
+            </div>
+            <p class="text-slate-600 leading-snug font-medium group-hover:text-slate-900 transition-colors">
+              {item.text}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  // Register plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Jalankan animasi setelah DOM siap
+  const initAnimation = () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#title",
+        start: "top 80%",
+      },
+    });
+
+    // Animasi Header
+    tl.from("#title", {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power4.out",
+    })
+      .from(
+        ".problem-item",
+        {
+          y: 20,
+          opacity: 0,
+          stagger: 0.1,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        "-=0.4"
+      )
+      .from("#sub-quote", { opacity: 0, duration: 1 }, "-=0.2");
+
+    // Animasi Solution Box & Cards
+    gsap.from("#solution-container", {
+      scrollTrigger: {
+        trigger: "#solution-container",
+        start: "top 75%",
+      },
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out",
+    });
+
+    gsap.from(".benefit-card", {
+      scrollTrigger: {
+        trigger: ".benefit-card",
+        start: "top 85%",
+      },
+      y: 40,
+      opacity: 0,
+      stagger: 0.15,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+  };
+
+  initAnimation();
+</script>
+<style>
+  /* Menghilangkan scrollbar horizontal jika ada animasi masuk dari samping */
+  section {
+    overflow-x: hidden;
+  }
+</style>

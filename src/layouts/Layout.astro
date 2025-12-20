@@ -1,40 +1,53 @@
 ---
+// src/layouts/MainLayout.astro
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import "../styles/global.css";
+import { getLangFromUrl } from "../i18n/utils.js";
 
-// interface Props {
-// 	title: string;
-// 	description?: string;
-// 	image?: string;
-// }
+const lang = getLangFromUrl(Astro.url);
+
 const {
   title,
   description = "Official website of Yifang Group",
   image,
 } = Astro.props;
+
+// Helper untuk membuat URL bahasa alternatif tanpa menyebabkan error "Invalid URL"
+const currentPath = Astro.url.pathname;
+
+const getAlternatePath = (targetLang) => {
+  // Regex ini mencari segmen pertama setelah / (kode bahasa) dan menggantinya
+  // Contoh: /en/about menjadi /zh/about
+  return currentPath.replace(/^\/[^\/]+/, `/${targetLang}`);
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
-    <!-- Basic -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
 
-    <!-- OG -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
+    <link rel="alternate" hreflang="en" href={getAlternatePath("en")} />
+    <link rel="alternate" hreflang="zh" href={getAlternatePath("zh")} />
+    <link rel="alternate" hreflang="x-default" href="/en/" />
+
+    <title>{title} | Yifang</title>
   </head>
   <body class="min-h-screen">
     <Header />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

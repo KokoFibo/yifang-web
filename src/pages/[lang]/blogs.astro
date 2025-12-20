@@ -1,0 +1,30 @@
+---
+import ContentCard from "../../components/ContentCard.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+const { lang } = Astro.params;
+const entry = await getEntry("blogs", lang);
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+const { data } = entry;
+---
+
+<Layout title="Blogs">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/office-building-3.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+</Layout>
+<style>
+  body {
+    background-color: black;
+  }
+</style>

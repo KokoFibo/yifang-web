@@ -1,0 +1,158 @@
+---
+const { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12 } = Astro.props;
+---
+
+<section class="max-w-5xl mx-auto px-6 py-24">
+  <div id="cta-container" class="text-center space-y-12">
+    <div class="space-y-4">
+      <h2
+        class="text-2xl md:text-4xl font-black tracking-tight text-slate-900 uppercase"
+      >
+        {t1}
+        <span class="text-red-600">{t2}</span>
+      </h2>
+      <div class="max-w-2xl mx-auto space-y-2">
+        <p class="text-slate-500 text-lg">
+          {t3}
+        </p>
+        <p class="text-slate-700 font-medium">
+          <span class="text-red-600 font-bold">{t4}</span>{t5}
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+      {
+        [{ text: t6 }, { text: t7 }, { text: t8 }].map((item) => (
+          <div class="check-item flex items-center justify-center gap-3 bg-white border border-slate-100 py-4 px-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <svg
+                class="w-5 h-5 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <span class="font-bold text-slate-700 italic">{item.text}</span>
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      id="form-box"
+      class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl"
+    >
+      <div
+        class="absolute top-0 left-0 w-full h-full bg-linear-to-br from-red-600/20 to-transparent"
+      >
+      </div>
+
+      <div class="relative z-10 space-y-6">
+        <h3 class="text-xl md:text-2xl font-bold">
+          {t9} —
+          <span class="text-red-500 underline decoration-2 underline-offset-4"
+            >{t10}</span
+          >
+        </h3>
+
+        <p class="text-slate-400 max-w-xl mx-auto">
+          {t11}
+        </p>
+
+        <div class="pt-4">
+          <a
+            href="https://yifanggroup.sg.larksuite.com/share/base/form/shrlg7s5ytHJeAjytrZcSTSswJb"
+            target="_blank"
+          >
+            <button
+              id="btn-isi-form"
+              class="group relative inline-flex items-center justify-center px-10 py-5 font-bold text-white transition-all duration-200 bg-red-600 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-600 hover:bg-red-700 shadow-xl hover:shadow-red-500/50"
+            >
+              {t12}
+              <svg
+                class="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initCTAAnimation = () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#cta-container",
+        start: "top 80%",
+      },
+    });
+
+    // Animate Header & Text
+    tl.from("#cta-container h2", { y: 30, opacity: 0, duration: 0.8 })
+      .from(
+        "#cta-container p",
+        { y: 20, opacity: 0, stagger: 0.2, duration: 0.6 },
+        "-=0.4"
+      )
+
+      // Animate Checkmarks with "Back" ease for bouncy feel
+      .from(
+        ".check-item",
+        {
+          scale: 0.8,
+          opacity: 0,
+          stagger: 0.15,
+          duration: 0.5,
+          ease: "back.out(1.7)",
+        },
+        "-=0.2"
+      )
+
+      // Animate the Dark Box
+      .from(
+        "#form-box",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+          ease: "power4.out",
+        },
+        "-=0.3"
+      );
+
+    // Button Hover Pulse with GSAP (Optional but cool)
+    const btn = document.querySelector("#btn-isi-form");
+    btn.addEventListener("mouseenter", () => {
+      gsap.to(btn, { scale: 1.05, duration: 0.3, ease: "power2.out" });
+    });
+    btn.addEventListener("mouseleave", () => {
+      gsap.to(btn, { scale: 1, duration: 0.3, ease: "power2.out" });
+    });
+  };
+
+  initCTAAnimation();
+</script>

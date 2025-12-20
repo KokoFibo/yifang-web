@@ -1,0 +1,41 @@
+{
+  "main": {
+    "companies": ["PT YIFANG", "ASSET MANAGEMENT"],
+    "description": [
+      "Providing you with the most suitable industrial factory solutions."
+    ],
+    "button": "Explore More"
+  },
+
+  "industrial": {
+    "subtitle": "Industrial Factory",
+    "title": "Industrial Factory Leasing",
+    "descriptions": [
+      "We provide you with the most suitable industrial factory solutions. We understand that for investors, having reliable partners to assist them during the investment and development process is crucial.",
+      "Yifang has been deeply involved in the manufacturing industry in Indonesia for over ten years and has a profound understanding of the challenges faced when setting up factories and warehouses in the country. Drawing on our past experiences, Yifang Property is equipped with a professional team to better assist clients in achieving their industrial goals."
+    ]
+  },
+  "property": {
+    "subtitle": "Property",
+    "title": "Property Management",
+    "descriptions": [
+      "We have many years of experience in industrial park property management, excelling in daily maintenance, repairs, and all matters related to security and cleaning to ensure that industrial facilities are kept in optimal condition.",
+      "Our team is always on standby to quickly and professionally resolve any issues, allowing you to focus on your company’s important matters."
+    ]
+  },
+  "restaurant": {
+    "subtitle": "Restaurant",
+    "title": "Restaurant Services",
+    "descriptions": [
+      "We provide delicious and nutritious meals for businesses in the park, with a diverse menu to cater to different tastes and dietary needs, ensuring that everyone can enjoy a great dining experience.",
+      "We prioritize food quality and safety, using fresh ingredients, maintaining clean kitchens, and employing professional chefs to ensure that you and your employees have safe and hygienic meals."
+    ]
+  },
+  "local": {
+    "subtitle": "Logistics",
+    "title": "Local Logistics",
+    "descriptions": [
+      "We provide integrated logistics and distribution services in the park to address your shipping concerns. We collaborate with several logistics providers and have a fleet of our own vehicles to ensure your goods are delivered on time and safely."
+    ]
+  }
+}

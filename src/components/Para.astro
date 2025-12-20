@@ -1,0 +1,88 @@
+---
+const {
+  main = [],
+  list = [],
+  listStyle = "ul",
+  defaultStyle = {},
+  thestyle = [],
+  paragraphClass = "",
+  listClass = "",
+} = Astro.props;
+
+function applyStyles(text) {
+  let result = text;
+
+  thestyle.forEach(({ words, styles }) => {
+    words.forEach((word) => {
+      const escaped = word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(`(${escaped})`, "gi");
+
+      let open = "";
+      let close = "";
+
+      if (styles.includes("bold")) {
+        open += "<strong>";
+        close = "</strong>" + close;
+      }
+
+      if (styles.includes("italic")) {
+        open += "<em>";
+        close = "</em>" + close;
+      }
+
+      if (styles.includes("underline")) {
+        open +=
+          '<span style="border-bottom:2px solid currentColor; padding-bottom:2px;">';
+        close = "</span>" + close;
+      }
+
+      result = result.replace(regex, `${open}$1${close}`);
+    });
+  });
+
+  return result;
+}
+
+const baseTextClass = [
+  defaultStyle.italic && "italic",
+  defaultStyle.bold && "font-semibold",
+  defaultStyle.underline && "border-b-2 border-current inline-block pb-0.5",
+  defaultStyle.fontSize && `text-${defaultStyle.fontSize}`,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<div class="space-y-6">
+  {
+    main.map((text) => (
+      <p
+        class={`${paragraphClass} ${baseTextClass} text-gray-600 text-sm md:text-base leading-relaxed mb-8`}
+        set:html={applyStyles(text)}
+      />
+    ))
+  }
+  <div
+    class={`${paragraphClass} ${baseTextClass} space-y-2 text-gray-600 text-sm md:text-base ml-8 leading-relaxed`}
+  >
+    {
+      list.length > 0 && (
+        <>
+          {listStyle === "ul" ? (
+            <ul class={listClass} style="list-style-type: disc;">
+              {list.map((item) => (
+                <li set:html={applyStyles(item)} />
+              ))}
+            </ul>
+          ) : (
+            <ol class={listClass} style="list-style-type: decimal;">
+              {list.map((item) => (
+                <li set:html={applyStyles(item)} />
+              ))}
+            </ol>
+          )}
+        </>
+      )
+    }
+  </div>
+</div>

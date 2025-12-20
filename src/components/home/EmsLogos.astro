@@ -20,13 +20,19 @@ const logos = [
   "18TPLINK_Logo_2.svg.png",
   "19Edifier.png",
 ];
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("ems-logos", lang);
+const { data } = entry;
 ---
 
 <section class="logo-scroller py-10 md:py-16 mt-5 bg-white">
   <h2
     class="reveal-text text-center text-xl md:text-3xl font-bold mb-10 text-slate-800"
   >
-    EMS Partners
+    {data.title}
   </h2>
 
   <div class="marquee-container relative w-full overflow-hidden">

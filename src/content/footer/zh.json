@@ -1,0 +1,29 @@
+{
+  "main": {
+    "title1": "调和公司文化",
+    "title2": "提升员工幸福感",
+    "description": "我们一直在您身边",
+    "button": "了解更多"
+  },
+  "location": {
+    "title": "地址",
+    "addr1": "PT. Yifang C.M.E",
+    "addr2": "Jl. Millenium 23 Blok Q1 No.2A",
+    "addr3": "Kadu Agung, Tigaraksa,",
+    "addr4": "Tangerang, Banten"
+  },
+  "consultation": {
+    "title": "商业顾问服",
+    "hreftelp": "tel:+6285959424777",
+    "telp": "+62 859 5942 4777",
+    "hrefemail": "mailto:bd@yifang.id",
+    "email": "bd@yifang.id"
+  },
+  "touch": {
+    "title": "人力资源顾问",
+    "hreftelp": "tel:6283899598999",
+    "telp": "+62 838-9959-8999",
+    "hrefemail": "mailto:buildyourfuture@yifang.co.id",
+    "email": "buildyourfuture@yifang.co.id"
+  }
+}

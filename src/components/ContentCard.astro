@@ -2,8 +2,8 @@
 const {
   subtitle,
   title,
-  description,
-  description2,
+  descriptions = [],
+  listItems = [],
   imageUrl,
   alt,
   reverse = false,
@@ -13,6 +13,7 @@ const {
 <section class="content-card-section w-full py-6 md:py-12 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- image -->
       <div
         class={`card-image relative ${reverse ? "lg:order-2" : "lg:order-1"}`}
       >
@@ -26,7 +27,7 @@ const {
           class="w-full h-auto rounded-xl shadow-2xl object-cover transform transition-transform duration-500 hover:scale-105"
         />
       </div>
-
+      <!-- text -->
       <div class={`card-text ${reverse ? "lg:order-1" : "lg:order-2"}`}>
         <span
           class="inline-block text-primary font-bold tracking-[0.2em] text-xs md:text-sm uppercase mb-4 border-b-2 border-primary/20 pb-1"
@@ -41,17 +42,20 @@ const {
         </h2>
 
         <div class="w-12 h-1 bg-primary mb-6"></div>
-
-        <p
-          class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 italic"
-        >
-          {description}
-        </p>
-        <p
-          class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 italic"
-        >
-          {description2}
-        </p>
+        {
+          descriptions.map((description) => (
+            <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 italic">
+              {description}
+            </p>
+          ))
+        }
+        {
+          listItems.map((item) => (
+            <ul class="ml-3 list-disc pl-5 space-y-2 text-gray-600 text-sm md:text-base">
+              <li>{item}</li>
+            </ul>
+          ))
+        }
       </div>
     </div>
   </div>

@@ -1,5 +1,11 @@
 ---
 import Button from "../../components/Button.astro";
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("one-stop-solution", lang);
+const { data } = entry;
 ---
 
 <section
@@ -15,29 +21,21 @@ import Button from "../../components/Button.astro";
           <h5
             class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs"
           >
-            Who We Are
+            {data.badge}
           </h5>
           <h2
             class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight text-slate-900"
           >
-            One Stop Solution Company
+            {data.title}
           </h2>
         </div>
 
         <div class="space-y-4 text-yfgrey text-sm sm:text-base leading-relaxed">
-          <p>
-            Established in 2014, Yifang Group is a company specializing in
-            assembling smartphones, electric bicycles, and accessories.
-          </p>
-          <p>
-            We provide comprehensive services as a one-stop solution for foreign
-            companies looking to invest in Indonesia, from market entry to
-            regulatory approvals.
-          </p>
+          {data.description.map((text) => <p>{text}</p>)}
         </div>
 
         <div class="mt-4">
-          <Button title="Learn More" />
+          <Button title={data.buttonText} />
         </div>
       </div>
 
@@ -57,38 +55,18 @@ import Button from "../../components/Button.astro";
         id="company-stats"
         class="flex flex-col gap-4 order-3 md:order-2 lg:order-3"
       >
-        <div
-          class="stat-card bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-slate-100 text-center"
-        >
-          <h2 class="text-primary text-3xl md:text-4xl font-bold">3K+</h2>
-          <p
-            class="text-yfgrey text-xs md:text-sm font-medium uppercase tracking-wide"
-          >
-            Employees
-          </p>
-        </div>
-
-        <div
-          class="stat-card bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-slate-100 text-center"
-        >
-          <h2 class="text-primary text-3xl md:text-4xl font-bold">3 Mio+</h2>
-          <p
-            class="text-yfgrey text-xs md:text-sm font-medium uppercase tracking-wide"
-          >
-            Annual Units
-          </p>
-        </div>
-
-        <div
-          class="stat-card bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-slate-100 text-center"
-        >
-          <h2 class="text-primary text-3xl md:text-4xl font-bold">10+</h2>
-          <p
-            class="text-yfgrey text-xs md:text-sm font-medium uppercase tracking-wide"
-          >
-            Years Experience
-          </p>
-        </div>
+        {
+          data.stats.map((stat) => (
+            <div class="stat-card bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-slate-100 text-center">
+              <h2 class="text-primary text-3xl md:text-4xl font-bold">
+                {stat.value}
+              </h2>
+              <p class="text-yfgrey text-xs md:text-sm font-medium uppercase tracking-wide">
+                {stat.label}
+              </p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </div>

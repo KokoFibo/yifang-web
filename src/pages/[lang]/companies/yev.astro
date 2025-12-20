@@ -1,0 +1,68 @@
+---
+import ContentCard from "../../../components/ContentCard.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+// 1. WAJIB: Tambahkan fungsi ini agar dynamic route [lang] bekerja
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+
+const { lang } = Astro.params;
+
+// 2. Ambil data dari content/ysm/en.json atau zh.json
+const entry = await getEntry("yev", lang);
+
+// Jika data tidak ditemukan, berikan fallback agar tidak error
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+
+const { data } = entry;
+---
+
+<Layout title="YEV">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/OUR-COMPANIES-HEADER-YEV.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+
+  <ContentCard
+    subtitle={data.exquisite.subtitle}
+    title={data.exquisite.title}
+    descriptions={data.exquisite.descriptions}
+    imageUrl="/images/YEV-OUR-SERVICES-750x500-1.webp"
+    alt="YEV-OUR-SERVICES"
+  />
+
+  <ContentCard
+    subtitle={data.twoWheel.subtitle}
+    title={data.twoWheel.title}
+    descriptions={data.twoWheel.descriptions}
+    imageUrl="/images/YEV-TWO-WHEELED-750x500-1.webp"
+    alt="YEV-TWO-WHEELED"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.threeWheel.subtitle}
+    title={data.threeWheel.title}
+    descriptions={data.threeWheel.descriptions}
+    imageUrl="/images/YEV-THREE-WHEELED-750x500-1.webp"
+    alt="YEV-THREE-WHEELED"
+  />
+</Layout>
+
+<!-- 
+<ContentCard
+  subtitle=""
+  title=""
+  descriptions={[""]}
+  imageUrl=""
+  alt=""
+  reverse="false"
+/> 
+-->

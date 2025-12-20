@@ -1,0 +1,86 @@
+---
+import ContentCard from "../../../components/ContentCard.astro";
+import HeroSection from "../../../components/HeroSection.astro";
+import TitleHead from "../../../components/home/TitleHead.astro";
+import Layout from "../../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+const { lang } = Astro.params;
+const entry = await getEntry("career", lang);
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+const { data } = entry;
+---
+
+<Layout title="Career">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/Edit-HEADER-CAREER-JOBS.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+
+  <ContentCard
+    subtitle={data.career.subtitle}
+    title={data.career.title}
+    descriptions={data.career.descriptions}
+    imageUrl="/images/WHY-JOIN-US.webp"
+    alt="WHY-JOIN-US"
+  />
+  <TitleHead
+    subtitle={data.honesty.subtitle}
+    title={data.honesty.title}
+    description={data.honesty.description}
+  />
+  <ContentCard
+    subtitle={data.talent.subtitle}
+    title={data.talent.title}
+    descriptions={data.talent.descriptions}
+    imageUrl="/images/yifang-academy-5.webp"
+    alt="talent"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.development.subtitle}
+    title={data.development.title}
+    descriptions={data.development.descriptions}
+    listItems={data.development.points}
+    imageUrl="/images/yifang-academy-9.webp"
+    alt="talent"
+  />
+
+  <ContentCard
+    subtitle={data.recruitment.subtitle}
+    title={data.recruitment.title}
+    descriptions={data.recruitment.descriptions}
+    listItems={data.recruitment.points}
+    imageUrl="/images/yifang-academy-4.webp"
+    alt="recruitment"
+    reverse="false"
+  />
+
+  <ContentCard
+    subtitle={data.leadership.subtitle}
+    title={data.leadership.title}
+    descriptions={data.leadership.descriptions}
+    listItems={data.leadership.points}
+    imageUrl="/images/yifang-academy-9.webp"
+    alt="talent"
+  />
+</Layout>
+
+<!-- 
+<ContentCard
+  subtitle=""
+  title=""
+  descriptions={[""]}
+  imageUrl=""
+  alt=""
+  reverse="false"
+/> 
+-->

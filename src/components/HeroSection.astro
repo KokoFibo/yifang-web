@@ -1,10 +1,10 @@
 ---
-const { company1, company2, description, url } = Astro.props;
+const { companies = [], description, url, button } = Astro.props;
 ---
 
 <!-- sebaiknya image size 1920 X 600px -->
 <section
-  class="relative h-screen max-h-150 flex items-center overflow-hidden
+  class="relative h-screen max-h-100 flex items-center overflow-hidden
          bg-cover bg-center bg-no-repeat"
   style={`background-image: url(${url});`}
 >
@@ -18,9 +18,7 @@ const { company1, company2, description, url } = Astro.props;
       <h1
         class="hero-title text-3xl md:text-5xl font-bold tracking-tight leading-tight uppercase text-white"
       >
-        {company1}
-        <br />
-        {company2}
+        {companies.map((company) => <p>{company}</p>)}
       </h1>
 
       <p
@@ -34,7 +32,7 @@ const { company1, company2, description, url } = Astro.props;
         <button
           class="text-xs md:text-sm font-bold tracking-[0.2em] uppercase hover:text-gray-300 transition-colors"
         >
-          Explore More
+          {button}
         </button>
       </div>
     </div>

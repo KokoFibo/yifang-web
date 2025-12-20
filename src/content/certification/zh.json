@@ -1,0 +1,25 @@
+{
+  "main": {
+    "subtitle": "我们的认证",
+    "title": "认证",
+    "description": "我们为在印尼投资的外国企业提供全面的一站式解决方案，协助企业进入市场、办理各类监管审批、招募劳动力等多项服务。"
+  },
+  "iso45001": {
+    "description": "职业健康与安全管理系统"
+  },
+  "iso14001": {
+    "description": "环境管理系统"
+  },
+  "iso27001": {
+    "description": "信息安全管理系统"
+  },
+  "iso9001": {
+    "description": "质量管理系统"
+  },
+  "iso20000": {
+    "description": "系统管理系统"
+  },
+  "appreciation": {
+    "description": "职业安全与健康管理系统"
+  }
+}

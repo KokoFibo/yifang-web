@@ -1,0 +1,51 @@
+{
+  "main": {
+    "companies": ["Jobs"],
+    "description": "Join us or beat us",
+    "button": "Explore More"
+  },
+
+  "why": {
+    "subtitle": "",
+    "title": "Why join us ?",
+    "descriptions": [
+      "Joining Yifang Group offers great opportunities for growth and development. The company is known for its innovative projects and collaborative culture, making it an exciting place to work.",
+      "With a strong reputation and global presence, Yifang Group provides competitive benefits and the chance to work with diverse teams, making it an ideal choice for professionals looking to advance their careers."
+    ]
+  },
+  "start": {
+    "subtitle": "",
+    "title": "Start Your Internship Program with us",
+    "descriptions": [
+      "Are you ready to jumpstart your career and gain invaluable hands-on experience in your field of interest?",
+      "Our internship program offers you the opportunity to work with industry professionals, develop your skills, and make meaningful contributions to real projects. Here’s what you can expect when you join our team as an intern."
+    ]
+  },
+
+  "mandarin": {
+    "subtitle": "",
+    "title": "Mandarin Translator",
+    "descriptions": [
+      "Skilled Mandarin Translator to join our team. The successful candidate will be responsible for translating a variety of documents and communications to mandarin.",
+      "This role requires a deep understanding of both languages and their cultural contexts, as well as the ability to deliver accurate and timely translations."
+    ]
+  },
+
+  "mechanical": {
+    "subtitle": "",
+    "title": "Mechanical Engineering",
+    "descriptions": [
+      "Seeking talented and experienced Mechanical Engineer to join our dynamic team. The successful candidate will be responsible for designing, developing, and testing mechanical systems and components.",
+      "This role involves collaborating with cross-functional teams to deliver innovative engineering solutions and ensure project success from conception to completion."
+    ]
+  },
+
+  "legal": {
+    "subtitle": "",
+    "title": "Legal Staff",
+    "descriptions": [
+      "We are looking for highly motivated and detail-oriented individual to join our legal team as Legal Staff. The successful candidate will assist attorneys with legal research, document preparation, case management, and administrative tasks.",
+      "This role requires strong organizational skills, a keen eye for detail, and the ability to work efficiently in a fast-paced environment."
+    ]
+  }
+}

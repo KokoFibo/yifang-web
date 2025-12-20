@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>README – Para Component</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --border: #1f2933;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #020617, #0f172a);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: .5rem;
+      background: linear-gradient(to right, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      margin-top: 2.5rem;
+      font-size: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding-left: .75rem;
+    }
+
+    p { color: var(--muted); }
+
+    code {
+      background: #020617;
+      padding: .2rem .4rem;
+      border-radius: 6px;
+      font-size: .9rem;
+      color: #a5f3fc;
+    }
+
+    pre {
+      background: #020617;
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: .6rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    th { color: #c7d2fe; }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>&lt;Para /&gt; Component</h1>
+      <p>
+        Modern Astro component for rendering paragraphs and lists with
+        <strong>dynamic text styling</strong> (bold, italic, underline),
+        default styles, and font size control.
+      </p>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Default italic / bold / underline</li>
+        <li>Font size control</li>
+        <li>Styled keywords & phrases</li>
+        <li>Ordered & unordered lists</li>
+        <li>Tailwind CSS safe</li>
+      </ul>
+
+      <h2>Import</h2>
+      <pre><code>import Para from "@/components/Para.astro";</code></pre>
+
+      <h2>Basic Usage</h2>
+      <pre><code>&lt;Para
+  main={["Hello World"]}
+  defaultStyle={{ italic: true, fontSize: "lg" }}
+/&gt;</code></pre>
+
+      <h2>Props</h2>
+      <table>
+        <tr><th>Prop</th><th>Type</th><th>Description</th></tr>
+        <tr><td>main</td><td>string[]</td><td>Main paragraphs</td></tr>
+        <tr><td>list</td><td>string[]</td><td>Optional list items</td></tr>
+        <tr><td>listStyle</td><td>ul | ol</td><td>List type</td></tr>
+        <tr><td>defaultStyle</td><td>object</td><td>Default text style</td></tr>
+        <tr><td>thestyle</td><td>array</td><td>Keyword styling rules</td></tr>
+      </table>
+
+      <h2>Example</h2>
+      <pre><code>&lt;Para
+  main={["Yifang Academy provides Recruitment Solutions."]}
+  list={["Job Posting", "Screening", "Onboarding"]}
+  listStyle="ul"
+  defaultStyle={{ fontSize: "lg" }}
+  thestyle={[
+    { words: ["Yifang Academy"], styles: ["bold"] },
+    { words: ["Recruitment Solutions"], styles: ["underline"] }
+  ]}
+/&gt;</code></pre>
+    </div>
+
+    <footer>
+      Para Component • Astro + Tailwind CSS • Ready for production
+    </footer>
+  </div>
+</body>
+</html>

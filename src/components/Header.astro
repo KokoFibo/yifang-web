@@ -1,10 +1,50 @@
+---
+// src/components/Header.astro
+import { getLangFromUrl } from "../i18n/utils.js";
+import LanguagePicker from "./LanguagePicker.astro";
+import { getEntry } from "astro:content";
+
+// Ambil bahasa, tapi pastikan ada fallback (cadangan) jika URL tidak dikenal
+const rawLang = getLangFromUrl(Astro.url);
+const lang = rawLang === "en" || rawLang === "zh" ? rawLang : "en";
+
+// Sekarang getEntry dijamin mendapatkan string "en" atau "zh"
+const entry = await getEntry("navigation", lang);
+const nav = entry?.data || {
+  home: "Home",
+  companies: "Companies",
+  academy: "Academy",
+  career: "Career",
+  blog: "Blog",
+  contact: "Contact",
+};
+
+/**
+ * HELPER UNTUK TOGGLE BAHASA AUTOMATIS
+ * Fungsi ini memastikan rute tetap di halaman yang sama saat pindah bahasa,
+ * atau memberikan rute yang benar berdasarkan lang aktif.
+ */
+const getNavPath = (path) => {
+  // Hapus garis miring di awal jika ada untuk standarisasi
+  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+
+  // Jika path kosong (home), arahkan ke root bahasa masing-masing
+  if (cleanPath === "") {
+    return `/${lang}/`;
+  }
+
+  // Kembalikan path dengan prefix bahasa yang aktif saat ini
+  return `/${lang}/${cleanPath}`;
+};
+---
+
 <header
   id="main-header"
   class="fixed top-0 left-0 right-0 z-100 transition-all duration-500 border-b border-transparent py-3 md:py-4"
 >
   <div class="mx-auto flex max-w-7xl items-center justify-between px-6">
     <a
-      href="/"
+      href={getNavPath("/")}
       class="nav-brand text-xl font-bold text-white transition-all duration-300 hover:scale-105 active:scale-95"
     >
       <img
@@ -16,20 +56,22 @@
 
     <nav class="hidden items-center md:flex text-white">
       <ul class="flex items-center gap-2 text-sm lg:text-xl">
+        <!-- Home -->
         <li class="group relative">
           <a
-            href="/"
+            href={getNavPath("/")}
             class="nav-link px-4 py-2 flex items-center transition-all duration-300 hover:text-red-500"
           >
-            Home
+            {nav.home}
           </a>
         </li>
 
+        <!-- Our Companies -->
         <li class="group relative">
           <button
             class="nav-link px-4 py-2 flex items-center gap-1 transition-all duration-300 outline-none hover:text-red-500"
           >
-            Our Companies
+            {nav.companies}
             <svg
               class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180"
               fill="none"
@@ -53,7 +95,7 @@
               {
                 ["YSM", "YCME", "YEV", "YAM"].map((item) => (
                   <a
-                    href={`/companies/${item.toLowerCase()}`}
+                    href={getNavPath(`/companies/${item.toLowerCase()}`)}
                     class="block px-4 py-2.5 rounded-lg hover:bg-red-50 hover:text-red-600 hover:translate-x-1 text-slate-800 text-xs font-medium transition-all duration-200"
                   >
                     {item}
@@ -64,47 +106,83 @@
           </div>
         </li>
 
+        <!-- Yifang Academy -->
         <li class="group relative">
           <a
-            href="/yifang-academy"
+            href={getNavPath("/yifang-academy")}
             class="nav-link px-4 py-2 flex items-center transition-all duration-300 hover:text-red-500"
           >
-            Yifang Academy
+            {nav.academy}
           </a>
         </li>
 
+        <!-- Career -->
+        <li class="group relative">
+          <button
+            class="nav-link px-4 py-2 flex items-center gap-1 transition-all duration-300 outline-none hover:text-red-500"
+          >
+            <a
+              href={getNavPath("/career/career")}
+              class="nav-link px-4 py-2 flex items-center transition-all duration-300 hover:text-red-500"
+            >
+              {nav.career}
+            </a>
+            <svg
+              class="w-3 h-3 transition-transform duration-300 group-hover:rotate-180"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+
+          <div
+            class="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 ease-out"
+          >
+            <div
+              class="w-48 rounded-xl border border-slate-200 bg-white shadow-2xl p-2 overflow-hidden"
+            >
+              {
+                ["Jobs"].map((item) => (
+                  <a
+                    href={getNavPath(`/career/${item.toLowerCase()}`)}
+                    class="block px-4 py-2.5 rounded-lg hover:bg-red-50 hover:text-red-600 hover:translate-x-1 text-slate-800 text-xs font-medium transition-all duration-200"
+                  >
+                    {item}
+                  </a>
+                ))
+              }
+            </div>
+          </div>
+        </li>
+
+        <!-- Blogs -->
         <li class="group relative">
           <a
-            href="/career"
+            href={getNavPath("/blogs")}
             class="nav-link px-4 py-2 flex items-center transition-all duration-300 hover:text-red-500"
           >
-            Career
+            {nav.blog}
           </a>
         </li>
+
+        <!-- Contact us -->
         <li class="group relative">
           <a
-            href="/blogs"
+            href={getNavPath("/contact")}
             class="nav-link px-4 py-2 flex items-center transition-all duration-300 hover:text-red-500"
           >
-            Blogs
-          </a>
-        </li>
-        <li class="group relative">
-          <a
-            href="/contact"
-            class="nav-link px-4 py-2 flex items-center transition-all duration-300 hover:text-red-500"
-          >
-            Contact us
+            {nav.contact}
           </a>
         </li>
 
         <li class="ml-4">
-          <a
-            href="#"
-            class="px-5 py-2 border border-white/30 rounded-full hover:bg-white hover:text-slate-900 hover:border-white transition-all duration-300 text-xs active:scale-95 inline-block"
-          >
-            简体中文
-          </a>
+          <LanguagePicker />
         </li>
       </ul>
     </nav>
@@ -137,13 +215,14 @@
       class="flex flex-col px-6 py-6 text-slate-800 text-sm font-semibold gap-1"
     >
       <a
-        href="/"
+        href={getNavPath("/")}
         class="mobile-link group/m py-4 px-4 flex items-center justify-between rounded-xl transition-all duration-300 hover:bg-red-50 hover:text-red-600 active:bg-red-100"
       >
         <span
           class="transition-transform duration-300 group-hover/m:translate-x-2"
-          >Home</span
         >
+          {nav.home}
+        </span>
         <span
           class="active-dot opacity-0 w-1.5 h-1.5 bg-red-600 rounded-full transition-all duration-500"
         ></span>
@@ -153,19 +232,19 @@
         <summary
           class="flex items-center justify-between py-4 px-4 rounded-xl list-none cursor-pointer transition-all duration-300 hover:bg-slate-50 active:bg-slate-100 group-open/mobile:text-red-600"
         >
-          <span>Our Companies</span>
+          <span>{nav.companies}</span>
           <span
             class="text-[10px] transition-transform duration-300 group-open/mobile:rotate-180"
             >▼</span
           >
         </summary>
         <div
-          class="flex flex-col gap-1 py-2 pl-6 pr-2 bg-slate-50/50 rounded-b-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300"
+          class="flex flex-col gap-1 py-2 pl-6 pr-2 bg-slate-50/50 rounded-b-xl overflow-hidden"
         >
           {
             ["YSM", "YCME", "YEV", "YAM"].map((item) => (
               <a
-                href={`/companies/${item.toLowerCase()}`}
+                href={getNavPath(`/companies/${item.toLowerCase()}`)}
                 class="mobile-link py-3 px-4 rounded-lg text-slate-500 text-xs transition-all duration-300 hover:text-red-600 hover:bg-white hover:translate-x-2"
               >
                 {item}
@@ -176,12 +255,54 @@
       </details>
 
       <a
-        href="/yifang-academy"
+        href={getNavPath("/yifang-academy")}
         class="mobile-link group/m py-4 px-4 flex items-center justify-between rounded-xl transition-all duration-300 hover:bg-red-50 hover:text-red-600 active:bg-red-100"
       >
         <span
           class="transition-transform duration-300 group-hover/m:translate-x-2"
-          >Yifang Academy</span
+          >{nav.academy}</span
+        >
+        <span
+          class="active-dot opacity-0 w-1.5 h-1.5 bg-red-600 rounded-full transition-all duration-500"
+        ></span>
+      </a>
+      <!-- Career Mobile -->
+      <details class="group/mobile">
+        <summary
+          class="flex items-center justify-between py-4 px-4 rounded-xl list-none cursor-pointer transition-all duration-300 hover:bg-slate-50 active:bg-slate-100 group-open/mobile:text-red-600"
+        >
+          <!-- <span>{nav.career}</span> -->
+          <a href={getNavPath("/career/career")}>
+            <span>{nav.career}</span>
+          </a>
+          <span
+            class="text-[10px] transition-transform duration-300 group-open/mobile:rotate-180"
+            >▼</span
+          >
+        </summary>
+        <div
+          class="flex flex-col gap-1 py-2 pl-6 pr-2 bg-slate-50/50 rounded-b-xl overflow-hidden"
+        >
+          {
+            ["Jobs"].map((item) => (
+              <a
+                href={getNavPath(`/career/${item.toLowerCase()}`)}
+                class="mobile-link py-3 px-4 rounded-lg text-slate-500 text-xs transition-all duration-300 hover:text-red-600 hover:bg-white hover:translate-x-2"
+              >
+                {item}
+              </a>
+            ))
+          }
+        </div>
+      </details>
+
+      <a
+        href={getNavPath("/blogs")}
+        class="mobile-link group/m py-4 px-4 flex items-center justify-between rounded-xl transition-all duration-300 hover:bg-red-50 hover:text-red-600 active:bg-red-100"
+      >
+        <span
+          class="transition-transform duration-300 group-hover/m:translate-x-2"
+          >{nav.blog}</span
         >
         <span
           class="active-dot opacity-0 w-1.5 h-1.5 bg-red-600 rounded-full transition-all duration-500"
@@ -189,46 +310,29 @@
       </a>
 
       <a
-        href="/career"
+        href={getNavPath("/contact")}
         class="mobile-link group/m py-4 px-4 flex items-center justify-between rounded-xl transition-all duration-300 hover:bg-red-50 hover:text-red-600 active:bg-red-100"
       >
         <span
           class="transition-transform duration-300 group-hover/m:translate-x-2"
-          >Career</span
+          >{nav.contact}</span
         >
         <span
           class="active-dot opacity-0 w-1.5 h-1.5 bg-red-600 rounded-full transition-all duration-500"
         ></span>
       </a>
-      <a
-        href="/blogs"
-        class="mobile-link group/m py-4 px-4 flex items-center justify-between rounded-xl transition-all duration-300 hover:bg-red-50 hover:text-red-600 active:bg-red-100"
-      >
-        <span
-          class="transition-transform duration-300 group-hover/m:translate-x-2"
-          >Blogs</span
-        >
-        <span
-          class="active-dot opacity-0 w-1.5 h-1.5 bg-red-600 rounded-full transition-all duration-500"
-        ></span>
-      </a>
-      <a
-        href="/contact"
-        class="mobile-link group/m py-4 px-4 flex items-center justify-between rounded-xl transition-all duration-300 hover:bg-red-50 hover:text-red-600 active:bg-red-100"
-      >
-        <span
-          class="transition-transform duration-300 group-hover/m:translate-x-2"
-          >Contact us</span
-        >
-        <span
-          class="active-dot opacity-0 w-1.5 h-1.5 bg-red-600 rounded-full transition-all duration-500"
-        ></span>
-      </a>
+
+      <div class="px-4 py-4 border-t border-slate-100 mt-2">
+        <div class="bg-slate-900 inline-block rounded-full">
+          <LanguagePicker />
+        </div>
+      </div>
     </nav>
   </div>
 </header>
 
 <script is:inline>
+  // Script navigasi Anda tetap sama (dipertahankan)
   function initNavigation() {
     const header = document.getElementById("main-header");
     const menuBtn = document.getElementById("menu-btn");
@@ -298,12 +402,6 @@
           "py-2"
         );
         header.classList.remove("py-3", "md:py-4");
-        header
-          .querySelectorAll(".nav-brand, .nav-link, #menu-btn")
-          .forEach((el) => {
-            // el.classList.add("text-slate-900");
-            // el.classList.remove("text-white");
-          });
       } else {
         header.classList.remove(
           "bg-black/20",
@@ -313,12 +411,6 @@
           "py-2"
         );
         header.classList.add("py-3", "md:py-4");
-        header
-          .querySelectorAll(".nav-brand, .nav-link, #menu-btn")
-          .forEach((el) => {
-            el.classList.add("text-white");
-            // el.classList.remove("text-slate-900");
-          });
       }
     });
 
@@ -330,7 +422,7 @@
 </script>
 
 <style>
-  /* Desktop Underline Effect */
+  /* Style Anda tetap sama (dipertahankan) */
   .nav-link {
     position: relative;
     height: 40px;
@@ -352,19 +444,13 @@
   li.active .nav-link::after {
     transform: scaleX(1);
   }
-
-  /* Mobile Active Feedback */
   .mobile-link {
     -webkit-tap-highlight-color: transparent;
   }
-
-  /* Smooth Blur */
   header.bg-white\/90 {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
-
-  /* Details Reset */
   details summary::-webkit-details-marker {
     display: none;
   }

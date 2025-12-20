@@ -1,0 +1,37 @@
+---
+import ContactInfo from "../../components/contact/ContactInfo.astro";
+import ContentCard from "../../components/ContentCard.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+const { lang } = Astro.params;
+const entry = await getEntry("contact", lang);
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+const { data } = entry;
+---
+
+<Layout title="Contact us">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/HEADER-CONTACT-US.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+
+  <ContactInfo
+    t1={data.main.t1}
+    t2={data.main.t2}
+    t3={data.main.t3}
+    t4={data.main.t4}
+    t5={data.main.t5}
+    t6={data.main.t6}
+    t7={data.main.t7}
+    t8={data.main.t8}
+  />
+</Layout>

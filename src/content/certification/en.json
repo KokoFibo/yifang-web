@@ -1,0 +1,25 @@
+{
+  "main": {
+    "subtitle": "Our Certifications",
+    "title": "Certifications",
+    "description": "We offer comprehensive one-stop solutions for foreign companies investing in Indonesia, facilitating market entry, regulatory approvals, labor sourcing, and more."
+  },
+  "iso45001": {
+    "description": "Occupational Health and Safety Management Systems"
+  },
+  "iso14001": {
+    "description": "Environmental Management Systems"
+  },
+  "iso27001": {
+    "description": "Information Security Management Systems"
+  },
+  "iso9001": {
+    "description": "Quality Management Systems"
+  },
+  "iso20000": {
+    "description": "System Management Systems"
+  },
+  "appreciation": {
+    "description": "Occupational Safety and Health Management System"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "main": {
+    "companies": ["PT YIFANG", "ECO VEHICLE"],
+    "description": [
+      "YEV—Intelligent Assembly, Enjoy a Green Future. YEV is committed to provide green transportation services for the people of Indonesia. Choose YEV and embrace the future!"
+    ],
+    "button": "Explore More"
+  },
+
+  "exquisite": {
+    "subtitle": "Our Services",
+    "title": "Exquisite craftsmanship, creating outstanding electric vehicles.",
+    "descriptions": [
+      "We focus on high-quality electric vehicle assembly, including two-wheeled electric bikes, three-wheeled electric vehicles, and four-wheeled electric cars. Our expert team is dedicated to ensuring that each vehicle undergoes precise calibration and meticulous assembly to guarantee the reliability and durability of the electric vehicles.",
+      "We firmly believe that green transportation leads the future and are committed to providing customers with the highest quality electric vehicles on the market, delivering the smoothest and most comfortable driving experience."
+    ]
+  },
+  "twoWheel": {
+    "subtitle": "Two Wheeled",
+    "title": "Two-wheeled Electric Vehicle Assembly Services",
+    "descriptions": [
+      "We provide professional assembly services for two-wheeled electric vehicles, with experienced technicians and advanced assembly lines to ensure that each component is installed correctly, delivering a smooth and reliable riding experience. We also offer maintenance and repair services to ensure the safe operation of your electric vehicles."
+    ]
+  },
+  "threeWheel": {
+    "subtitle": "Three Wheeled",
+    "title": "Three-wheeled Electric Vehicle Assembly Services",
+    "descriptions": [
+      "We provide professional assembly services for three-wheeled electric vehicles, with experienced technicians and advanced assembly lines to ensure that each component is installed correctly, delivering a smooth and reliable riding experience. We also offer maintenance and repair services to ensure the safe operation of your electric vehicles."
+    ]
+  }
+}

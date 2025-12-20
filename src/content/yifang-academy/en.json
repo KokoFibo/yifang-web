@@ -1,0 +1,89 @@
+{
+  "main": {
+    "companies": ["Yifang Academy | Intrapreneurship Program"],
+    "description": "Banyak Mandarin Speaker di Indonesia merasa terjebak jadi penerjemah. Yifang Academy membina mereka jadi intrapreneur yang dipromosikan dari dalam perusahaan Tiongkok.",
+    "button": "Explore More"
+  },
+  "penerjemah": {
+    "title": "Dari Penerjemah Jadi Intrapreneur",
+    "main": [
+      "Program inkubasi karier untuk Mandarin speaker yang ingin bertumbuh dan dipromosikan di perusahaan Tiongkok.​"
+    ]
+  },
+  "bisamandarin": {
+    "t1": "Banyak Profesional Muda",
+    "t2": "Bisa Bahasa Mandarin, Tapi...",
+    "t3": "Cuma dipakai bantu translate.",
+    "t4": "Tidak tahu cara dapat promosi.",
+    "t5": "Karier stagnan dan mudah digantikan.",
+    "t6": "Kalau tidak segera berubah, kamu akan tetap di posisi yang sama tanpa pembinaan dan tanpa masa depan yang jelas.",
+    "t7": "Yang Kamu Dapat Jika Kamu Bergabung Dengan",
+    "t8": "Yifang Academy",
+    "t9": "Belajar langsung cara kerja & ekspektasi perusahaan Tiongkok.",
+    "t10": "Dibimbing oleh praktisi senior dan mentor internal.",
+    "t11": "Terlibat dalam proyek nyata dan strategis.",
+    "t12": "Naik level, bukan cuma ganti kerjaan.",
+    "t13": "Peluang dipromosikan dari dalam, bukan dari luar."
+  },
+  "video": {
+    "subtitle": "Behind the Scenes",
+    "title1": "Lahir dari",
+    "title2": "Pengalaman Nyata",
+    "title3": "di Perusahaan Tiongkok.",
+    "p1a": "Yifang Academy",
+    "p1b": "lahir dari dalam perusahaan Tiongkok di Indonesia dan sudah membina puluhan Mandarin speaker menjadi talenta andalan.",
+    "p2": "Kami tahu apa yang dicari oleh pemilik bisnis Tiongkok. Dan kami tahu cara membantumu naik kelas dari staf bantu jadi pemimpin masa depan.",
+    "watch": "Watch more videos",
+    "real": "Real Testimonial 🔥"
+  },
+  "langkah": {
+    "subtitle": "",
+    "title": "3 Langkah Menjadi Intrapreneur di Perusahaan Tiongkok",
+    "list": [
+      "Lamar Pekerjaan yang Tepat : ​Kirim CV ke posisi strategis di perusahaan mitra kami.​",
+      "Ikuti Program Inkubasi 3–6 Bulan : ​Belajar budaya kerja, tools, mindset, dan strategi ala Tiongkok.",
+      "Naik Level Lewat Proyek Nyata : ​Tunjukkan kontribusi langsung dan rebut peluang promosi."
+    ],
+    "words": [
+      "Lamar Pekerjaan yang Tepat",
+      "Ikuti Program Inkubasi 3–6 Bulan",
+      "Naik Level Lewat Proyek Nyata"
+    ]
+  },
+
+  "bahasa": {
+    "subtitle": "",
+    "title": "Bahasa Mandarin Alat Bantu Menuju Karir dan Masa Depan Yang Cerah",
+    "main": [
+      "Banyak Mandarin Speaker di Indonesia merasa stagnan. Punya skill bahasa, tapi tidak tahu bagaimana bertumbuh — apalagi dapat promosi. Mereka cuma jadi penerjemah yang bisa diganti kapan saja.​",
+      "Yifang Academy hadir sebagai solusi. Kami percaya bahwa bahasa Mandarin bukan cuma alat bantu, tapi bisa jadi jalan menuju karier yang solid dan masa depan yang cerah — asal kamu tahu caranya.​",
+      "Dengan program Intrapreneurship Incubator, kamu akan belajar langsung cara kerja dan ekspektasi perusahaan Tiongkok, terlibat dalam proyek nyata, dan mendapatkan akses ke jalur promosi dari dalam. Kalau kamu siap bertumbuh, kami siap bantu kamu dipercaya.​"
+    ]
+  },
+  "berpikir": {
+    "t1": "Siap Berpikir",
+    "t2": "Seperti Intrapreneur?",
+    "t3": "Punya skill Mandarin? Ingin lebih dari sekadar bantu translate?",
+    "t4": "Yifang Academy ",
+    "t5": "membuka pintu untuk kamu yang ingin belajar langsung dari sistem perusahaan Tiongkok dan naik level dari dalam.",
+    "t6": "Kami latih.",
+    "t7": "Kami Bimbing.",
+    "t8": "Kamu buktikan kontribusimu.",
+    "t9": "Isi form ini dan dapatkan akses ke program karier intrapreneur",
+    "t10": "GRATIS",
+    "t11": "Kami kirimkan panduan, peluang, dan info eksklusif langsung ke email kamu!",
+    "t12": "Isi Form Sekarang"
+  },
+  "gabung": {
+    "t1": "Gabung ke WA Channel",
+    "t2": "Yifang Academy",
+    "t3": "Tips mindset & komunikasi Bos Tiongkok",
+    "t4": "Cerita nyata alumni yang naik level",
+    "t5": "Update info lowongan & karir eksklusif",
+    "t6": "Semua langsung di WhatsApp kamu",
+    "t7": "Gabung Sekarang",
+    "t8": "New Update",
+    "t9": "Tips dari Bos Tiongkok!",
+    "t10": "Free Access"
+  }
+}

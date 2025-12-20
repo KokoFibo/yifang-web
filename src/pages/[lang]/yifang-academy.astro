@@ -1,0 +1,120 @@
+---
+import ContentCard from "../../components/ContentCard.astro";
+import HeroSection from "../../components/HeroSection.astro";
+import ParaCard from "../../components/ParaCard.astro";
+import Berpikir from "../../components/yifang-academy/Berpikir.astro";
+import BisaMandarin from "../../components/yifang-academy/BisaMandarin.astro";
+import Gabung from "../../components/yifang-academy/Gabung.astro";
+import Video from "../../components/yifang-academy/Video.astro";
+import Layout from "../../layouts/Layout.astro";
+
+import { getEntry } from "astro:content";
+export async function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
+}
+const { lang } = Astro.params;
+const entry = await getEntry("yifang-academy", lang);
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+const { data } = entry;
+---
+
+<Layout title="Yifang Academy">
+  <HeroSection
+    companies={data.main.companies}
+    url="/images/Header-scaled.webp"
+    description={data.main.description}
+    button={data.main.button}
+  />
+
+  <ParaCard
+    subtitle=""
+    title={data.penerjemah.title}
+    main={data.penerjemah.main}
+    defaultStyle={{ fontSize: "lg" }}
+    imageUrl="/images/intrapreneur.webp"
+    alt="intrapreneur"
+  />
+  <BisaMandarin
+    t1={data.bisamandarin.t1}
+    t2={data.bisamandarin.t2}
+    t3={data.bisamandarin.t3}
+    t4={data.bisamandarin.t4}
+    t5={data.bisamandarin.t4}
+    t6={data.bisamandarin.t6}
+    t7={data.bisamandarin.t7}
+    t8={data.bisamandarin.t8}
+    t9={data.bisamandarin.t9}
+    t10={data.bisamandarin.t10}
+    t11={data.bisamandarin.t11}
+    t11={data.bisamandarin.t11}
+    t12={data.bisamandarin.t12}
+    t13={data.bisamandarin.t13}
+  />
+
+  <Video
+    subtitle={data.video.subtitle}
+    title1={data.video.title1}
+    title2={data.video.title2}
+    title3={data.video.title3}
+    p1a={data.video.p1a}
+    p1b={data.video.p1b}
+    p2={data.video.p2}
+    watch={data.video.watch}
+    real={data.video.real}
+  />
+
+  <ParaCard
+    subtitle={data.langkah.subtitle}
+    title={data.langkah.title}
+    list={data.langkah.list}
+    listStyle="ol"
+    defaultStyle={{ fontSize: "lg" }}
+    thestyle={[
+      {
+        words: data.langkah.words,
+        styles: ["bold"],
+      },
+    ]}
+    imageUrl="/images/The-Plan.webp"
+    alt="The-Plan"
+    reverse="false"
+  />
+
+  <ParaCard
+    subtitle={data.bahasa.subtitle}
+    title={data.bahasa.title}
+    main={data.bahasa.main}
+    imageUrl="/images/The-Explanatory-Paragraph.webp"
+    alt="The-Explanatory-Paragraph"
+  />
+
+  <Berpikir
+    t1={data.berpikir.t1}
+    t2={data.berpikir.t2}
+    t3={data.berpikir.t3}
+    t4={data.berpikir.t4}
+    t5={data.berpikir.t5}
+    t6={data.berpikir.t6}
+    t7={data.berpikir.t7}
+    t8={data.berpikir.t8}
+    t9={data.berpikir.t9}
+    t10={data.berpikir.t10}
+    t11={data.berpikir.t11}
+    t12={data.berpikir.t12}
+  />
+
+  <Gabung
+    t1={data.gabung.t1}
+    t2={data.gabung.t2}
+    t3={data.gabung.t3}
+    t4={data.gabung.t4}
+    t5={data.gabung.t5}
+    t6={data.gabung.t6}
+    t7={data.gabung.t7}
+    t8={data.gabung.t8}
+    t9={data.gabung.t9}
+    t10={data.gabung.t10}
+  />
+</Layout>

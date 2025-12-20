@@ -1,3 +1,12 @@
+---
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("achievement", lang);
+const { data } = entry;
+---
+
 <section
   class="bg-section relative flex items-center justify-center mt-10 lg:mt-24 p-6 lg:p-12 overflow-hidden"
 >
@@ -17,7 +26,7 @@
         <img
           src="/images/Logo-7th.png"
           alt="Logo-7th"
-          class="logo-7th w-4/5 sm:w-2/3 lg:w-full h-auto max-h-[300px] md:max-h-[500px] object-contain drop-shadow-2xl"
+          class="logo-7th w-4/5 sm:w-2/3 lg:w-full h-auto max-h-75 md:max-h-125 object-contain drop-shadow-2xl"
           loading="lazy"
         />
       </div>
@@ -27,20 +36,18 @@
           <h5
             class="reveal-text text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
           >
-            Why We’re Your Best Choice
+            {data.main.subtitle}
           </h5>
 
           <h2
             class="reveal-text text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-slate-900"
           >
-            The Achievement of Tomorrow is Being Built Today
+            {data.main.title}
           </h2>
         </div>
 
         <p class="reveal-text text-yfgrey text-base md:text-lg leading-relaxed">
-          Expertise in assembling smartphones and electric bicycles,
-          comprehensive one-stop solutions, streamlined regulatory processes,
-          and dedicated support.
+          {data.main.description}
         </p>
 
         <div class="flex flex-col gap-8 mt-4">
@@ -60,11 +67,10 @@
               <h3
                 class="font-bold text-lg sm:text-xl text-slate-800 group-hover:text-primary transition-colors duration-300"
               >
-                Creative & Smart Solutions
+                {data.creative.title}
               </h3>
               <p class="text-yfgrey text-sm sm:text-base leading-relaxed">
-                Innovative and intelligent solutions for regulatory compliance,
-                market entry facilitation, and comprehensive support services.
+                {data.creative.description}
               </p>
             </div>
           </div>
@@ -85,11 +91,10 @@
               <h3
                 class="font-bold text-lg sm:text-xl text-slate-800 group-hover:text-primary transition-colors duration-300"
               >
-                Free Consultations
+                {data.assembly.title}
               </h3>
               <p class="text-yfgrey text-sm sm:text-base leading-relaxed">
-                Receive expert advice and guidance at no cost to help address
-                your business needs and challenges.
+                {data.assembly.description}
               </p>
             </div>
           </div>
@@ -110,11 +115,10 @@
               <h3
                 class="font-bold text-lg sm:text-xl text-slate-800 group-hover:text-primary transition-colors duration-300"
               >
-                Assembly Services with Precision
+                {data.consultation.title}
               </h3>
               <p class="text-yfgrey text-sm sm:text-base leading-relaxed">
-                We provide expert assembly services for smartphones, electric
-                bicycles, and accessories with precision and efficiency.
+                {data.consultation.description}
               </p>
             </div>
           </div>
