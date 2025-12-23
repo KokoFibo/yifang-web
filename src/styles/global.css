@@ -8,6 +8,20 @@
   --color-secondary: #22c55e;
   --color-accent: #f97316;
   --color-yfgrey: rgb(155, 155, 168);
+  --color-surface: rgb(155, 155, 168);
+}
+
+@utility prose-yifang {
+  /* Mengatur variabel internal prose tailwind */
+  --tw-prose-body: var(--color-yfgrey);
+  --tw-prose-headings: white;
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-bold: var(--color-primary);
+  --tw-prose-bullets: var(--color-primary);
+  --tw-prose-quotes: var(--color-yfgrey);
+  --tw-prose-hr: rgba(255, 255, 255, 0.1);
+
+  --font-inter: "Inter", sans-serif;
 }
 
 @utility prose-yifang {
