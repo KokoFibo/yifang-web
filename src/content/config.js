@@ -39,9 +39,21 @@ const yam = defineCollection({ type: "data", schema: z.any() });
 const career = defineCollection({ type: "data", schema: z.any() });
 const jobs = defineCollection({ type: "data", schema: z.any() });
 const yifangAcademy = defineCollection({ type: "data", schema: z.any() });
-const blogs = defineCollection({ type: "data", schema: z.any() });
+const blogsPage = defineCollection({ type: "data", schema: z.any() });
 const contact = defineCollection({ type: "data", schema: z.any() });
 const footer = defineCollection({ type: "data", schema: z.any() });
+
+const blog = defineCollection({
+  type: "content", // Penting: Gunakan 'content' untuk file .md
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    image: z.string().optional(),
+    author: z.string().default("Yifang Admin"),
+    tags: z.array(z.string()).default(["General"]),
+  }),
+});
 
 // 3. DAFTARKAN SEMUA DI SINI
 export const collections = {
@@ -63,7 +75,8 @@ export const collections = {
   yam: yam,
   career: career,
   jobs: jobs,
-  blogs: blogs,
+  "blogs-page": blogsPage,
   contact: contact,
   footer: footer,
+  blog: blog,
 };

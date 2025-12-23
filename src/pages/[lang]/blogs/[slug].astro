@@ -1,0 +1,113 @@
+---
+// src/pages/[lang]/blogs/[slug].astro
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => {
+    // Memecah ID: "en/first-post.md" -> lang: "en", slug: "first-post"
+    const parts = post.id.split("/");
+    const lang = parts[0];
+    const slug = parts[1].replace(/\.[^/.]+$/, ""); // Menghapus ekstensi .md
+
+    return {
+      params: { lang, slug },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+// Format tanggal sesuai bahasa
+const formattedDate = new Date(post.data.pubDate).toLocaleDateString(
+  post.id.startsWith("zh") ? "zh-CN" : "en-US",
+  { year: "numeric", month: "long", day: "numeric" }
+);
+---
+
+<Layout title={post.data.title}>
+  <main class="bg-black min-h-screen pt-32 pb-20">
+    <article class="max-w-4xl mx-auto px-6">
+      <header class="mb-12">
+        <div class="mb-8">
+          <a
+            href={`/${post.id.split("/")[0]}/blogs`}
+            class="text-[var(--color-accent)] hover:text-[var(--color-surface)] transition-colors flex items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+            {post.id.startsWith("zh") ? "返回博客" : "Back to Blog"}
+          </a>
+        </div>
+
+        <h1
+          class="text-4xl md:text-6xl font-bold text-[var(--color-surface)] mb-6 italic leading-tight"
+        >
+          {post.data.title}
+        </h1>
+
+        <div class="flex items-center gap-4 text-[var(--color-secondary)]">
+          <span class="w-8 h-px bg-[var(--color-accent)]"></span>
+          <p class="font-medium tracking-wide uppercase text-sm">
+            {formattedDate}
+          </p>
+        </div>
+      </header>
+
+      {
+        post.data.image && (
+          <div class="mb-16 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black">
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              class="w-full h-auto object-cover"
+            />
+          </div>
+        )
+      }
+
+      <div
+        class="prose prose-invert prose-yifang max-w-none
+                  prose-headings:text-[var(--color-accent)]
+                  prose-headings:italic
+                  prose-p:text-slate-300
+                  prose-p:text-lg
+                  prose-p:leading-relaxed
+                  prose-strong:text-[var(--color-accent)]
+                  prose-a:text-[var(--color-accent)]
+                  prose-blockquote:border-l-[var(--color-accent)]
+                  prose-blockquote:italic"
+      >
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  /* Memastikan elemen Markdown memiliki style yang konsisten */
+  .prose h2 {
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding-bottom: 0.5rem;
+    margin-top: 3rem;
+  }
+  .prose img {
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+</style>
