@@ -121,3 +121,12 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString(
     color: var(--color-primary);
   }
 </style>
+<script>
+  // Menangani semua link di dalam artikel agar terbuka di tab baru
+  const articleLinks = document.querySelectorAll(".prose a");
+  articleLinks.forEach((link) => {
+    // Hanya untuk link eksternal atau semua link di dalam artikel
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+  });
+</script>
