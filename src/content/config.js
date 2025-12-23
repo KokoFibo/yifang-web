@@ -30,7 +30,7 @@ const blog = defineCollection({
     pubDate: z.date(),
     image: z.string().optional(),
     author: z.string().default("Yifang Admin"),
-    tags: z.array(z.string()).default(["General"]),
+    tags: z.array(z.string()).default(["Tips & Tricks"]),
   }),
 });
 

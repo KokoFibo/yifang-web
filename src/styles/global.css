@@ -7,8 +7,12 @@
   --color-primary: rgb(198, 42, 39);
   --color-secondary: #22c55e;
   --color-accent: #f97316;
+  /* --color-yfgrey: rgb(155, 155, 168); */
   --color-yfgrey: rgb(155, 155, 168);
   --color-surface: rgb(155, 155, 168);
+  /* --color-bgwhite: rgb(246, 246, 246); */
+  --color-bgwhite: #fbfbfd;
+  --color-bgblack: #18181b;
 }
 
 @utility prose-yifang {
