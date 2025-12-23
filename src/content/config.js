@@ -18,7 +18,7 @@ import { defineCollection, z } from "astro:content";
 //     }),
 //   }),
 // });
-
+// jika menambahkan comment apakah bisa di push
 // 2. Definisikan Koleksi Lainnya (Wajib ada agar tidak error)
 // Jika Anda belum punya skema spesifik, gunakan z.any() sementara agar tidak error
 const homepage = defineCollection({ type: "data", schema: z.any() });
