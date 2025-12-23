@@ -1,5 +1,26 @@
 import { defineCollection, z } from "astro:content";
 
+// 1. Definisikan Koleksi Homepage
+// const homepage = defineCollection({
+//   type: "data",
+//   schema: z.object({
+//     hero: z.object({
+//       title: z.string(),
+//       subtitle: z.string(),
+//       button: z.string(),
+//     }),
+//     company: z.object({
+//       group: z.string(),
+//       profile: z.string(),
+//     }),
+//     trusted: z.object({
+//       title: z.string(),
+//     }),
+//   }),
+// });
+// jika menambahkan comment apakah bisa di push  lagi kah?
+// 2. Definisikan Koleksi Lainnya (Wajib ada agar tidak error)
+// Jika Anda belum punya skema spesifik, gunakan z.any() sementara agar tidak error
 const homepage = defineCollection({ type: "data", schema: z.any() });
 const vision = defineCollection({ type: "data", schema: z.any() });
 const achievement = defineCollection({ type: "data", schema: z.any() });
