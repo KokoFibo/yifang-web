@@ -1,26 +1,5 @@
 import { defineCollection, z } from "astro:content";
 
-// 1. Definisikan Koleksi Homepage
-// const homepage = defineCollection({
-//   type: "data",
-//   schema: z.object({
-//     hero: z.object({
-//       title: z.string(),
-//       subtitle: z.string(),
-//       button: z.string(),
-//     }),
-//     company: z.object({
-//       group: z.string(),
-//       profile: z.string(),
-//     }),
-//     trusted: z.object({
-//       title: z.string(),
-//     }),
-//   }),
-// });
-// jika menambahkan comment apakah bisa di push  lagi kah?
-// 2. Definisikan Koleksi Lainnya (Wajib ada agar tidak error)
-// Jika Anda belum punya skema spesifik, gunakan z.any() sementara agar tidak error
 const homepage = defineCollection({ type: "data", schema: z.any() });
 const vision = defineCollection({ type: "data", schema: z.any() });
 const achievement = defineCollection({ type: "data", schema: z.any() });
@@ -39,9 +18,21 @@ const yam = defineCollection({ type: "data", schema: z.any() });
 const career = defineCollection({ type: "data", schema: z.any() });
 const jobs = defineCollection({ type: "data", schema: z.any() });
 const yifangAcademy = defineCollection({ type: "data", schema: z.any() });
-const blogs = defineCollection({ type: "data", schema: z.any() });
+const blogsPage = defineCollection({ type: "data", schema: z.any() });
 const contact = defineCollection({ type: "data", schema: z.any() });
 const footer = defineCollection({ type: "data", schema: z.any() });
+
+const blog = defineCollection({
+  type: "content", // Penting: Gunakan 'content' untuk file .md
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.date(),
+    image: z.string().optional(),
+    author: z.string().default("Yifang Admin"),
+    tags: z.array(z.string()).default(["General"]),
+  }),
+});
 
 // 3. DAFTARKAN SEMUA DI SINI
 export const collections = {
@@ -63,7 +54,8 @@ export const collections = {
   yam: yam,
   career: career,
   jobs: jobs,
-  blogs: blogs,
+  "blogs-page": blogsPage,
   contact: contact,
   footer: footer,
+  blog: blog,
 };
