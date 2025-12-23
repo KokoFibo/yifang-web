@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* --color-primary: #0ea5e9; */
@@ -7,6 +8,19 @@
   --color-secondary: #22c55e;
   --color-accent: #f97316;
   --color-yfgrey: rgb(155, 155, 168);
+}
+
+@utility prose-yifang {
+  /* Mengatur variabel internal prose tailwind */
+  --tw-prose-body: var(--color-yfgrey);
+  --tw-prose-headings: white;
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-bold: var(--color-primary);
+  --tw-prose-bullets: var(--color-primary);
+  --tw-prose-quotes: var(--color-yfgrey);
+  --tw-prose-hr: rgba(255, 255, 255, 0.1);
+
+  --font-inter: "Inter", sans-serif;
 }
 body {
   font-family: "Inter", sans-serif;

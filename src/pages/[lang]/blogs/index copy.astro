@@ -8,7 +8,7 @@ export async function getStaticPaths() {
   return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
 }
 const { lang } = Astro.params;
-const entry = await getEntry("blogs", lang);
+const entry = await getEntry("blogs-page", lang);
 if (!entry) {
   throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
 }
