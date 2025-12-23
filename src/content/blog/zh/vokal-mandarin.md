@@ -6,13 +6,13 @@ image: "/images/blogs/Headline-Belajar-Huruf-Vokal.webp"
 tags: ["技巧与窍门"]
 ---
 
-学习汉语韵母（yùnmǔ）：让你快速说好中文的发音秘诀！韵母 yùnmǔ): Rahasia Pelafalan yang Bikin Kamu Cepat Lancar Ngomong Mandarin!
+学习汉语韵母（yùnmǔ）：让你快速说好中文的发音秘诀！韵母 yùnmǔ: Rahasia Pelafalan yang Bikin Kamu Cepat Lancar Ngomong Mandarin!
 
 你有没有听过有人因为发错汉语韵母而导致意思完全改变？比如只因为把 u 和 ü 发混，原本表示“书籍”的词，可能就变成完全不同的意思。这就是为什么学习汉语韵母非常重要！
 
 对于刚开始学中文的同学来说，掌握韵母是发音的基础，特别是在阅读 拼音时，这能帮助你准确读出汉字。
 
-### 什么是汉语韵母（yùnmǔ）？韵母 yùnmǔ)?
+### 什么是汉语韵母（yùnmǔ）？韵母 yùnmǔ?
 
 在汉语里，韵母（yùnmǔ） 指的是“元音部分”。印尼语只有 5 个元音（a, i, u, e, o），但汉语有 6 个基本韵母，并且共有 24 种韵母组合，发音更加多样。
 
