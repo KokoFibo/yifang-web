@@ -13,7 +13,7 @@ const {
   image,
 } = Astro.props;
 
-// Logika class font berdasarkan bahasa (Noto Sans SC untuk Chinese)
+// Logika class font berdasarkan bahasa
 const fontClass = lang === "zh" ? "font-chinese" : "";
 
 const currentPath = Astro.url.pathname;
@@ -60,21 +60,13 @@ const getAlternatePath = (targetLang) => {
 </html>
 
 <style is:global>
-  /** * Agar hamburger menu bisa terbuka, pastikan script di Header.astro 
-   * tidak terhalang oleh overflow atau masalah z-index global di sini.
-   */
-
-  /* Definisi font khusus Chinese tanpa merubah tampilan lainnya */
+  /* Hanya merubah font-family jika class .font-chinese aktif (saat lang="zh") */
   .font-chinese {
     font-family: "Noto Sans SC", sans-serif !important;
   }
 
-  /* Memastikan font-family diwariskan ke semua elemen saat class font-chinese aktif */
-  .font-chinese body,
-  .font-chinese input,
-  .font-chinese button,
-  .font-chinese select,
-  .font-chinese textarea {
-    font-family: "Noto Sans SC", sans-serif !important;
+  /* Memastikan font fallback tetap rapi */
+  .font-chinese * {
+    font-family: inherit;
   }
 </style>

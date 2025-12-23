@@ -1,0 +1,163 @@
+---
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("christmas-hero", lang);
+const { data } = entry;
+const url = "/images/christmas-2025.webp";
+---
+
+<section class="relative h-screen w-full overflow-hidden bg-[#1a1c1e]">
+  <canvas id="snow-canvas" class="absolute inset-0 z-10 pointer-events-none"
+  ></canvas>
+
+  <div
+    id="hero-bg"
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat scale-110"
+    style={`background-image: url(${url});`}
+  >
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <div
+    class="relative z-20 flex h-full items-center justify-center p-8 md:p-20 text-center"
+  >
+    <div id="hero-content" class="opacity-0 max-w-4xl">
+      <h1
+        id="hero-title"
+        class="mb-2 text-6xl font-bold md:text-8xl leading-tight drop-shadow-2xl title-glimmer"
+      >
+        {data.title || "Merry Christmas"}
+      </h1>
+
+      <h2
+        id="hero-title-2"
+        class="mb-8 text-4xl font-bold text-[#fcfaf7] md:text-6xl leading-tight drop-shadow-lg"
+      >
+        {data.title2 || "and Happy New Year 2026"}
+      </h2>
+
+      <p
+        id="hero-description"
+        class="mx-auto max-w-2xl text-lg text-[#fcfaf7]/90 md:text-xl font-light leading-relaxed italic"
+      >
+        "{
+          data.description ||
+            "Celebrate the joy of Christmas and welcome the New Year with hope, love, and endless possibilities."
+        }"
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // @ts-nocheck
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("snow-canvas");
+    if (!canvas) return;
+
+    const ctx = canvas["getContext"]("2d");
+    let particles = [];
+
+    const resize = () => {
+      canvas["width"] = window.innerWidth;
+      canvas["height"] = window.innerHeight;
+    };
+
+    window.addEventListener("resize", resize);
+    resize();
+
+    function Particle() {
+      this.init = () => {
+        this.x = Math.random() * window.innerWidth;
+        this.y = Math.random() * window.innerHeight - window.innerHeight;
+        this.size = Math.random() * 2 + 1;
+        this.speed = Math.random() * 0.7 + 0.3;
+        this.velX = Math.random() * 0.4 - 0.2;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      };
+
+      this.update = () => {
+        this.y += this.speed;
+        this.x += this.velX;
+        if (this.y > window.innerHeight) this.init();
+      };
+
+      this.draw = () => {
+        // Menggunakan warna #fcfaf7 (kertas kuno) untuk salju
+        ctx.fillStyle = `rgba(252, 250, 247, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      };
+      this.init();
+    }
+
+    for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+    const render = () => {
+      ctx.clearRect(0, 0, canvas["width"], canvas["height"]);
+      particles.forEach((p) => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(render);
+    };
+    render();
+
+    // Animasi Intro
+    const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
+    tl.to("#hero-bg", { scale: 1, duration: 4 });
+    tl.to("#hero-content", { opacity: 1, duration: 2 }, "-=3.5");
+
+    // ANIMASI INFINITE 1: Konten Melayang
+    gsap.to("#hero-content", {
+      y: 20,
+      duration: 5,
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+    });
+
+    // ANIMASI INFINITE 2: Kilauan Warna Emas pada Teks
+    gsap.to(".title-glimmer", {
+      backgroundPosition: "200% center",
+      duration: 6,
+      ease: "none",
+      repeat: -1,
+    });
+  });
+</script>
+
+<style>
+  section {
+    font-family: ui-serif, Georgia, Cambria, serif;
+  }
+
+  /* Efek warna teks emas yang bergerak berkilau */
+  .title-glimmer {
+    background: linear-gradient(
+      to right,
+      #d4af37 20%,
+      #fcfaf7 40%,
+      #fcfaf7 60%,
+      #d4af37 80%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+
+  .drop-shadow-2xl {
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.6));
+  }
+
+  #snow-canvas {
+    filter: blur(0.6px);
+  }
+</style>
