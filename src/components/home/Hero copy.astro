@@ -1,0 +1,222 @@
+---
+import ButtonRipple from "../WaterRippleButton.astro";
+import PlayRipple from "../PlayRipple.astro";
+import { X } from "lucide-astro";
+
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils.js";
+
+const lang = getLangFromUrl(Astro.url);
+const entry = await getEntry("hero", lang);
+const { data } = entry;
+
+const { youtubeId = "7P-Xsyc2xU4" } = Astro.props;
+// const data = entry?.data || {
+//   hero: { title: "", subtitle: "", button: "" },
+//   company: { group: "", profile: "" },
+//   trusted: { title: "" },
+// };
+const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen overflow-hidden flex items-center"
+>
+  <div
+    id="hero-bg"
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat animate-zoom"
+  >
+  </div>
+
+  <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+    <div
+      id="hero-content"
+      class="text-center text-white max-w-5xl mx-auto px-6 py-12 md:py-24"
+    >
+      <h1
+        class="reveal text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight max-w-4xl mx-auto"
+      >
+        {data.hero.title}
+      </h1>
+      <p
+        class="reveal text-sm sm:text-base md:text-lg mb-8 leading-relaxed opacity-90 max-w-3xl mx-auto"
+      >
+        {data.hero.subtitle}
+      </p>
+      <div class="reveal inline-block">
+        <ButtonRipple bgColor="bg-primary" textColor="text-white">
+          {data.hero.button}
+        </ButtonRipple>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="profile-banner"
+    class="absolute bottom-0 right-0 w-full sm:w-2/3 lg:w-1/2 bg-white shadow-lg border-t flex items-center p-3 sm:p-4 gap-4 z-20"
+  >
+    <div
+      id="play-video-trigger"
+      class="cursor-pointer hover:scale-105 transition-transform"
+    >
+      <PlayRipple />
+    </div>
+
+    <div>
+      <div
+        class="font-medium text-red-500 text-xs sm:text-base uppercase tracking-wider"
+      >
+        {data.company.group}
+      </div>
+      <div class="font-semibold text-base sm:text-2xl">
+        {data.company.profile}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div
+  id="video-modal"
+  class="fixed inset-0 z-100 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
+>
+  <button
+    id="close-video"
+    class="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
+  >
+    <X size={48} />
+  </button>
+
+  <div
+    class="w-full max-w-5xl aspect-video bg-black shadow-2xl rounded-xl overflow-hidden"
+  >
+    <iframe
+      id="youtube-iframe"
+      class="w-full h-full"
+      src=""
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+</div>
+
+<script is:inline define:vars={{ YOUTUBE_VIDEO_ID }}>
+  // LOGIKA MODAL VIDEO (JS Murni)
+  const trigger = document.getElementById("play-video-trigger");
+  const modal = document.getElementById("video-modal");
+  const closeBtn = document.getElementById("close-video");
+  const iframe = document.getElementById("youtube-iframe");
+
+  if (trigger && modal) {
+    // Buka Modal
+    trigger.addEventListener("click", () => {
+      iframe.src = `https://www.youtube.com/embed/7P-Xsyc2xU4?start=1`;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      document.body.style.overflow = "hidden"; // Kunci scroll
+    });
+
+    // Tutup Modal
+    const handleClose = () => {
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+      iframe.src = ""; // Stop video
+      document.body.style.overflow = ""; // Unlock scroll
+    };
+
+    closeBtn.addEventListener("click", handleClose);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) handleClose();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") handleClose();
+    });
+  }
+</script>
+
+<script>
+  // LOGIKA GSAP & BACKGROUND SLIDER
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const tl = gsap.timeline();
+    tl.from(".reveal", {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: "power3.out",
+      delay: 0.5,
+    });
+    tl.from(
+      "#profile-banner",
+      { x: 100, opacity: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.5"
+    );
+  });
+
+  document.querySelectorAll(".section-reveal").forEach((section) => {
+    gsap.from(section, {
+      scrollTrigger: {
+        trigger: section,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+    });
+  });
+
+  const images = [
+    "/images/HEADER-2000x1125-A.webp",
+    "/images/HEADER-2000x1125-B.webp",
+    "/images/HEADER-2000x1125-C.webp",
+    "/images/HEADER-2000x1125-D.webp",
+    "/images/HEADER-2000x1125-E.webp",
+    "/images/HEADER-2000x1125-F.webp",
+    "/images/HEADER-2000x1125-G.webp",
+    "/images/HEADER-2000x1125-H.webp",
+  ];
+
+  let currentIndex = 0;
+  const heroBg = document.getElementById("hero-bg");
+  if (heroBg) {
+    heroBg.style.backgroundImage = `url(${images[0]})`;
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+      gsap.to(heroBg, {
+        opacity: 0.7,
+        duration: 0.3,
+        onComplete: () => {
+          heroBg.style.backgroundImage = `url(${images[currentIndex]})`;
+          gsap.to(heroBg, { opacity: 1, duration: 0.5 });
+        },
+      });
+    }, 5000);
+  }
+</script>
+
+<style>
+  @keyframes zoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.15);
+    }
+  }
+  .animate-zoom {
+    animation: zoom 20s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+  .reveal,
+  .section-reveal {
+    visibility: visible;
+  }
+</style>
