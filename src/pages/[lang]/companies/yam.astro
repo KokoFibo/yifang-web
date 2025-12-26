@@ -20,9 +20,26 @@ if (!entry) {
 }
 
 const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title: "PT YIFANG ASSET MANAGEMENT",
+    description:
+      "Providing you with the most suitable industrial factory solutions",
+    image: "/images/og/yam-en-og.webp",
+  },
+  zh: {
+    title: "PT YIFANG ASSET MANAGEMENT",
+    description: "我们是 YAM，为您提供最适合的工业厂房解决方案",
+    image: "/images/og/yam-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="YAM">
+<Layout title={title} description={description} image={image}>
   <HeroSection
     companies={data.main.companies}
     url="/images/OUR-COMPANIES-HEADER-YAM.webp"

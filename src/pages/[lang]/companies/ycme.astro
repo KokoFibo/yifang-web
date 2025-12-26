@@ -20,9 +20,27 @@ if (!entry) {
 }
 
 const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title: "PT Yifang Cargo Mutiara Elektronik",
+    description:
+      "We are dedicated to provide exceptional solutions in mobile phone, home appliance, consumer electronics, and base station equipment assembly services.",
+    image: "/images/og/ycme-en-og.webp",
+  },
+  zh: {
+    title: "PT Yifang Cargo Mutiara Elektronik",
+    description:
+      "我们是 YCME，致力于提供卓越的解决方案 手机、家电、消费电子设备及基站设备组装服务。",
+    image: "/images/og/ycme-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="YCME">
+<Layout title={title} description={description} image={image}>
   <HeroSection
     companies={data.main.companies}
     url="/images/HEADER-OUR-COMPANIES-YCME.webp"

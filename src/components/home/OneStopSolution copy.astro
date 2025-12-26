@@ -10,7 +10,7 @@ const { data } = entry;
 
 <section
   id="company-section"
-  class="bg-section relative flex items-center justify-center mt-10 lg:mt-24 p-6 lg:p-12 overflow-hidden"
+  class="relative bg-section flex items-center justify-center mt-10 lg:mt-24 p-6 lg:p-12 overflow-hidden"
 >
   <div class="w-full max-w-7xl mx-auto">
     <div
@@ -114,3 +114,28 @@ const { data } = entry;
       "-=0.6"
     );
 </script>
+
+<style>
+  .bg-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      url("/images/bg_frame3.png"),
+      linear-gradient(
+        to top right,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 1)
+      );
+    background-repeat: repeat;
+    background-size:
+      20px 20px,
+      cover;
+  }
+
+  .bg-section > * {
+    position: relative;
+    z-index: 1;
+  }
+</style>

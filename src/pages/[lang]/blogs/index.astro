@@ -3,6 +3,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import BlogCard from "../../../components/BlogCard.astro";
 import { getCollection } from "astro:content";
+import HeroSection from "../../../components/HeroSection.astro";
 
 // 1. Wajib ada untuk dynamic route [lang]
 export async function getStaticPaths() {
@@ -25,9 +26,34 @@ const t = {
   noResult: lang === "zh" ? "未找到相关文章" : "No articles found.",
   all: lang === "zh" ? "全部" : "All",
 };
+
+// Untuk terjemahan
+import { getEntry } from "astro:content";
+
+const entry = await getEntry("blogs", lang);
+if (!entry) {
+  throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
+}
+const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title: "Blog & News",
+    description: "Yifang Group Insights & Updates",
+    image: "/images/og/blogs-en-og.webp",
+  },
+  zh: {
+    title: "博客与新闻",
+    description: "Yifang Group 见解与动态",
+    image: "/images/og/blogs-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="Blog | Yifang Group">
+<Layout title={title} description={description} image={image}>
   <div class="h-24 bg-black w-full fixed top-0 z-40 shadow-md"></div>
 
   <main class="bg-white min-h-screen pt-40 pb-20 text-slate-900">
@@ -39,10 +65,10 @@ const t = {
           <h1
             class="text-4xl md:text-5xl font-bold text-slate-900 mb-2 italic tracking-tight"
           >
-            Blog & News
+            {data.title || "Blog & News"}
           </h1>
           <p class="text-slate-500 font-medium tracking-wide uppercase text-sm">
-            Yifang Group Insights & Updates
+            {data.subtitle || "Yifang Group Insights & Updates"}
           </p>
         </div>
 

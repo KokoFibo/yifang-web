@@ -45,15 +45,17 @@ const socialLinks = [
     icon: "/images/sos-med-logos/linkedin.webp",
   },
 ];
+
+const currentYear = new Date().getFullYear();
 ---
 
 <div class="bg-[rgb(37,37,38)]">
   <section class="max-w-7xl mx-auto px-6 py-12 md:py-20">
     <div class="text-white border-l-4 border-primary py-2 mb-12 md:mb-20">
-      <h1 class="text-3xl md:text-5xl font-bold ml-4 leading-tight">
+      <h3 class="text-3xl md:text-5xl font-bold ml-4 leading-tight">
         {data.main.title1}<br />
         {data.main.title2}
-      </h1>
+      </h3>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16">
@@ -159,8 +161,8 @@ const socialLinks = [
       </div>
 
       <p class="text-sm text-gray-500 text-center md:text-right">
-        Copyright © 2025, <span class="text-white">Yifang Group</span>. All
-        rights reserved.
+        Copyright © {currentYear}, <span class="text-white">Yifang Group</span>.
+        All rights reserved.
       </p>
     </div>
   </section>

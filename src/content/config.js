@@ -23,6 +23,7 @@ const contact = defineCollection({ type: "data", schema: z.any() });
 const footer = defineCollection({ type: "data", schema: z.any() });
 const hero = defineCollection({ type: "data", schema: z.any() });
 const christmasHero = defineCollection({ type: "data", schema: z.any() });
+const blogs = defineCollection({ type: "data", schema: z.any() });
 
 const blog = defineCollection({
   type: "content", // Penting: Gunakan 'content' untuk file .md
@@ -62,4 +63,5 @@ export const collections = {
   blog: blog,
   hero: hero,
   "christmas-hero": christmasHero,
+  blogs: blogs,
 };

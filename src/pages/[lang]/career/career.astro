@@ -14,9 +14,26 @@ if (!entry) {
   throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
 }
 const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title: "Career",
+    description:
+      "Join us to innovate, create, and turn your dreams into reality.",
+    image: "/images/og/career-en-og.webp",
+  },
+  zh: {
+    title: "职业发展",
+    description: "加入我们，创新、创造，将您的梦想变为现实。",
+    image: "/images/og/career-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="Career">
+<Layout title={title} description={description} image={image}>
   <HeroSection
     companies={data.main.companies}
     url="/images/Edit-HEADER-CAREER-JOBS.webp"

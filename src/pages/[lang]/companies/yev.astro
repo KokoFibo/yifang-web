@@ -20,9 +20,27 @@ if (!entry) {
 }
 
 const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title: "PT Yifang Eco Vehicle",
+    description:
+      "Intelligent Assembly, Enjoy a Green Future. YEV is committed to provide green transportation services for the people of Indonesia. Choose YEV and embrace the future!",
+    image: "/images/og/yev-en-og.webp",
+  },
+  zh: {
+    title: "PT Yifang Eco Vehicle",
+    description:
+      "智能组装，绿享未来 YEV 坚定致力于为印度尼西亚人民提供环保型交通服务。 选择 YEV，拥抱未来！",
+    image: "/images/og/yev-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="YEV">
+<Layout title={title} description={description} image={image}>
   <HeroSection
     companies={data.main.companies}
     url="/images/OUR-COMPANIES-HEADER-YEV.webp"

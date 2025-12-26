@@ -33,3 +33,43 @@ body {
   font-family: "Inter", sans-serif;
   /* font-family: "Noto Sans SC", sans-serif; */
 }
+
+/* Background dotted */
+.bg-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background-image: radial-gradient(
+    hsla(0, 2%, 51%, 0.5) 0.8px,
+    transparent 0.8px
+  );
+  background-size: 20px 20px;
+  background-repeat: repeat;
+
+  -webkit-mask-image: linear-gradient(
+    to top right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to top right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Konten di atas background */
+.bg-section > * {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+/* Reset di mobile */
+@media (max-width: 768px) {
+  .bg-section > * {
+    transform: none;
+  }
+}

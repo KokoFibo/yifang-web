@@ -18,9 +18,27 @@ if (!entry) {
   throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
 }
 const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title: "Yifang Academy | Intrapreneurship Program",
+    description:
+      "Banyak Mandarin Speaker di Indonesia merasa terjebak jadi penerjemah. Yifang Academy membina mereka jadi intrapreneur yang dipromosikan dari dalam perusahaan Tiongkok.",
+    image: "/images/og/yifang-academy-en-og.webp",
+  },
+  zh: {
+    title: "Yifang Academy｜企业内创业者培养计划",
+    description:
+      "在印度尼西亚，许多会说中文的人感到自己被困在翻译岗位。Yifang Academy 致力于将他们培养为企业内创业者，并在中资企业内部获得晋升。",
+    image: "/images/og/yifang-academy-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="Yifang Academy">
+<Layout title={title} description={description} image={image}>
   <HeroSection
     companies={data.main.companies}
     url="/images/Header-scaled.webp"

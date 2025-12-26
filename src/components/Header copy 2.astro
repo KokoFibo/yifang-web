@@ -125,7 +125,7 @@ const getNavPath = (path) => {
               class="w-48 rounded-xl border border-slate-200 bg-white shadow-2xl p-2 overflow-hidden"
             >
               {
-                ["Career", "Jobs"].map((item) => (
+                ["Jobs"].map((item) => (
                   <a
                     href={getNavPath(`/career/${item.toLowerCase()}`)}
                     class="block px-4 py-2.5 rounded-lg hover:bg-red-50 hover:text-red-600 hover:translate-x-1 text-slate-800 text-xs font-medium transition-all duration-200"
@@ -261,12 +261,11 @@ const getNavPath = (path) => {
               d="M19 9l-7 7-7-7"></path></svg
           >
         </div>
-
         <div
           class="hidden flex-col pl-8 bg-slate-50 rounded-xl mt-1 overflow-hidden"
         >
           {
-            ["Career", "Jobs"].map((item) => (
+            ["Jobs"].map((item) => (
               <a
                 href={getNavPath(`/career/${item.toLowerCase()}`)}
                 class="mobile-link py-3 px-4 text-xs text-slate-600 hover:text-red-600 transition-colors border-l border-slate-200"

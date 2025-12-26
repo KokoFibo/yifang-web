@@ -1,0 +1,52 @@
+server {
+    server_name yifang.co.id www.yifang.co.id;
+    root /var/www/yifang;
+     location = / {
+        set $lang "en";
+        # Cek apakah browser user menggunakan bahasa Mandarin
+        if ($http_accept_language ~* "^zh") {
+            set $lang "zh";
+        }
+        # Redirect 302 (sementara) agar SEO tetap fleksibel
+        add_header Cache-Control "no-store, no-cache, must-revalidate";
+        return 301 $scheme://$host/$lang/;
+    }
+
+    # 2. Menangani URL Folder (Astro Clean URLs)
+    location / {
+        # Mencoba mencari file .html fisik, jika tidak ada baru lari ke 404
+        try_files $uri $uri/ $uri.html /404.html;
+   }
+
+    # 3. Menangani Halaman 404 secara Internal
+    # Ini mencegah Nginx melempar error kembali ke '/' (index.astro)
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+    }
+
+    # 4. Cache Control untuk Assets (Opsional tapi bagus untuk performa)
+    location /_astro/ {
+        expires 1y;
+        add_header Cache-Control "public, imuttable";
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/yifang.co.id/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/yifang.co.id/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = yifang.co.id) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name yifang.co.id www.yifang.co.id;
+    return 404; # managed by Certbot
+
+
+}

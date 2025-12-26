@@ -6,6 +6,7 @@
 import Layout from "../../layouts/Layout.astro";
 import ChristmasHero from "../../components/home/ChristmasHero.astro";
 import OneStopSolution from "../../components/home/OneStopSolution.astro";
+import HeroSection from "../../components/HeroSection.astro";
 
 // import { getEntry } from "astro:content";
 export async function getStaticPaths() {
@@ -20,6 +21,12 @@ export async function getStaticPaths() {
 ---
 
 <Layout title="Yifang Academy">
-  <ChristmasHero />
-  <OneStopSolution />
+  <HeroSection />
+
+  <HeroSection
+    companies={["Blog & News"]}
+    url="/images/HEADER-OUR-COMPANIES-YSM.webp"
+    description="Yifang Group Insights & Updates"
+    button="Read More"
+  />
 </Layout>

@@ -9,7 +9,7 @@ const { data } = entry;
 
 <section
   id="iso-section"
-  class="bg-section flex items-center justify-center mt-10 lg:mt-24 p-6 lg:p-12 overflow-hidden"
+  class="bg-section relative flex items-center justify-center mt-10 lg:mt-24 p-6 lg:p-12 overflow-hidden"
 >
   <div class="w-full max-w-7xl mx-auto">
     <div class="flex flex-col gap-6 text-center">
@@ -138,42 +138,3 @@ const { data } = entry;
   // Run on Astro View Transitions
   document.addEventListener("astro:after-swap", initIsoAnim);
 </script>
-
-<style>
-  .bg-section {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-  }
-
-  /* Background Grid Effect */
-  .bg-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-image:
-      url("/images/bg_frame3.png"),
-      linear-gradient(
-        to top right,
-        rgba(255, 255, 255, 0.7),
-        rgba(255, 255, 255, 1)
-      );
-    background-repeat: repeat, no-repeat;
-    background-size:
-      20px 20px,
-      cover;
-    opacity: 0.8;
-  }
-
-  .iso-card {
-    will-change: transform, opacity;
-  }
-
-  /* Tablet Fix: Grid 2 kolom di HP, 3 kolom di Tablet, 6 di Desktop */
-  @media (max-width: 639px) {
-    .grid-cols-2 {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-</style>
