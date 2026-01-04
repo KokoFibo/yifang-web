@@ -42,7 +42,8 @@ const getAlternatePath = (targetLang) =>
     />
 
     <!-- Title -->
-    <title>{title ? `${title} | ${siteName}` : siteName}</title>
+    <!-- <title>{title ? `${title} | ${siteName}` : siteName}</title> -->
+    <title>{title ? `${title}` : siteName}</title>
 
     <!-- Canonical -->
     <link rel="canonical" href={currentUrl} />

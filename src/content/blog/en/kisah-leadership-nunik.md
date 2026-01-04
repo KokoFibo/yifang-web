@@ -1,6 +1,6 @@
 ---
 title: "Belajar Leadership dan Bahasa Mandarin Langsung dari Lapangan: Cerita Mbak Nunik di Yifang"
-description: "Simak perjalanan Nunik Susilowati di Yifang Group. Dari niat mengasah bahasa Mandarin hingga menjadi Supervisor QC yang membawahi 700 anggota tim."
+description: "Kisah sukses Nunik Susilowati. Pelajari bagaimana beliau bertransformasi menjadi Supervisor QC untuk 700 orang melalui penguasaan bahasa Mandarin."
 pubDate: 2025-08-07
 image: "/images/blogs/Headline-Belajar-Leadership-dan-Bahasa-Mandarin-Langsung-dari-Lapangan_-Cerita-Mbak-Nunik-di-Yifang.webp"
 tags: ["Motivasi Kerja"]

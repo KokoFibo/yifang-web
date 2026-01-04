@@ -1,6 +1,6 @@
 ---
 title: "Gimana Sih Cara Masuk Kerja di Perusahaan Tiongkok?"
-description: "Panduan lengkap langkah-langkah melamar kerja di perusahaan Tiongkok di Indonesia. Pelajari strategi CV, kebutuhan bahasa Mandarin, hingga platform rekrutmen yang tepat."
+description: "Simak panduan melamar kerja di perusahaan Tiongkok di Indonesia. Tips optimasi CV, syarat bahasa Mandarin, dan daftar platform rekrutmen terpercaya 2026."
 pubDate: 2025-06-17
 image: "/images/blogs/employees-1.webp"
 tags: ["Tips & Tricks"]

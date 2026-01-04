@@ -1,6 +1,6 @@
 ---
 title: "易方优秀员工 —— Muhammad Yayan：细致、稳重与责任感的代名词"
-description: "在易方电动车生产线上，Muhammad Yayan 用冷静与细致守护产品品质。了解这位装配操作员如何用责任感书写自己的奋斗故事。"
+description: "在易方电动车繁忙生产线，装配工 Muhammad Yayan 凭冷静细致严守品质。本文记录他将责任融入零件组装，用匠心守护卓越性能的奋斗历程。探索基层员工如何凭职业素养，在智造浪潮中书写非凡篇章。点击阅读一线匠人的品质宣言，感受实干力量！"
 pubDate: 2025-12-06
 image: "/images/blogs/Headline-yayan.webp"
 tags: ["工作动力"]

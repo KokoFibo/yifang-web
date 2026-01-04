@@ -1,6 +1,6 @@
 ---
 title: "在现场学习领导力与中文：来自易方的 Nunik 的故事"
-description: "从对中文感兴趣的职场新人，到管理 700 人的品质部主管。听 Nunik 讲述如何通过语言与毅力在易方集团实现职场跨越。"
+description: "从对中文感兴趣的职场新人，成功蜕变为管理 700 人团队的品质部主管。听 Nunik 讲述她如何凭借语言优势与过人毅力，在易方集团 实现惊人的职场跨越。本文深度解析她从语言学习到大型团队管理的实战心得，揭秘在中资企业脱颖而出的成功逻辑。借鉴这份女性领导力成长范本，开启您的无限可能。点击了解详情！"
 pubDate: 2025-08-07
 image: "/images/blogs/Headline-Belajar-Leadership-dan-Bahasa-Mandarin-Langsung-dari-Lapangan_-Cerita-Mbak-Nunik-di-Yifang.webp"
 tags: ["工作动力"]

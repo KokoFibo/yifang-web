@@ -1,6 +1,6 @@
 ---
 title: "Motivasi Kerja | Belajar Bahasa, Belajar Bertumbuh: Perjalanan Karier Pak Dedi di Yifang"
-description: "Simak transformasi luar biasa Pak Dedi di Yifang, dari keterbatasan bahasa hingga menjadi manajer yang menjembatani komunikasi antarbudaya."
+description: "Kisah inspiratif Pak Dedi: Bukti bahwa keterbatasan bahasa bukan penghalang untuk jadi Manajer sukses. Simak rahasia beliau membangun komunikasi efektif."
 pubDate: 2025-09-04
 image: "/images/blogs/Headline-Pak-dediy-1.webp"
 tags: ["Motivasi Kerja"]

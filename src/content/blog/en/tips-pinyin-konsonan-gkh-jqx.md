@@ -1,6 +1,6 @@
 ---
 title: "Panduan Lengkap Pelafalan 6 Konsonan Mandarin yang Sering Keliru"
-description: "Kuasai teknik pelafalan konsonan G, K, H, J, Q, dan X dalam bahasa Mandarin. Dilengkapi dengan tips 'Tes Tisu' untuk melatih aspirasi suara yang benar."
+description: "Panduan pelafalan konsonan Mandarin G, K, H, J, Q, X. Pelajari teknik aspirasi suara yang benar menggunakan metode 'Tes Tisu' hanya di Yifang Academy."
 pubDate: 2025-08-14
 image: "/images/blogs/Headline-Panduan-Lengkap-Pelafalan-6-Konsonan-Mandarin.webp"
 tags: ["Tips & Tricks"]

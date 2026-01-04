@@ -1,6 +1,6 @@
 ---
 title: "Bahasa Mandarin Aja Gak Cukup? Ini Tantangan Mandarin Speaker di Dunia Kerja"
-description: "Mengapa bahasa Mandarin saja tidak cukup untuk unggul di pasar kerja? Pelajari kombinasi skill yang dicari perusahaan Tiongkok dan cara membangun mentalitas intrapreneur."
+description: "Ingin unggul di perusahaan Tiongkok? Selain bahasa Mandarin, kuasai skill tambahan dan mentalitas intrapreneur. Simak panduan lengkap di sini!"
 pubDate: 2025-07-19
 image: "/images/blogs/Headline-Bahasa-Mandarin-Aja-Gak-Cukup_.webp"
 tags: ["Tips & Tricks"]

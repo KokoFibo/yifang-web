@@ -36,15 +36,16 @@ const data = entry?.data || {
 // 🔥 SEO CONFIG
 const seo = {
   en: {
-    title: "Enter the Indonesian market with ease",
+    title: "Enter the Indonesian market with ease | Yifang Group",
     description:
       "We help companies expand into Indonesia through compliant workforce recruitment, legal support, and operational services.",
     image: "/images/og/home-en-og.webp",
   },
   zh: {
-    title: "进入印尼市场轻松无忧",
+    title:
+      "进入印尼市场轻松无忧｜易方集团（Yifang Group）一站式企业服务解决方案",
     description:
-      "我们为企业提供用工、法律及运营支持，助力企业合规、高效进入印尼市场。",
+      "易方集团（Yifang Group）专注于印尼市场，为企业提供用工管理、法律合规及日常运营等一站式支持，帮助企业高效、合规进入并持续拓展印尼市场，降低经营风险，实现长期稳健发展。",
     image: "/images/og/home-zh-og.webp",
   },
 };
@@ -56,11 +57,11 @@ const { title, description, image } = seo[lang] ?? seo.en;
   <!-- <Hero /> -->
 
   <div class="section-reveal">
-    <!-- <Hero /> -->
+    <Hero />
   </div>
-  <div class="section-reveal">
+  <!-- <div class="section-reveal">
     <ChristmasHero />
-  </div>
+  </div> -->
   <div class="section-reveal">
     <OneStopSolution />
   </div>

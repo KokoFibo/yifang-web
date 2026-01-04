@@ -1,6 +1,6 @@
 ---
 title: "Pelafalan Dasar Bahasa Mandarin: Panduan Mudah Belajar Pinyin Konsonan Awal (声母)"
-description: "Pahami fondasi dasar bahasa Mandarin melalui sistem Pinyin. Pelajari cara pelafalan 8 konsonan awal dan tips praktis menggunakan tisu untuk mengecek hembusan napas."
+description: "Pahami sistem Pinyin dan  pelafalan 8 konsonan awal Mandarin dengan benar. Gunakan teknik tisu untuk mengecek hembusan napas agar pelafalan makin akurat!"
 pubDate: 2025-07-12
 image: "/images/blogs/Headline-Pelafalan-Dasar-Bahasa-Mandarin.webp"
 tags: ["Tips & Tricks"]

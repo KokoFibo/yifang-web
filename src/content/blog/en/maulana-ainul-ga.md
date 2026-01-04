@@ -1,6 +1,7 @@
 ---
 title: "Maulana Ainul: Penjaga Stabilitas Fasilitas yang Tak Terlihat Namun Sangat Vital di Yifang"
-description: "Dibalik kelancaran produksi Yifang, ada peran General Affair yang memastikan stabilitas fasilitas. Simak dedikasi Maulana Ainul dalam menjaga ekosistem pabrik tetap optimal."
+description: "Peran vital General Affair di balik kelancaran produksi. Simak kisah Maulana Ainul dalam mengelola fasilitas dan ekosistem pabrik agar tetap optimal."
+
 pubDate: 2025-12-06
 image: "/images/blogs/Headline-Maul.webp"
 tags: ["Motivasi Kerja"]

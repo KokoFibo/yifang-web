@@ -1,6 +1,6 @@
 ---
 title: "Tips & Tricks | Abdul Rahman: Ketika Dedikasi Jadi Energi di Balik Mesin"
-description: "Simak kisah Abdul Rahman, Engineer di Yifang Group yang membuktikan bahwa ketenangan dan kerja dengan hati adalah kunci stabilitas produksi."
+description: "Engineer Abdul Rahman, berbagi rahasia stabilitas produksi melalui ketenangan dan dedikasi. Simak profil lengkap dan perannya di ekosistem pabrik."
 pubDate: 2025-10-24
 image: "/images/blogs/Headline-Abdul.webp"
 tags: ["Tips & Tricks"]

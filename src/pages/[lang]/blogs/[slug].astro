@@ -25,7 +25,12 @@ const formattedDate = new Date(post.data.pubDate).toLocaleDateString(
 );
 ---
 
-<Layout title={post.data.title}>
+<!-- <Layout title={post.data.title}> -->
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+>
   <div class="h-24 bg-black w-full fixed top-0 z-40 shadow-md"></div>
 
   <main class="bg-white min-h-screen pt-40 pb-20 text-slate-900">

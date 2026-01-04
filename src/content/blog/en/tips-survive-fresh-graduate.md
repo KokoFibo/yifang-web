@@ -1,6 +1,6 @@
 ---
 title: "Rahasia Fresh Graduate Bisa Survive di Perusahaan Tiongkok Indonesia"
-description: "Menghadapi culture shock di perusahaan Tiongkok? Simak strategi ampuh bagi fresh graduate untuk beradaptasi, berkomunikasi, dan sukses membangun karier."
+description: "Strategi sukses fresh graduate di perusahaan Tiongkok: Cara mengatasi culture shock, teknik komunikasi efektif, dan rahasia adaptasi cepat di dunia kerja."
 pubDate: 2025-08-27
 image: "/images/blogs/Headline-Rahasia-Fresh-Graduate-Bisa-Survive-di-Perusahaan-Tiongkok_.webp"
 tags: ["Tips & Tricks"]
