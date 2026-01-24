@@ -21,9 +21,30 @@ const currentUrl = new URL(Astro.url.pathname, siteUrl).href;
 const fontClass = lang === "zh" ? "font-chinese" : "";
 
 // hreflang helper
+const baseUrl = "https://www.yifang.co.id";
 const currentPath = Astro.url.pathname;
-const getAlternatePath = (targetLang) =>
-  currentPath.replace(/^\/[^\/]+/, `/${targetLang}`);
+
+// const getAlternatePath = (targetLang) =>
+//   currentPath.replace(/^\/[^\/]+/, `/${targetLang}`);
+
+const getAlternatePath = (targetLang) => {
+  // 1. Pastikan path tidak kosong dan handle root
+  if (currentPath === "/" || currentPath === "") {
+    return `${baseUrl}/${targetLang}/`;
+  }
+
+  // 2. Gunakan regex yang lebih aman untuk menangkap bagian bahasa
+  // Ini mengganti /id/halaman menjadi /en/halaman
+  let newPath = currentPath.replace(/^\/([^\/]+)/, `/${targetLang}`);
+
+  // 3. Pastikan URL berakhir dengan slash (Trailing Slash)
+  // agar konsisten dengan standar default Astro
+  if (!newPath.endsWith("/")) {
+    newPath += "/";
+  }
+
+  return `${baseUrl}${newPath}`;
+};
 ---
 
 <!doctype html>
@@ -40,7 +61,7 @@ const getAlternatePath = (targetLang) =>
       name="robots"
       content={noindex ? "noindex,nofollow" : "index,follow"}
     />
-
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <!-- Title -->
     <!-- <title>{title ? `${title} | ${siteName}` : siteName}</title> -->
     <title>{title ? `${title}` : siteName}</title>
