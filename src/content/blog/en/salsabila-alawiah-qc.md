@@ -1,6 +1,6 @@
 ---
 title: "Dedikasi dalam Setiap Detail – Kisah Salsabila Alawiah, Quality Control Yifang"
-description: "Dibalik produk berkualitas tinggi Yifang, ada ketelitian Salsabila Alawiah. Simak bagaimana peran Quality Control menjaga kepercayaan pelanggan."
+description: "Dibalik kualitas produk, ada peran vital Quality Control. Simak dedikasi Salsabila Alawiah dalam menjaga kepercayaan pelanggan melalui ketelitian tinggi."
 pubDate: 2025-10-31
 image: "/images/blogs/Headline-Salsa.webp"
 tags: ["Motivasi Kerja"]

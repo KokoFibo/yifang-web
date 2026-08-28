@@ -1,6 +1,6 @@
 ---
 title: "在中资印尼公司中，Fresh Graduate 如何成功生存？"
-description: "揭秘印尼应届生在中资企业的生存之道。面对文化冲击与高压环境，如何通过提升跨文化能力与成果意识，实现职业跃迁。"
+description: "揭秘印尼应届生在中资企业的生存之道。面对文化冲击与高压，教你建立成果导向意识，提升跨文化沟通力，将挑战化为机遇。解析中企育人逻辑，助你打破瓶颈，实现从新人到骨干的快速跃迁。掌握这套实战手册，赢在出海新时代。点击获取职场进阶秘籍！"
 pubDate: 2025-08-27
 image: "/images/blogs/Headline-Rahasia-Fresh-Graduate-Bisa-Survive-di-Perusahaan-Tiongkok_.webp"
 tags: ["技巧与窍门"]

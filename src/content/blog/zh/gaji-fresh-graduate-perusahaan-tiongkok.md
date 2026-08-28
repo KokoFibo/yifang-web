@@ -1,6 +1,6 @@
 ---
 title: "中国企业应届毕业生薪资是多少？每月约 400 万至 1100 万印尼盾"
-description: "深度解析 2025 年中资企业在印尼的应届生薪资标准。对比本地企业薪资，分析影响收入的关键因素，并提供获取高薪的实战建议。"
+description: "深度解析 2025 年中资企业在印尼的应届生薪资标准。通过与本地企业薪酬对比，揭秘职场新人收入差距的底层逻辑。本文详尽分析影响薪资的关键因素，并为求职者提供获取高薪职位的实战建议与谈判技巧，助您在出海企业扩张浪潮中精准定位个人价值，赢在起跑线。点击获取第一手薪资调研报告。"
 pubDate: 2025-08-20
 image: "/images/blogs/Headline-Berapa-Gaji-Fresh-Graduate-di-Perusahaan-Tiongkok_-Kisaran-Rp4–11-Juta-per-Bulan.webp"
 tags: ["工作动力"]

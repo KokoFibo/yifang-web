@@ -1,6 +1,6 @@
 ---
 title: "易方优秀员工故事 — Neneng Dian：把“细心”当作一生的承诺"
-description: "在每一块点亮的手机屏幕背后，都隐藏着关于坚持与责任的故事。了解易方生产线线长 Neneng Dian 如何通过细心守护产品质量。"
+description: "每块手机屏背后都有坚持与责任。走进易方，看线长 Neneng Dian 如何凭细致观察与严苛标准守护质量。本文记录她从基层起步，以专业精神赢得信任的历程。探索幕后英雄如何以匠心定义品质，确保科技温度传递给用户。阅读这位品质守望者的故事！"
 pubDate: 2025-12-06
 image: "/images/blogs/Headline-neneng.webp"
 tags: ["工作动力"]

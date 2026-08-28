@@ -25,17 +25,23 @@ const url = "/images/christmas-2025.webp";
   >
     <div id="hero-content" class="opacity-0 max-w-4xl">
       <h1
+        id="hero-title1"
+        class="mb-2 text-xl text-white font-bold md:text-3xl leading-tight drop-shadow-2xl md:mb-24"
+      >
+        {data.title || "Enter the Indonesian market with ease"}
+      </h1>
+      <h2
         id="hero-title"
         class="mb-2 text-6xl font-bold md:text-8xl leading-tight drop-shadow-2xl title-glimmer"
       >
-        {data.title || "Merry Christmas"}
-      </h1>
+        {data.subtitle || "Merry Christmas"}
+      </h2>
 
       <h2
         id="hero-title-2"
         class="mb-8 text-4xl font-bold text-[#fcfaf7] md:text-6xl leading-tight drop-shadow-lg"
       >
-        {data.title2 || "and Happy New Year 2026"}
+        {data.subtitle2 || "and Happy New Year 2026"}
       </h2>
 
       <p

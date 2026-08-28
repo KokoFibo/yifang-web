@@ -1,6 +1,6 @@
 ---
 title: "Berapa Gaji Fresh Graduate di Perusahaan Tiongkok? Kisaran Rp 4–11 Juta per Bulan"
-description: "Ingin tahu berapa gaji pertama di perusahaan Tiongkok? Simak ulasan lengkap kisaran gaji Rp 4–11 juta, faktor penentu, dan tips negosiasi bagi fresh graduate."
+description: "Cek kisaran gaji Rp4–11 juta di perusahaan Tiongkok untuk fresh graduate. Pelajari faktor penentu gaji dan strategi negosiasi sukses."
 pubDate: 2025-08-20
 image: "/images/blogs/Headline-Berapa-Gaji-Fresh-Graduate-di-Perusahaan-Tiongkok_-Kisaran-Rp4–11-Juta-per-Bulan.webp"
 tags: ["Motivasi Kerja"]

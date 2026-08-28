@@ -1,0 +1,42 @@
+---
+import SectionTag from "./SectionTag.astro";
+interface Props { data: any }
+const { data } = Astro.props;
+const q = data.quote;
+---
+
+<section class="relative bg-ba-red text-white py-20 md:py-[110px]">
+  <SectionTag label={q.tag} tone="on-red" />
+
+  <div class="mx-auto max-w-[1240px] px-7">
+    <svg id="ba-quote-mark" class="text-white/28 -mb-1.5" width="52" height="40" viewBox="0 0 52 40" fill="none" aria-hidden="true">
+      <path d="M0 40V24.5C0 10.9 8 1.6 22 0L23.3 6.4C14.5 8.4 10.5 13.5 10.2 19.5H21V40H0ZM29 40V24.5C29 10.9 37 1.6 51 0L52.3 6.4C43.5 8.4 39.5 13.5 39.2 19.5H50V40H29Z" fill="currentColor"/>
+    </svg>
+    <p class="font-ba-mono text-xs tracking-[0.14em] uppercase text-white/85 ml-3">{q.eyebrow}</p>
+
+    <h2 id="ba-quote-title" class="mt-4.5 font-ba-display font-extrabold text-white text-[28px] leading-[1.05] max-w-[900px] md:text-[52px]">{q.titleLine1}</h2>
+    <p id="ba-quote-sub" class="mt-3.5 font-ba-display font-extrabold text-white text-[28px] leading-[1.05] md:text-[52px]">{q.subPre} <em class="italic font-bold text-ba-cream">{q.subEm}</em> {q.subPost}</p>
+
+    <div id="ba-quote-foot" class="mt-14 pt-7 border-t border-white/30 flex flex-col gap-4.5 md:flex-row md:items-end md:justify-between">
+      <div class="flex flex-col gap-1">
+        {q.lines.map((l: string) => <p class="text-[15px] leading-[1.6] text-white/85">{l}</p>)}
+      </div>
+      <p class="font-ba-mono text-xs tracking-[0.04em] text-white/70">{q.path}</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(["#ba-quote-mark", "#ba-quote-title", "#ba-quote-sub", "#ba-quote-foot"], {
+    scrollTrigger: { trigger: "#ba-quote-title", start: "top 82%" },
+    y: 20,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.12,
+    ease: "power2.out",
+  });
+</script>

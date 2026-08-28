@@ -1,6 +1,6 @@
 ---
 title: "Minimal Harus Bisa Mandarin Level Berapa untuk Kerja di Perusahaan Tiongkok?"
-description: "Ingin kerja di perusahaan Tiongkok tapi bingung soal standar bahasa? Pelajari mengapa HSK 3 menjadi syarat minimal dan bagaimana kemampuan bahasa memengaruhi karier Anda."
+description: "Panduan syarat bahasa perusahaan Tiongkok: Sertifikat HSK 3 sangat penting dan bagaimana kemampuan Mandarin membuka peluang karier yang luas."
 pubDate: 2025-06-28
 image: "/images/blogs/Headline.webp"
 tags: ["Tips & Tricks"]

@@ -1,0 +1,64 @@
+---
+import SectionTag from "./SectionTag.astro";
+interface Props { data: any }
+const { data } = Astro.props;
+const a = data.advantage;
+---
+
+<section class="relative bg-white py-20 md:py-[110px]">
+  <SectionTag label={a.tag} tone="on-light" />
+
+  <div class="mx-auto max-w-[1240px] px-7">
+    <p class="font-ba-mono text-xs tracking-[0.14em] uppercase text-ba-red mb-4.5">{a.eyebrow}</p>
+    <h2 class="font-ba-display font-extrabold text-ba-ink text-[26px] leading-[1.05] max-w-[760px] md:text-[42px]">
+      {a.titleLine1}<br />
+      <span class="text-ba-red">{a.titleAccent}</span>
+    </h2>
+
+    <div class="mt-13 border-t border-black/13">
+      {a.values.map((v: any, i: number) => (
+        <div class="ba-advantage-row ba-adv-grid items-center gap-x-5 gap-y-2 py-5.5 border-b border-black/13 transition-colors duration-200 hover:bg-ba-lavender/8">
+          <span class="ba-adv-num font-ba-mono text-[11.5px] text-ba-red">{String(i + 1).padStart(2, "0")}</span>
+          <h3 class={`ba-adv-label text-[17px] md:text-[19px] font-bold ${v.accent ? "text-ba-red" : "text-ba-ink"}`}>{v.label}</h3>
+          <p class="ba-adv-body text-[14.5px] leading-[1.5] text-ba-ink-muted">{v.body}</p>
+          <svg class="ba-adv-chev justify-self-end text-ba-red" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 2L10 7L4 12" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ba-adv-grid {
+    display: grid;
+    grid-template-columns: 32px 1fr 18px;
+    grid-template-areas: "num label chev" "body body body";
+  }
+  .ba-adv-num { grid-area: num; }
+  .ba-adv-label { grid-area: label; }
+  .ba-adv-chev { grid-area: chev; }
+  .ba-adv-body { grid-area: body; padding-left: 52px; }
+
+  @media (min-width: 768px) {
+    .ba-adv-grid {
+      grid-template-columns: 44px 1fr 1fr 20px;
+      grid-template-areas: "num label body chev";
+    }
+    .ba-adv-body { padding-left: 0; }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".ba-advantage-row", {
+    scrollTrigger: { trigger: ".ba-advantage-row", start: "top 85%" },
+    x: -16,
+    opacity: 0,
+    duration: 0.5,
+    stagger: 0.08,
+    ease: "power2.out",
+  });
+</script>

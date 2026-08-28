@@ -20,9 +20,27 @@ if (!entry) {
 }
 
 const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title: "PT Yifang Eco Vehicle | Electric & Eco-Friendly Vehicles Indonesia",
+    description:
+      "PT Yifang Eco Vehicle provides electric and eco-friendly vehicle solutions for the Indonesian market.",
+    image: "/images/og/yev-en-og.webp",
+  },
+  zh: {
+    title: "PT Yifang Eco Vehicle｜印尼领先的电动车与环保交通解决方案公司",
+    description:
+      "PT Yifang Eco Vehicle 深耕印尼市场，专注于电动车及环保交通领域，凭借专业团队提供可靠、可持续的绿色出行解决方案，助力企业与社会实现低碳发展。",
+    image: "/images/og/yev-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="YEV">
+<Layout title={title} description={description} image={image}>
   <HeroSection
     companies={data.main.companies}
     url="/images/OUR-COMPANIES-HEADER-YEV.webp"

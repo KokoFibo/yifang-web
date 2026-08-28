@@ -1,6 +1,6 @@
 ---
 title: "看不见的努力——当你的辛苦还未被看见"
-description: "在职场中感到疲惫，往往是因为付出未被重视。本文深度解析如何建立‘企业内部创业心态’，在被忽视的阶段持续扎根，等待破土而出的时刻。"
+description: "职场疲惫常因付出未获重视。本文解析如何建立‘内部创业心态’，教你在被忽视的低谷期向下扎根，积蓄突破力量。打破内耗困局，在静默中打磨核心竞争力，静候破土而出的蜕变时刻。掌握这份指南，化疲惫为动力，重塑职业辉煌。点击开启内心觉醒之旅！"
 pubDate: 2025-08-01
 image: "/images/blogs/Headline-Perjuangan-Tak-Terlihat_-Ketika-Usaha-Kerasmu-Belum-Dihargai.webp"
 tags: ["工作动力"]

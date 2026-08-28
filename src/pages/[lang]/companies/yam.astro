@@ -20,9 +20,27 @@ if (!entry) {
 }
 
 const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title: "PT YIFANG ASSET MANAGEMENT | Industrial Factory & Asset Solutions",
+    description:
+      "PT YIFANG ASSET MANAGEMENT provides industrial factory and asset solutions to support efficient operations and growth.",
+    image: "/images/og/yam-en-og.webp",
+  },
+  zh: {
+    title: "PT YIFANG ASSET MANAGEMENT｜易方资产管理印尼工业厂房解决方案公司",
+    description:
+      "PT YIFANG ASSET MANAGEMENT（YAM）专注于印尼市场，为企业提供专业的工业厂房与资产管理解决方案，协助客户精准匹配最合适的厂房资源，提升运营效率，支持企业长期稳健发展。",
+    image: "/images/og/yam-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="YAM">
+<Layout title={title} description={description} image={image}>
   <HeroSection
     companies={data.main.companies}
     url="/images/OUR-COMPANIES-HEADER-YAM.webp"

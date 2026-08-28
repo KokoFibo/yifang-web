@@ -1,6 +1,6 @@
 ---
 title: "Salsabila：在每一个细节中坚持，用心守护品质"
-description: "了解易方品质检验专员 Salsabila Alawiah 的故事。在每一件高品质产品的背后，都有她对细节的执着与对品质的守护。"
+description: "走进易方，看品检专员 Salsabila Alawiah 的故事。高品质产品背后，是她对细节的执着与标准的守护。本文记录她如何凭专业检测与责任感，筑起品质防线。探索那些在幕后默默奉献、用细节定义卓越的守望者。阅读她的励志历程，感受匠心力量！"
 pubDate: 2025-10-31
 image: "/images/blogs/Headline-Salsa.webp"
 tags: ["工作动力"]

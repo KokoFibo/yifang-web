@@ -1,6 +1,6 @@
 ---
 title: "Bisa Nggak Naik Jabatan di Perusahaan Tiongkok? Ini Jawaban dan Strateginya"
-description: "Bongkar rahasia sistem promosi di perusahaan Tiongkok. Pelajari mengapa hasil kerja lebih penting dari senioritas dan bagaimana strategi proaktif bisa mempercepat karier Anda."
+description: "Sistem promosi perusahaan Tiongkok: Mengapa performa lebih penting dari senioritas? Simak strategi proaktif untuk naik jabatan lebih cepat di dunia kerja."
 pubDate: 2025-07-05
 image: "/images/blogs/Headline-Bisa-Nggak-Naik-Jabatan-di-Perusahaan-Tiongkok_.webp"
 tags: ["Tips & Tricks"]

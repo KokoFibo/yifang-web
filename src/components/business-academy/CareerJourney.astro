@@ -1,0 +1,48 @@
+---
+import SectionTag from "./SectionTag.astro";
+interface Props { data: any }
+const { data } = Astro.props;
+const c = data.cjourney;
+---
+
+<section class="relative bg-ba-offwhite py-20 md:py-[110px]">
+  <SectionTag label={c.tag} tone="on-light" />
+
+  <div class="mx-auto max-w-[1240px] px-7">
+    <div class="flex flex-col gap-2 mb-13 md:flex-row md:items-end md:justify-between">
+      <p class="font-ba-mono text-xs tracking-[0.14em] uppercase text-ba-red">{c.eyebrow}</p>
+      <h2 class="font-ba-display font-extrabold text-ba-ink text-[28px] leading-[1.05] md:text-right md:text-[48px]">
+        {c.titleLine1}<br />
+        <span class="text-ba-red">{c.titleAccent}</span>
+      </h2>
+    </div>
+
+    <div class="border-t border-black/13">
+      {c.stages.map((s: any) => (
+        <div class={`ba-career-row grid grid-cols-[30px_1fr_16px] md:grid-cols-[40px_1fr_18px] items-center gap-4.5 py-5 px-2.5 md:px-4 border-b border-black/13 transition-colors duration-200 ${s.final ? "bg-ba-red border-ba-red hover:bg-ba-red-deep" : "hover:bg-ba-lavender/10"}`}>
+            <span class={`font-ba-mono text-[11px] ${s.final ? "text-white" : "text-ba-red"}`}>{s.n}</span>
+            <div>
+              <h3 class={`text-[16.5px] md:text-[19px] font-bold ${s.final ? "text-white" : "text-ba-ink"}`}>{s.label}</h3>
+              <p class={`mt-0.5 text-sm ${s.final ? "text-white/85" : "text-ba-ink-muted"}`}>{s.body}</p>
+            </div>
+            <svg class={`justify-self-end ${s.final ? "text-white" : "text-ba-red"}`} width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 2L10 7L4 12" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from(".ba-career-row", {
+    scrollTrigger: { trigger: ".ba-career-row", start: "top 85%" },
+    y: 16,
+    opacity: 0,
+    duration: 0.45,
+    stagger: 0.08,
+    ease: "power2.out",
+  });
+</script>

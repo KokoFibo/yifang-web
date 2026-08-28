@@ -1,6 +1,6 @@
 ---
 title: "Belajar Huruf Vokal Bahasa Mandarin (韵母 yùnmǔ): Rahasia Pelafalan yang Bikin Kamu Cepat Lancar Ngomong Mandarin!"
-description: "Pahami pondasi utama pelafalan Mandarin supaya kamu bisa mengucapkan Pinyin dengan benar dan lancar."
+description: "Pahami pondasi utama pelafalan Mandarin agar kamu bisa mengucapkan Pinyin dengan benar. Pelajari teknik dasar suara dan nada supaya bicara lebih lancar!"
 pubDate: 2025-10-16
 image: "/images/blogs/Headline-Belajar-Huruf-Vokal.webp"
 tags: ["Tips & Tricks"]

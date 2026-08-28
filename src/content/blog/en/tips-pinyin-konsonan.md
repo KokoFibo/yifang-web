@@ -1,6 +1,6 @@
 ---
 title: "Tips & Tricks | 7 Konsonan Mandarin yang Paling Membingungkan: Bedanya Zh, Ch, Sh, R dengan Z, C, S"
-description: "Pelajari perbedaan mendasar posisi lidah antara konsonan zh, ch, sh, r dan z, c, s dalam bahasa Mandarin untuk meningkatkan akurasi pelafalan Anda."
+description: "Sering tertukar melafalkan Zh, Ch, Sh dengan Z, C, S? Pelajari perbedaan posisi lidah yang tepat untuk meningkatkan akurasi pelafalan Mandarin Anda!"
 pubDate: 2025-09-12
 image: "/images/blogs/Headline-7-Konsonan-Mandarin.webp"
 tags: ["Tips & Tricks"]

@@ -1,6 +1,6 @@
 ---
 title: "Ketelitian yang Menjadi Komitmen – Kisah Inspiratif Neneng Dian dari Line Produksi Yifang"
-description: "Di balik setiap layar smartphone yang menyala, ada cerita tentang ketekunan dan dedikasi. Simak kisah Neneng Dian dalam menjaga standar kualitas di Yifang Group."
+description: "Simak kisah Neneng Dian dalam memastikan setiap layar smartphone lulus standar mutu. Temukan pentingnya dedikasi dalam menjaga kualitas produk."
 pubDate: 2025-12-06
 image: "/images/blogs/Headline-neneng.webp"
 tags: ["Motivasi Kerja"]

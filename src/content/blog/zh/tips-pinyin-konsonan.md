@@ -1,6 +1,6 @@
 ---
 title: "最让印尼学生困惑的 7 个汉语声母：Zh、Ch、 Sh、R 和 Z、C、S 的区别"
-description: "汉语发音难点解析：深入浅出地讲解卷舌音 (zh, ch, sh, r) 与平舌音 (z, c, s) 的区别，帮助印尼学习者掌握正确舌位。"
+description: "解析汉语发音难点：系统讲解卷舌音(zh,ch,sh,r)与平舌音(z,c,s)区别。针对印尼学习者，提供精准舌位图解与纠音技巧，助你告别发音模糊。通过训练掌握规律，提升职场沟通专业感与地道度。掌握这些技巧，让表达更自信。立即攻克发音难关！"
 pubDate: 2025-09-12
 image: "/images/blogs/Headline-7-Konsonan-Mandarin.webp"
 tags: ["技巧与窍门"]

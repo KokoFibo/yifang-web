@@ -1,6 +1,6 @@
 ---
 title: "Muhammad Yayan: Ketelitian, Keteguhan, dan Dedikasi di Balik Jalannya Produksi Yifang"
-description: "Simak kisah inspiratif Muhammad Yayan, operator perakitan Yifang yang membuktikan bahwa ketenangan dan ketelitian adalah kunci kualitas dalam industri manufaktur."
+description: "Kisah inspiratif Muhammad Yayan di Yifang: Menjaga standar kualitas perakitan melalui ketelitian tinggi. Pelajari rahasia dedikasinya di dunia manufaktur."
 pubDate: 2025-12-06
 image: "/images/blogs/Headline-yayan.webp"
 tags: ["Motivasi Kerja"]

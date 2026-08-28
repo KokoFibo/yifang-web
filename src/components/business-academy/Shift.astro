@@ -1,0 +1,72 @@
+---
+import SectionTag from "./SectionTag.astro";
+interface Props { data: any }
+const { data } = Astro.props;
+const s = data.shift;
+
+const variantClasses: Record<string, string> = {
+  white: "bg-white text-ba-ink border-black/13",
+  red: "bg-ba-red text-white border-ba-red",
+  black: "bg-ba-black text-ba-paper border-ba-black",
+};
+---
+
+<section class="relative bg-ba-offwhite py-20 md:py-[110px]" id="journey">
+  <SectionTag label={s.tag} tone="on-light" />
+
+  <div class="mx-auto max-w-[1240px] px-7 grid grid-cols-1 md:grid-cols-[1fr_0.85fr] gap-11 items-start">
+    <div id="ba-shift-copy">
+      <p class="font-ba-mono text-xs tracking-[0.14em] uppercase text-ba-red mb-4.5">{s.eyebrow}</p>
+      <h2 class="font-ba-display font-extrabold text-ba-ink text-[28px] leading-[1.05] md:text-[46px]">
+        {s.titlePre}<br />
+        <span class="text-ba-red">{s.titleAccent1}<br />{s.titleAccent2}</span>
+      </h2>
+      <p class="mt-6 max-w-[380px] text-[15.5px] leading-[1.6] text-ba-ink-muted">{s.desc}</p>
+    </div>
+
+    <div class="flex flex-col items-center max-w-[340px] w-full md:ml-auto">
+      {s.steps.map((st: any, i: number) => (
+        <>
+          <div class={`ba-shift-card w-full px-6.5 py-6 border ${variantClasses[st.variant]}`}>
+            <span class="font-ba-mono text-[11.5px] opacity-60">{st.n}</span>
+            <h3 class="mt-2.5 font-ba-display font-extrabold text-[22px]">{st.label}</h3>
+            <ul class="mt-3.5 list-none p-0">
+              {st.tags.map((t: string) => (
+                <li class="font-ba-mono text-[11.5px] tracking-[0.03em] uppercase opacity-75 leading-[1.9]">{t}</li>
+              ))}
+            </ul>
+          </div>
+          {i < s.steps.length - 1 && (
+            <svg class="ba-shift-arrow text-ba-red my-2.5" width="16" height="20" viewBox="0 0 16 20" fill="none" aria-hidden="true"><path d="M8 0V18M8 18L2 12M8 18L14 12" stroke="currentColor" stroke-width="1.5"/></svg>
+          )}
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from("#ba-shift-copy", {
+    scrollTrigger: { trigger: "#ba-shift-copy", start: "top 80%" },
+    x: -24,
+    opacity: 0,
+    duration: 0.7,
+    ease: "power3.out",
+  });
+
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: ".ba-shift-card", start: "top 80%" },
+  });
+  const cards = gsap.utils.toArray(".ba-shift-card");
+  const arrows = gsap.utils.toArray(".ba-shift-arrow");
+  cards.forEach((card, i) => {
+    tl.from(card as Element, { y: 28, opacity: 0, duration: 0.55, ease: "power2.out" }, i * 0.35);
+    if (arrows[i]) {
+      tl.from(arrows[i] as Element, { scaleY: 0, opacity: 0, duration: 0.3, transformOrigin: "top" }, i * 0.35 + 0.4);
+    }
+  });
+</script>

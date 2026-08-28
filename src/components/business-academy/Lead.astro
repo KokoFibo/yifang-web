@@ -1,0 +1,97 @@
+---
+import SectionTag from "./SectionTag.astro";
+interface Props { data: any }
+const { data } = Astro.props;
+const l = data.lead;
+const f = l.form;
+---
+
+<section class="relative bg-ba-black text-ba-paper py-20 md:py-[110px]" id="daftar">
+  <SectionTag label={l.tag} tone="on-dark" />
+
+  <div class="mx-auto max-w-[1240px] px-7 grid grid-cols-1 md:grid-cols-2 gap-11 items-start">
+    <div id="ba-lead-copy">
+      <p class="font-ba-mono text-xs tracking-[0.14em] uppercase text-ba-red mb-4.5">{l.eyebrow}</p>
+      <h2 class="font-ba-display font-extrabold text-ba-paper text-[28px] leading-[1.05] md:text-[46px]">
+        {l.titlePre}<br />
+        <span class="text-ba-lavender">{l.titleAccent1}<br />{l.titleAccent2}</span>
+      </h2>
+      <p class="mt-5 font-ba-mono text-[12.5px] tracking-[0.04em] text-ba-paper/60">{l.sub}</p>
+
+      <div class="mt-8.5 flex flex-wrap">
+        <span class="font-ba-mono text-[11px] tracking-[0.04em] uppercase px-4 py-3 flex items-center border border-ba-red text-ba-lavender">{l.badgeOutline}</span>
+        <span class="font-ba-mono text-[11px] tracking-[0.04em] uppercase px-4 py-3 flex items-center bg-ba-red text-white font-bold">{l.badgeSolid}</span>
+      </div>
+    </div>
+
+    <form class="ba-lead-form flex flex-col gap-5.5" id="ba-lead-form">
+      <label class="ba-lead-field flex flex-col gap-2">
+        <span class="font-ba-mono text-[11px] tracking-[0.06em] uppercase text-ba-paper/60">{f.nama}</span>
+        <input type="text" name="nama" placeholder={f.namaPlaceholder} required class="bg-transparent border-0 border-b border-white/16 text-ba-paper text-[15.5px] py-2 px-0.5 placeholder:text-ba-paper/35 focus:outline-none focus:border-ba-red" />
+      </label>
+      <label class="ba-lead-field flex flex-col gap-2">
+        <span class="font-ba-mono text-[11px] tracking-[0.06em] uppercase text-ba-paper/60">{f.whatsapp}</span>
+        <input type="tel" name="whatsapp" placeholder={f.whatsappPlaceholder} required class="bg-transparent border-0 border-b border-white/16 text-ba-paper text-[15.5px] py-2 px-0.5 placeholder:text-ba-paper/35 focus:outline-none focus:border-ba-red" />
+      </label>
+      <label class="ba-lead-field flex flex-col gap-2">
+        <span class="font-ba-mono text-[11px] tracking-[0.06em] uppercase text-ba-paper/60">{f.email}</span>
+        <input type="email" name="email" placeholder={f.emailPlaceholder} required class="bg-transparent border-0 border-b border-white/16 text-ba-paper text-[15.5px] py-2 px-0.5 placeholder:text-ba-paper/35 focus:outline-none focus:border-ba-red" />
+      </label>
+      <label class="ba-lead-field flex flex-col gap-2">
+        <span class="font-ba-mono text-[11px] tracking-[0.06em] uppercase text-ba-paper/60">{f.level}</span>
+        <select name="level_mandarin" required class="bg-transparent border-0 border-b border-white/16 text-ba-paper text-[15.5px] py-2 px-0.5 focus:outline-none focus:border-ba-red">
+          <option value="" disabled selected class="bg-ba-black">{f.levelPlaceholder}</option>
+          {f.levelOptions.map((o: string) => <option class="bg-ba-black">{o}</option>)}
+        </select>
+      </label>
+      <label class="ba-lead-field flex flex-col gap-2">
+        <span class="font-ba-mono text-[11px] tracking-[0.06em] uppercase text-ba-paper/60">{f.posisi}</span>
+        <input type="text" name="posisi" placeholder={f.posisiPlaceholder} required class="bg-transparent border-0 border-b border-white/16 text-ba-paper text-[15.5px] py-2 px-0.5 placeholder:text-ba-paper/35 focus:outline-none focus:border-ba-red" />
+      </label>
+
+      <button
+        type="submit"
+        class="mt-2.5 flex w-full items-center justify-center gap-2.5 bg-ba-red px-7 py-4 font-ba-mono text-[13px] font-semibold tracking-[0.06em] uppercase text-white transition-all duration-200 hover:-translate-y-px hover:bg-ba-red-deep"
+      >
+        {f.submit}
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M4 11L11 4M11 4H5M11 4V10" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+
+      <p class="mt-1 text-xs leading-[1.5] text-ba-paper/60">{f.disclaimer}</p>
+      <p class="text-[13.5px] text-ba-lavender min-h-5" id="ba-lead-note" role="status" data-success={f.success}></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('ba-lead-form') as HTMLFormElement | null;
+  const note = document.getElementById('ba-lead-note');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (note) note.textContent = note.getAttribute('data-success') || 'Thank you!';
+    form.reset();
+  });
+</script>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from("#ba-lead-copy", {
+    scrollTrigger: { trigger: "#ba-lead-copy", start: "top 82%" },
+    x: -20,
+    opacity: 0,
+    duration: 0.7,
+    ease: "power3.out",
+  });
+
+  gsap.from(".ba-lead-field", {
+    scrollTrigger: { trigger: ".ba-lead-form", start: "top 80%" },
+    y: 16,
+    opacity: 0,
+    duration: 0.45,
+    stagger: 0.08,
+    ease: "power2.out",
+  });
+</script>

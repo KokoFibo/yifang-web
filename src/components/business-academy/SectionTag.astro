@@ -1,0 +1,22 @@
+---
+interface Props {
+  label: string;
+  tone?: "on-light" | "on-dark" | "on-red";
+}
+const { label, tone = "on-light" } = Astro.props;
+
+const toneClass =
+  tone === "on-dark" ? "text-ba-paper" : tone === "on-red" ? "text-white" : "text-ba-ink";
+---
+
+<div
+  class={`ba-sectiontag hidden min-[900px]:flex absolute left-[28px] top-[84px] z-2 flex-col items-center gap-3 ${toneClass}`}
+  aria-hidden="true"
+>
+  <span class="w-px h-[54px] bg-current opacity-35"></span>
+  <span
+    class="font-ba-mono text-[10.5px] tracking-[0.16em] uppercase whitespace-nowrap opacity-75 [writing-mode:vertical-rl] rotate-180"
+  >
+    {label}
+  </span>
+</div>

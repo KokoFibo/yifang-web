@@ -3,26 +3,41 @@ import ContentCard from "../../../components/ContentCard.astro";
 import HeroSection from "../../../components/HeroSection.astro";
 import Layout from "../../../layouts/Layout.astro";
 
+// Untuk terjemahan
 import { getEntry } from "astro:content";
-// 1. WAJIB: Tambahkan fungsi ini agar dynamic route [lang] bekerja
 export async function getStaticPaths() {
   return [{ params: { lang: "en" } }, { params: { lang: "zh" } }];
 }
-
 const { lang } = Astro.params;
-
-// 2. Ambil data dari content/ysm/en.json atau zh.json
 const entry = await getEntry("ysm", lang);
-
-// Jika data tidak ditemukan, berikan fallback agar tidak error
 if (!entry) {
   throw new Error(`Data tidak ditemukan untuk bahasa: ${lang}`);
 }
-
 const { data } = entry;
+
+// 🔥 SEO CONFIG
+const seo = {
+  en: {
+    title:
+      "PT Yifang Sejahtera Mandiri | Professional Corporate Services in Indonesia",
+
+    description:
+      "Professional service company in Indonesia providing reliable business solutions with an experienced team.",
+    image: "/images/og/ysm-en-og.webp",
+  },
+  zh: {
+    title: "PT Yifang Sejahtera Mandiri｜易方胜捷曼迪里印尼专业企业服务公司",
+    description:
+      "PT Yifang Sejahtera Mandiri（YSM）是一家专注于印尼市场的专业服务公司，拥有经验丰富的团队，为企业提供用工管理、运营支持及综合解决方案，协助客户高效应对日常经营中的问题与挑战，实现稳健发展。",
+
+    image: "/images/og/ysm-zh-og.webp",
+  },
+};
+
+const { title, description, image } = seo[lang] ?? seo.en;
 ---
 
-<Layout title="YSM">
+<Layout title={title} description={description} image={image}>
   <HeroSection
     companies={data.main.companies}
     url="/images/HEADER-OUR-COMPANIES-YSM.webp"

@@ -1,6 +1,6 @@
 ---
 title: "Intrapreneurship Program Yifang Academy yang Diburu Perusahaan Tiongkok di Indonesia!"
-description: "Ingin karier lebih dari sekadar translator? Intrapreneurship Program Yifang Academy menyiapkan jalur karier jelas menuju posisi Direktur dan Mitra Bisnis."
+description: "Cari jalur karier selain translator? Program Intrapreneurship Yifang Academy siapkan Anda jadi Direktur dan Mitra Bisnis. Simak selengkapnya di sini!"
 pubDate: 2025-07-26
 image: "/images/blogs/Headline-Dari-Penerjemah-Jadi-Direktur_-1.webp"
 tags: ["Tips & Tricks"]

@@ -1,6 +1,6 @@
 ---
 title: "Perjuangan Tak Terlihat: Ketika Usaha Kerasmu Belum Dihargai"
-description: "Pernahkah kamu merasa lelah karena tidak dihargai? Artikel ini membahas tentang keteguhan hati dan mental intrapreneur dalam menghadapi fase perjuangan yang tak terlihat."
+description: "Merasa tidak dihargai saat berjuang? Pelajari rahasia keteguhan hati dan mentalitas untuk bangkit dari fase sulit yang tak terlihat orang lain."
 pubDate: 2025-08-01
 image: "/images/blogs/Headline-Perjuangan-Tak-Terlihat_-Ketika-Usaha-Kerasmu-Belum-Dihargai.webp"
 tags: ["Motivasi Kerja"]

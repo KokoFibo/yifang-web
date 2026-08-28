@@ -1,0 +1,78 @@
+---
+import SectionTag from "./SectionTag.astro";
+
+interface Props { data: any }
+const { data } = Astro.props;
+const h = data.hero;
+---
+
+<section class="relative overflow-hidden bg-ba-offwhite pt-[140px] pb-16 md:pt-[168px] md:pb-24" id="top">
+  <div
+    class="pointer-events-none absolute inset-x-0 top-0 z-1 h-[110px] bg-gradient-to-b from-black/60 to-transparent"
+    aria-hidden="true"
+  >
+  </div>
+
+  <SectionTag label="Career Field Guide" tone="on-light" />
+
+  <div class="relative z-2 mx-auto max-w-[1240px] px-7 grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] gap-10 md:gap-14 items-center">
+    <div>
+      <p id="ba-hero-eyebrow" class="font-ba-mono text-xs tracking-[0.14em] uppercase text-ba-red mb-5">{h.eyebrow}</p>
+
+      <h1 id="ba-hero-title" class="relative font-ba-display font-extrabold text-ba-ink text-[34px] leading-[1.05] tracking-[-0.015em] md:text-[58px]">
+        <span
+          class="hidden md:block pointer-events-none absolute -top-7 -left-1.5 -z-1 whitespace-nowrap text-[clamp(60px,11vw,128px)] font-extrabold tracking-[0.02em] text-transparent [-webkit-text-stroke:1px_rgba(16,16,16,0.08)]"
+          aria-hidden="true"
+        >{h.ghost}</span>
+        {h.titlePre} <em class="not-italic text-ba-red">{h.titleEm}</em><br />
+        {h.titlePost}
+      </h1>
+
+      <p id="ba-hero-stages" class="mt-5 flex flex-wrap gap-2 font-ba-mono text-[13px] tracking-[0.04em] uppercase text-ba-ink-muted">
+        {h.stages.map((s: string, i: number) => (
+          <>
+            <span>{s}</span>
+            {i < h.stages.length - 1 && <span class="text-ba-red">&rarr;</span>}
+          </>
+        ))}
+      </p>
+
+      <p id="ba-hero-desc" class="mt-5 max-w-[480px] text-[16.5px] leading-[1.7] text-ba-ink-muted">{h.desc}</p>
+
+      <a
+        id="ba-hero-cta"
+        href="#daftar"
+        class="mt-8 inline-flex items-center gap-2.5 bg-ba-red px-7 py-4 font-ba-mono text-[13px] font-semibold tracking-[0.06em] uppercase text-white transition-all duration-200 hover:-translate-y-px hover:bg-ba-red-deep"
+      >
+        {h.cta}
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M4 11L11 4M11 4H5M11 4V10" stroke="currentColor" stroke-width="1.6"/></svg>
+      </a>
+    </div>
+
+    <div id="ba-hero-figure" class="relative order-first md:order-last max-w-[320px] md:max-w-none mx-auto md:mx-0 w-full">
+      <img
+        src="/images/business-academy/team-investment.webp"
+        alt="Talent Yifang Group"
+        width="1000"
+        height="800"
+        loading="eager"
+        class="w-full aspect-[4/5] object-cover object-[65%_20%] saturate-90 contrast-[1.03]"
+      />
+      <span class="absolute left-4 bottom-4 flex items-center gap-1.5 bg-ba-red px-3.5 py-2.5 font-ba-mono text-[11px] tracking-[0.05em] uppercase text-white">
+        {h.tagLeft} <span>&rarr;</span> {h.tagRight}
+      </span>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+
+  const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  tl.from("#ba-hero-eyebrow", { y: 16, opacity: 0, duration: 0.6 })
+    .from("#ba-hero-title", { y: 24, opacity: 0, duration: 0.8 }, "-=0.4")
+    .from("#ba-hero-stages", { y: 16, opacity: 0, duration: 0.6 }, "-=0.5")
+    .from("#ba-hero-desc", { y: 16, opacity: 0, duration: 0.6 }, "-=0.45")
+    .from("#ba-hero-cta", { y: 16, opacity: 0, duration: 0.6 }, "-=0.45")
+    .from("#ba-hero-figure", { scale: 0.96, opacity: 0, duration: 0.9, ease: "power2.out" }, "-=0.7");
+</script>
