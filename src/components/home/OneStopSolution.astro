@@ -19,7 +19,7 @@ const { data } = entry;
       <div id="company-text" class="flex flex-col gap-5 text-left order-1">
         <div class="space-y-2">
           <h5
-            class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs"
+            class="text-primary font-bold tracking-widest uppercase text-xs sm:text-sm"
           >
             {data.badge}
           </h5>
@@ -30,7 +30,7 @@ const { data } = entry;
           </h2>
         </div>
 
-        <div class="space-y-4 text-yfgrey text-sm sm:text-base leading-relaxed">
+        <div class="space-y-4 text-yfgrey text-base leading-relaxed">
           {data.description.map((text) => <p>{text}</p>)}
         </div>
 
@@ -73,25 +73,15 @@ const { data } = entry;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { revealTimeline } from "../../scripts/scrollReveal.js";
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#company-section",
-      start: "top 75%",
-      toggleActions: "play none none none",
-    },
-  });
-
-  tl.from("#company-text", {
-    x: -30,
-    opacity: 0,
-    duration: 0.8,
-    ease: "power2.out",
-  })
+  revealTimeline("#company-section", "top 75%")
+    .from("#company-text", {
+      x: -30,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out",
+    })
     .from(
       "#company-img-container",
       {
@@ -100,7 +90,7 @@ const { data } = entry;
         duration: 1,
         ease: "back.out(1.7)",
       },
-      "-=0.4"
+      "-=0.4",
     )
     .from(
       ".stat-card",
@@ -111,6 +101,6 @@ const { data } = entry;
         stagger: 0.2,
         ease: "power2.out",
       },
-      "-=0.6"
+      "-=0.6",
     );
 </script>

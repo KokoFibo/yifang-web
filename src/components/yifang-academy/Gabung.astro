@@ -92,7 +92,7 @@ const { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 } = Astro.props;
           </div>
           <div>
             <p
-              class="text-[10px] text-green-600 font-black uppercase tracking-[0.2em] mb-0.5"
+              class="text-[11px] text-green-600 font-black uppercase tracking-[0.2em] mb-0.5"
             >
               {t8}
             </p>
@@ -115,20 +115,12 @@ const { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10 } = Astro.props;
 
 <script>
   import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealTimeline } from "../../scripts/scrollReveal.js";
 
   const initWASection = () => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#wa-card",
-        start: "top 75%",
-      },
-    });
-
     // Entrance Sequence
-    tl.from("#wa-card", { x: -60, opacity: 0, duration: 1.2, ease: "expo.out" })
+    revealTimeline("#wa-card", "top 75%")
+      .from("#wa-card", { x: -60, opacity: 0, duration: 1.2, ease: "expo.out" })
       .from(
         ".wa-list-item",
         { x: -30, opacity: 0, stagger: 0.1, duration: 0.8, ease: "power2.out" },

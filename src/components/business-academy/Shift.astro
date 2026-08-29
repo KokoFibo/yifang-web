@@ -47,20 +47,16 @@ const variantClasses: Record<string, string> = {
 
 <script>
   import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup, revealTimeline } from "../../scripts/scrollReveal.js";
 
-  gsap.from("#ba-shift-copy", {
-    scrollTrigger: { trigger: "#ba-shift-copy", start: "top 80%" },
+  revealGroup("#ba-shift-copy", {
+    start: "top 80%",
     x: -24,
-    opacity: 0,
     duration: 0.7,
     ease: "power3.out",
   });
 
-  const tl = gsap.timeline({
-    scrollTrigger: { trigger: ".ba-shift-card", start: "top 80%" },
-  });
+  const tl = revealTimeline(".ba-shift-card", "top 80%");
   const cards = gsap.utils.toArray(".ba-shift-card");
   const arrows = gsap.utils.toArray(".ba-shift-arrow");
   cards.forEach((card, i) => {

@@ -33,24 +33,18 @@ const i = data.invite;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  gsap.from("#ba-invite-copy", {
-    scrollTrigger: { trigger: "#ba-invite-copy", start: "top 82%" },
+  revealGroup("#ba-invite-copy", {
+    start: "top 82%",
     y: 20,
-    opacity: 0,
     duration: 0.6,
     ease: "power3.out",
   });
 
-  gsap.from(".ba-invite-row", {
-    scrollTrigger: { trigger: ".ba-invite-row", start: "top 85%" },
+  revealGroup(".ba-invite-row", {
     x: 16,
-    opacity: 0,
     duration: 0.5,
     stagger: 0.12,
-    ease: "power2.out",
   });
 </script>

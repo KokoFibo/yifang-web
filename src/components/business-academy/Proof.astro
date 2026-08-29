@@ -86,24 +86,20 @@ const videoId = "Ke7yErmqFq8";
 </script>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  gsap.from("#ba-proof-media", {
-    scrollTrigger: { trigger: "#ba-proof-media", start: "top 82%" },
+  revealGroup("#ba-proof-media", {
+    start: "top 82%",
     x: -24,
-    opacity: 0,
     duration: 0.7,
     ease: "power3.out",
   });
 
-  gsap.from("#ba-proof-title, .ba-proof-text", {
-    scrollTrigger: { trigger: "#ba-proof-title", start: "top 82%" },
+  revealGroup("#ba-proof-title, .ba-proof-text", {
+    trigger: "#ba-proof-title",
+    start: "top 82%",
     y: 18,
-    opacity: 0,
     duration: 0.6,
     stagger: 0.12,
-    ease: "power2.out",
   });
 </script>

@@ -69,19 +69,10 @@ const { data } = entry;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
   // Animasi Judul
-  gsap.from(".reveal-text-evs", {
-    scrollTrigger: ".reveal-text-evs",
-    y: 20,
-    opacity: 0,
-    duration: 1,
-    ease: "power2.out",
-  });
+  revealGroup(".reveal-text-evs", { y: 20, duration: 1 });
 </script>
 
 <style>

@@ -10,12 +10,8 @@ const lang = getLangFromUrl(Astro.url);
 const entry = await getEntry("hero", lang);
 const { data } = entry;
 
-const { youtubeId = "7P-Xsyc2xU4" } = Astro.props;
-// const data = entry?.data || {
-//   hero: { title: "", subtitle: "", button: "" },
-//   company: { group: "", profile: "" },
-//   trusted: { title: "" },
-// };
+// const { youtubeId = "7P-Xsyc2xU4" } = Astro.props;
+
 const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
 ---
 
@@ -23,10 +19,17 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
   id="hero"
   class="relative min-h-screen overflow-hidden flex items-center"
 >
-  <div
-    id="hero-bg"
-    class="absolute inset-0 bg-cover bg-center bg-no-repeat animate-zoom"
-  >
+  <div id="hero-bg-stage" class="absolute inset-0">
+    <div
+      id="hero-bg-a"
+      class="hero-bg-layer absolute inset-0 bg-cover bg-center bg-no-repeat"
+    >
+    </div>
+    <div
+      id="hero-bg-b"
+      class="hero-bg-layer absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0"
+    >
+    </div>
   </div>
 
   <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -35,12 +38,12 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
       class="text-center text-white max-w-5xl mx-auto px-6 py-12 md:py-24"
     >
       <h1
-        class="reveal text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight max-w-4xl mx-auto"
+        class="reveal text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight max-w-4xl mx-auto"
       >
         {data.hero.title}
       </h1>
       <p
-        class="reveal text-sm sm:text-base md:text-lg mb-8 leading-relaxed opacity-90 max-w-3xl mx-auto"
+        class="reveal text-base sm:text-lg md:text-xl mb-8 leading-relaxed opacity-90 max-w-3xl mx-auto"
       >
         {data.hero.subtitle}
       </p>
@@ -65,11 +68,11 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
 
     <div>
       <div
-        class="font-medium text-red-500 text-xs sm:text-base uppercase tracking-wider"
+        class="font-semibold text-primary text-[11px] sm:text-sm uppercase tracking-wider"
       >
         {data.company.group}
       </div>
-      <div class="font-semibold text-base sm:text-2xl">
+      <div class="font-bold text-lg sm:text-2xl text-slate-900">
         {data.company.profile}
       </div>
     </div>
@@ -79,17 +82,18 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
 <!-- VIDEO MODAL -->
 <div
   id="video-modal"
-  class="fixed inset-0 z-100 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 sm:p-8"
 >
   <button
     id="close-video"
-    class="absolute top-6 right-6 text-white/80 hover:text-white transition-colors"
+    hidden
+    class="absolute top-6 right-6 z-60 text-white/80 hover:text-white transition-colors cursor-pointer"
   >
     <X size={48} />
   </button>
 
   <div
-    class="w-full max-w-5xl aspect-video bg-black shadow-2xl rounded-xl overflow-hidden"
+    class="relative w-full max-w-5xl aspect-video bg-black shadow-2xl rounded-xl overflow-hidden"
   >
     <iframe
       id="youtube-iframe"
@@ -115,7 +119,7 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
       iframe.src = `https://www.youtube.com/embed/7P-Xsyc2xU4?start=1`;
       modal.classList.remove("hidden");
       modal.classList.add("flex");
-      document.body.style.overflow = "hidden"; // Kunci scroll
+      // document.body.style.overflow = "hidden"; // Kunci scroll
     });
 
     // Tutup Modal
@@ -127,6 +131,7 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
     };
 
     closeBtn.addEventListener("click", handleClose);
+
     modal.addEventListener("click", (e) => {
       if (e.target === modal) handleClose();
     });
@@ -155,7 +160,7 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
     tl.from(
       "#profile-banner",
       { x: 100, opacity: 0, duration: 0.8, ease: "power2.out" },
-      "-=0.5"
+      "-=0.5",
     );
   });
 
@@ -174,30 +179,41 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
   });
 
   const images = [
-    "/images/HEADER-2000x1125-A.webp",
-    "/images/HEADER-2000x1125-B.webp",
-    "/images/HEADER-2000x1125-C.webp",
-    "/images/HEADER-2000x1125-D.webp",
-    "/images/HEADER-2000x1125-E.webp",
-    "/images/HEADER-2000x1125-F.webp",
-    "/images/HEADER-2000x1125-G.webp",
-    "/images/HEADER-2000x1125-H.webp",
+    "/images/HEADER-2000x1125-1.webp",
+    "/images/HEADER-2000x1125-2.webp",
+    "/images/HEADER-2000x1125-3.webp",
+    "/images/HEADER-2000x1125-4.webp",
+    "/images/HEADER-2000x1125-5.webp",
+    "/images/HEADER-2000x1125-6.webp",
+    "/images/HEADER-2000x1125-7.webp",
+    "/images/HEADER-2000x1125-8.webp",
   ];
 
-  let currentIndex = 0;
-  const heroBg = document.getElementById("hero-bg");
-  if (heroBg) {
-    heroBg.style.backgroundImage = `url(${images[0]})`;
+  const layerA = document.getElementById("hero-bg-a");
+  const layerB = document.getElementById("hero-bg-b");
+
+  if (layerA && layerB) {
+    let currentIndex = 0;
+    let showingA = true;
+
+    layerA.style.backgroundImage = `url(${images[0]})`;
+
+    // Preload images so the crossfade never shows a blank frame
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
     setInterval(() => {
       currentIndex = (currentIndex + 1) % images.length;
-      gsap.to(heroBg, {
-        opacity: 0.7,
-        duration: 0.3,
-        onComplete: () => {
-          heroBg.style.backgroundImage = `url(${images[currentIndex]})`;
-          gsap.to(heroBg, { opacity: 1, duration: 0.5 });
-        },
-      });
+      const incoming = showingA ? layerB : layerA;
+      const outgoing = showingA ? layerA : layerB;
+
+      incoming.style.backgroundImage = `url(${images[currentIndex]})`;
+      gsap.to(incoming, { opacity: 1, duration: 1.2, ease: "power1.inOut" });
+      gsap.to(outgoing, { opacity: 0, duration: 1.2, ease: "power1.inOut" });
+
+      showingA = !showingA;
     }, 5000);
   }
 </script>
@@ -208,12 +224,13 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
       transform: scale(1);
     }
     to {
-      transform: scale(1.15);
+      transform: scale(1.08);
     }
   }
-  .animate-zoom {
-    animation: zoom 20s ease-in-out infinite alternate;
-    will-change: transform;
+  .hero-bg-layer {
+    animation: zoom 24s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+    transition: opacity 1.2s ease-in-out;
   }
   .reveal,
   .section-reveal {

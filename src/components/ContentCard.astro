@@ -44,14 +44,14 @@ const {
         <div class="w-12 h-1 bg-primary mb-6"></div>
         {
           descriptions.map((description) => (
-            <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 italic">
+            <p class="text-gray-600 text-base leading-relaxed mb-8">
               {description}
             </p>
           ))
         }
         {
           listItems.map((item) => (
-            <ul class="ml-3 list-disc pl-5 space-y-2 text-gray-600 text-sm md:text-base">
+            <ul class="ml-3 list-disc pl-5 space-y-2 text-gray-600 text-base leading-relaxed">
               <li>{item}</li>
             </ul>
           ))
@@ -62,37 +62,8 @@ const {
 </section>
 
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealEach } from "../scripts/scrollReveal.js";
 
-  // Animasi untuk setiap elemen card-text dan card-image
-  const textElements = document.querySelectorAll(".card-text");
-  const imageElements = document.querySelectorAll(".card-image");
-
-  textElements.forEach((el) => {
-    gsap.from(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-      },
-      x: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-  });
-
-  imageElements.forEach((el) => {
-    gsap.from(el, {
-      scrollTrigger: {
-        trigger: el,
-        start: "top 85%",
-      },
-      x: -50,
-      opacity: 0,
-      duration: 1.2,
-      ease: "power2.out",
-    });
-  });
+  revealEach(".card-text", { x: 50, duration: 1, ease: "power3.out" });
+  revealEach(".card-image", { x: -50, duration: 1.2, ease: "power2.out" });
 </script>

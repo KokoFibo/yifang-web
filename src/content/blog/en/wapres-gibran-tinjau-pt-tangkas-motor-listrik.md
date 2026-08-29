@@ -5,9 +5,6 @@ pubDate: 2026-07-30
 image: "/images/blogs/gibran-tangkas-motor-listrik.webp"
 tags: ["Motivasi Kerja"]
 ---
-
-# Wapres Gibran Tinjau Yifang Group, Perkuat Link and Match Pendidikan–Industri untuk Dukung Ekosistem Kendaraan Listrik Nasional
-
 Kolaborasi antara dunia pendidikan dan industri menjadi fondasi penting dalam mencetak sumber daya manusia (SDM) unggul yang siap menghadapi era kendaraan listrik di Indonesia.
 
 Transformasi industri kendaraan listrik (_Electric Vehicle_ / EV) di Indonesia terus menunjukkan perkembangan yang signifikan. Tidak hanya berfokus pada pembangunan infrastruktur dan peningkatan kapasitas produksi, pemerintah juga menempatkan pengembangan SDM sebagai salah satu faktor utama dalam membangun ekosistem kendaraan listrik yang berkelanjutan.

@@ -64,31 +64,25 @@ const ph = w.phone;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  gsap.from("#ba-wa-copy", {
-    scrollTrigger: { trigger: "#ba-wa-copy", start: "top 82%" },
+  revealGroup("#ba-wa-copy", {
+    start: "top 82%",
     y: 20,
-    opacity: 0,
     duration: 0.6,
     ease: "power3.out",
   });
 
-  gsap.from(".ba-wa-perk", {
-    scrollTrigger: { trigger: ".ba-wa-perk", start: "top 88%" },
+  revealGroup(".ba-wa-perk", {
+    start: "top 88%",
     x: -10,
-    opacity: 0,
     duration: 0.4,
     stagger: 0.06,
-    ease: "power2.out",
   });
 
-  gsap.from("#ba-wa-visual", {
-    scrollTrigger: { trigger: "#ba-wa-visual", start: "top 82%" },
+  revealGroup("#ba-wa-visual", {
+    start: "top 82%",
     y: 30,
-    opacity: 0,
     duration: 0.7,
     ease: "power3.out",
   });

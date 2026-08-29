@@ -27,16 +27,13 @@ const q = data.quote;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  gsap.from(["#ba-quote-mark", "#ba-quote-title", "#ba-quote-sub", "#ba-quote-foot"], {
-    scrollTrigger: { trigger: "#ba-quote-title", start: "top 82%" },
+  revealGroup(["#ba-quote-mark", "#ba-quote-title", "#ba-quote-sub", "#ba-quote-foot"], {
+    trigger: "#ba-quote-title",
+    start: "top 82%",
     y: 20,
-    opacity: 0,
     duration: 0.6,
     stagger: 0.12,
-    ease: "power2.out",
   });
 </script>
