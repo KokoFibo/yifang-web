@@ -37,6 +37,18 @@ html {
   scroll-behavior: smooth;
 }
 
+@utility prose-yifang {
+  /* Mengatur variabel internal prose tailwind */
+  --tw-prose-body: var(--color-yfgrey);
+  --tw-prose-headings: white;
+  --tw-prose-links: var(--color-primary);
+  --tw-prose-bold: var(--color-primary);
+  --tw-prose-bullets: var(--color-primary);
+  --tw-prose-quotes: var(--color-yfgrey);
+  --tw-prose-hr: rgba(255, 255, 255, 0.1);
+
+  --font-inter: "Inter", sans-serif;
+}
 body {
   font-family: "Inter", sans-serif;
   /* font-family: "Noto Sans SC", sans-serif; */
