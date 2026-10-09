@@ -15,7 +15,7 @@ const dateFormatted = new Date(pubDate).toLocaleDateString(
 
 <a
   href={href}
-  class="blog-card group flex flex-col h-full overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-500 hover:-translate-y-2"
+  class="blog-card group flex flex-col h-full overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-500 ease-out hover:-translate-y-2"
 >
   <div class="relative aspect-[16/10] overflow-hidden">
     <div
@@ -41,7 +41,7 @@ const dateFormatted = new Date(pubDate).toLocaleDateString(
       {
         tags &&
           tags.map((tag) => (
-            <span class="bg-[var(--color-primary)] text-white text-[10px] font-bold px-3 py-1 rounded-md uppercase tracking-wider shadow-lg">
+            <span class="bg-[var(--color-primary)] text-white text-[11px] font-bold px-3 py-1 rounded-md uppercase tracking-wider shadow-lg">
               {tag}
             </span>
           ))
@@ -59,12 +59,12 @@ const dateFormatted = new Date(pubDate).toLocaleDateString(
     </div>
 
     <h3
-      class="text-xl font-bold text-slate-900 mb-3 leading-tight group-hover:text-[var(--color-primary)] transition-colors duration-300 italic"
+      class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-[var(--color-primary)] transition-colors duration-300"
     >
       {title}
     </h3>
 
-    <p class="text-slate-600 text-sm line-clamp-2 mb-6 flex-1">
+    <p class="text-slate-600 text-sm leading-relaxed line-clamp-2 mb-6 flex-1">
       {description}
     </p>
 

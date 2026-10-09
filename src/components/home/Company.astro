@@ -15,7 +15,7 @@ const { data } = entry;
     <div class="flex flex-col gap-6 text-center mb-12">
       <div class="services-header space-y-4">
         <h5
-          class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
+          class="text-primary font-bold tracking-widest uppercase text-xs sm:text-sm"
         >
           {data.main.subtitle}
         </h5>
@@ -105,42 +105,26 @@ const { data } = entry;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { revealTimeline } from "../../scripts/scrollReveal.js";
 
-  function initSafeAnim() {
-    gsap.registerPlugin(ScrollTrigger);
+  const header = document.querySelector(".services-header");
+  const video = document.querySelector(".video-wrapper");
+  const cards = document.querySelectorAll(".service-card");
 
-    // Pastikan elemen ada
-    const header = document.querySelector(".services-header");
-    const video = document.querySelector(".video-wrapper");
-    const cards = document.querySelectorAll(".service-card");
-
-    if (header && video && cards.length > 0) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#services-section",
-          start: "top 80%",
+  if (header && video && cards.length > 0) {
+    revealTimeline("#services-section", "top 80%")
+      .from(header, { opacity: 0, y: 30, duration: 0.8 })
+      .from(video, { opacity: 0, scale: 0.95, duration: 0.8 }, "-=0.4")
+      .from(
+        cards,
+        {
+          opacity: 0,
+          y: 40,
+          stagger: 0.1,
+          duration: 0.6,
+          clearProps: "all", // Penting: Menghapus filter/opacity setelah selesai
         },
-      });
-
-      tl.from(header, { opacity: 0, y: 30, duration: 0.8 })
-        .from(video, { opacity: 0, scale: 0.95, duration: 0.8 }, "-=0.4")
-        .from(
-          cards,
-          {
-            opacity: 0,
-            y: 40,
-            stagger: 0.1,
-            duration: 0.6,
-            clearProps: "all", // Penting: Menghapus filter/opacity setelah selesai
-          },
-          "-=0.4"
-        );
-    }
+        "-=0.4",
+      );
   }
-
-  // Jalankan
-  initSafeAnim();
-  document.addEventListener("astro:after-swap", initSafeAnim);
 </script>

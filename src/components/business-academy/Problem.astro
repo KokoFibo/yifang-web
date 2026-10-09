@@ -29,25 +29,20 @@ const p = data.problem;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  gsap.from("#ba-problem-eyebrow, #ba-problem-title", {
-    scrollTrigger: { trigger: "#ba-problem-title", start: "top 85%" },
+  revealGroup("#ba-problem-eyebrow, #ba-problem-title", {
+    trigger: "#ba-problem-title",
     y: 20,
-    opacity: 0,
     duration: 0.7,
     stagger: 0.1,
     ease: "power3.out",
   });
 
-  gsap.from(".ba-problem-card", {
-    scrollTrigger: { trigger: ".ba-problem-grid", start: "top 85%" },
+  revealGroup(".ba-problem-card", {
+    trigger: ".ba-problem-grid",
     y: 30,
-    opacity: 0,
     duration: 0.6,
     stagger: 0.12,
-    ease: "power2.out",
   });
 </script>

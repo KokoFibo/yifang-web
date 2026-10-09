@@ -74,24 +74,20 @@ const f = l.form;
 </script>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  gsap.from("#ba-lead-copy", {
-    scrollTrigger: { trigger: "#ba-lead-copy", start: "top 82%" },
+  revealGroup("#ba-lead-copy", {
+    start: "top 82%",
     x: -20,
-    opacity: 0,
     duration: 0.7,
     ease: "power3.out",
   });
 
-  gsap.from(".ba-lead-field", {
-    scrollTrigger: { trigger: ".ba-lead-form", start: "top 80%" },
+  revealGroup(".ba-lead-field", {
+    trigger: ".ba-lead-form",
+    start: "top 80%",
     y: 16,
-    opacity: 0,
     duration: 0.45,
     stagger: 0.08,
-    ease: "power2.out",
   });
 </script>

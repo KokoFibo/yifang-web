@@ -8,15 +8,17 @@ interface Props {
 const {
   bgColor = "bg-primary",
   textColor = "text-white",
-  hoverColor = "hover:bg-red-800",
+  hoverColor = "hover:bg-red-700",
   title,
 } = Astro.props;
 ---
 
-<div>
-  <button
-    class={`${textColor} ${bgColor} ${hoverColor} px-4 py-2 inline-block cursor-pointer`}
-  >
-    {title}
-  </button>
-</div>
+<button
+  class={`${textColor} ${bgColor} ${hoverColor} px-6 py-3 rounded-lg inline-flex items-center gap-2
+          text-sm sm:text-base font-semibold tracking-wide cursor-pointer
+          shadow-sm hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 active:scale-95
+          transition-all duration-300 focus-visible:outline-none focus-visible:ring-2
+          focus-visible:ring-primary focus-visible:ring-offset-2`}
+>
+  {title}
+</button>

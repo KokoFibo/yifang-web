@@ -15,14 +15,18 @@ const { data } = entry;
 const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
 ---
 
-<section
-  id="hero"
-  class="relative min-h-screen overflow-hidden flex items-center"
->
-  <div
-    id="hero-bg"
-    class="absolute inset-0 bg-cover bg-center bg-no-repeat animate-zoom"
-  >
+<section id="hero" class="relative min-h-screen flex items-center">
+  <div id="hero-bg-stage" class="absolute inset-0 overflow-hidden">
+    <div
+      id="hero-bg-a"
+      class="hero-bg-layer absolute inset-0 bg-cover bg-center bg-no-repeat"
+    >
+    </div>
+    <div
+      id="hero-bg-b"
+      class="hero-bg-layer absolute inset-0 bg-cover bg-center bg-no-repeat opacity-0"
+    >
+    </div>
   </div>
 
   <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -31,12 +35,12 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
       class="text-center text-white max-w-5xl mx-auto px-6 py-12 md:py-24"
     >
       <h1
-        class="reveal text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight max-w-4xl mx-auto"
+        class="reveal text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight max-w-4xl mx-auto"
       >
         {data.hero.title}
       </h1>
       <p
-        class="reveal text-sm sm:text-base md:text-lg mb-8 leading-relaxed opacity-90 max-w-3xl mx-auto"
+        class="reveal text-base sm:text-lg md:text-xl mb-8 leading-relaxed opacity-90 max-w-3xl mx-auto"
       >
         {data.hero.subtitle}
       </p>
@@ -61,11 +65,11 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
 
     <div>
       <div
-        class="font-medium text-red-500 text-xs sm:text-base uppercase tracking-wider"
+        class="font-semibold text-primary text-[11px] sm:text-sm uppercase tracking-wider"
       >
         {data.company.group}
       </div>
-      <div class="font-semibold text-base sm:text-2xl">
+      <div class="font-bold text-lg sm:text-2xl text-slate-900">
         {data.company.profile}
       </div>
     </div>
@@ -137,8 +141,7 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
 <script>
   // LOGIKA GSAP & BACKGROUND SLIDER
   import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealEach } from "../../scripts/scrollReveal.js";
 
   window.addEventListener("DOMContentLoaded", () => {
     const tl = gsap.timeline();
@@ -157,19 +160,7 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
     );
   });
 
-  document.querySelectorAll(".section-reveal").forEach((section) => {
-    gsap.from(section, {
-      scrollTrigger: {
-        trigger: section,
-        start: "top 85%",
-        toggleActions: "play none none none",
-      },
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-    });
-  });
+  revealEach(".section-reveal", { y: 40 });
 
   const images = [
     "/images/HEADER-2000x1125-1.webp",
@@ -182,20 +173,31 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
     "/images/HEADER-2000x1125-8.webp",
   ];
 
-  let currentIndex = 0;
-  const heroBg = document.getElementById("hero-bg");
-  if (heroBg) {
-    heroBg.style.backgroundImage = `url(${images[0]})`;
+  const layerA = document.getElementById("hero-bg-a");
+  const layerB = document.getElementById("hero-bg-b");
+
+  if (layerA && layerB) {
+    let currentIndex = 0;
+    let showingA = true;
+
+    layerA.style.backgroundImage = `url(${images[0]})`;
+
+    // Preload images so the crossfade never shows a blank frame
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
     setInterval(() => {
       currentIndex = (currentIndex + 1) % images.length;
-      gsap.to(heroBg, {
-        opacity: 0.7,
-        duration: 0.3,
-        onComplete: () => {
-          heroBg.style.backgroundImage = `url(${images[currentIndex]})`;
-          gsap.to(heroBg, { opacity: 1, duration: 0.5 });
-        },
-      });
+      const incoming = showingA ? layerB : layerA;
+      const outgoing = showingA ? layerA : layerB;
+
+      incoming.style.backgroundImage = `url(${images[currentIndex]})`;
+      gsap.to(incoming, { opacity: 1, duration: 1.2, ease: "power1.inOut" });
+      gsap.to(outgoing, { opacity: 0, duration: 1.2, ease: "power1.inOut" });
+
+      showingA = !showingA;
     }, 5000);
   }
 </script>
@@ -206,12 +208,13 @@ const YOUTUBE_VIDEO_ID = "7P-Xsyc2xU4";
       transform: scale(1);
     }
     to {
-      transform: scale(1.15);
+      transform: scale(1.08);
     }
   }
-  .animate-zoom {
-    animation: zoom 20s ease-in-out infinite alternate;
-    will-change: transform;
+  .hero-bg-layer {
+    animation: zoom 24s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+    transition: opacity 1.2s ease-in-out;
   }
   .reveal,
   .section-reveal {

@@ -66,11 +66,13 @@ const { title, description, image } = seo[lang] ?? seo.en;
       >
         <div>
           <h1
-            class="text-4xl md:text-5xl font-bold text-slate-900 mb-2 italic tracking-tight"
+            class="text-4xl md:text-5xl font-bold text-slate-900 mb-2 tracking-tight"
           >
             {data.title || "Blog & News"}
           </h1>
-          <p class="text-slate-500 font-medium tracking-wide uppercase text-sm">
+          <p
+            class="text-slate-500 font-semibold tracking-wide uppercase text-xs sm:text-sm"
+          >
             {data.subtitle || "Yifang Group Insights & Updates"}
           </p>
         </div>

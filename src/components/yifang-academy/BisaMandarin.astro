@@ -102,28 +102,18 @@ const { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13 } = Astro.props;
   </div>
 </section>
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  // Register plugin
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealTimeline, revealGroup } from "../../scripts/scrollReveal.js";
 
   // Jalankan animasi setelah DOM siap
   const initAnimation = () => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#title",
-        start: "top 80%",
-      },
-    });
-
     // Animasi Header
-    tl.from("#title", {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power4.out",
-    })
+    revealTimeline("#title", "top 80%")
+      .from("#title", {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power4.out",
+      })
       .from(
         ".problem-item",
         {
@@ -133,32 +123,22 @@ const { t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11, t12, t13 } = Astro.props;
           duration: 0.5,
           ease: "back.out(1.7)",
         },
-        "-=0.4"
+        "-=0.4",
       )
       .from("#sub-quote", { opacity: 0, duration: 1 }, "-=0.2");
 
     // Animasi Solution Box & Cards
-    gsap.from("#solution-container", {
-      scrollTrigger: {
-        trigger: "#solution-container",
-        start: "top 75%",
-      },
+    revealGroup("#solution-container", {
+      start: "top 75%",
       y: 100,
-      opacity: 0,
       duration: 1.2,
       ease: "power3.out",
     });
 
-    gsap.from(".benefit-card", {
-      scrollTrigger: {
-        trigger: ".benefit-card",
-        start: "top 85%",
-      },
+    revealGroup(".benefit-card", {
       y: 40,
-      opacity: 0,
-      stagger: 0.15,
       duration: 0.8,
-      ease: "power2.out",
+      stagger: 0.15,
     });
   };
 

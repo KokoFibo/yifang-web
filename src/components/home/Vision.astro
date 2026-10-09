@@ -99,34 +99,19 @@ const { data } = entry;
 </section>
 
 <script>
-  // Pendekatan GSAP yang lebih aman untuk mencegah tampilan kosong
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  function initAnimation() {
-    gsap.registerPlugin(ScrollTrigger);
+  const cards = document.querySelectorAll(".vision-card");
 
-    const cards = document.querySelectorAll(".vision-card");
-
-    // Hanya jalankan jika elemen ditemukan
-    if (cards.length > 0) {
-      gsap.from(cards, {
-        scrollTrigger: {
-          trigger: cards[0],
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: "power2.out",
-        clearProps: "all", // Penting: Menghapus inline styles setelah animasi selesai
-      });
-    }
+  // Hanya jalankan jika elemen ditemukan
+  if (cards.length > 0) {
+    revealGroup(cards, {
+      trigger: cards[0],
+      start: "top 90%",
+      y: 30,
+      duration: 0.6,
+      stagger: 0.15,
+      clearProps: "all", // Penting: Menghapus inline styles setelah animasi selesai
+    });
   }
-
-  // Menjalankan script dengan aman di Astro
-  initAnimation();
-  document.addEventListener("astro:after-swap", initAnimation);
 </script>

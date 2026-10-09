@@ -57,13 +57,13 @@ const baseTextClass = [
   {
     main.map((text) => (
       <p
-        class={`${paragraphClass} ${baseTextClass} text-gray-600 text-sm md:text-base leading-relaxed mb-8`}
+        class={`${paragraphClass} ${baseTextClass} text-gray-600 text-base leading-relaxed mb-8`}
         set:html={applyStyles(text)}
       />
     ))
   }
   <div
-    class={`${paragraphClass} ${baseTextClass} space-y-2 text-gray-600 text-sm md:text-base ml-8 leading-relaxed`}
+    class={`${paragraphClass} ${baseTextClass} space-y-2 text-gray-600 text-base ml-8 leading-relaxed`}
   >
     {
       list.length > 0 && (

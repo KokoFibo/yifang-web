@@ -16,7 +16,7 @@ const { data } = entry;
   <div class="w-full max-w-7xl mx-auto relative z-10">
     <div class="business-header flex flex-col gap-6 text-center mb-12 md:mb-16">
       <h5
-        class="text-primary font-bold tracking-widest uppercase text-[10px] sm:text-xs md:text-sm"
+        class="text-primary font-bold tracking-widest uppercase text-xs sm:text-sm"
       >
         {data.main.subtitle}
       </h5>
@@ -50,48 +50,31 @@ const { data } = entry;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { revealTimeline } from "../../scripts/scrollReveal.js";
 
-  function initBusinessAnim() {
-    gsap.registerPlugin(ScrollTrigger);
+  const headerParts = document.querySelectorAll(".business-header > *");
+  const carousel = document.querySelector(".business-carousel-wrapper");
 
-    const headerParts = document.querySelectorAll(".business-header > *");
-    const carousel = document.querySelector(".business-carousel-wrapper");
-
-    if (headerParts.length > 0) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: "#business-section",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      });
-
+  if (headerParts.length > 0) {
+    revealTimeline("#business-section", "top 80%")
       // Animasi Teks Muncul Berurutan
-      tl.from(headerParts, {
+      .from(headerParts, {
         y: 30,
         opacity: 0,
         duration: 0.8,
         stagger: 0.2,
         ease: "power2.out",
       })
-        // Animasi Carousel Muncul Halus
-        .from(
-          carousel,
-          {
-            opacity: 0,
-            y: 40,
-            duration: 1,
-            ease: "power2.out",
-          },
-          "-=0.4"
-        );
-    }
+      // Animasi Carousel Muncul Halus
+      .from(
+        carousel,
+        {
+          opacity: 0,
+          y: 40,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.4",
+      );
   }
-
-  // Jalankan inisialisasi
-  initBusinessAnim();
-  // Support untuk Astro View Transitions
-  document.addEventListener("astro:after-swap", initBusinessAnim);
 </script>

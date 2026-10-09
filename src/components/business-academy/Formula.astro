@@ -28,23 +28,16 @@ const f = data.formula;
 </section>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  gsap.from(".ba-formula-part", {
-    scrollTrigger: { trigger: ".ba-formula-part", start: "top 85%" },
+  revealGroup(".ba-formula-part", {
     x: -20,
-    opacity: 0,
     duration: 0.5,
     stagger: 0.12,
-    ease: "power2.out",
   });
 
-  gsap.from("#ba-formula-result", {
-    scrollTrigger: { trigger: "#ba-formula-result", start: "top 85%" },
+  revealGroup("#ba-formula-result", {
     scale: 0.85,
-    opacity: 0,
     duration: 0.6,
     ease: "back.out(1.6)",
     delay: 0.2,

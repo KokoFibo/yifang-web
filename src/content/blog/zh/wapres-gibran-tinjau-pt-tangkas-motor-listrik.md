@@ -5,9 +5,6 @@ pubDate: 2026-07-30
 image: "/images/blogs/gibran-tangkas-motor-listrik.webp"
 tags: ["工作动力"]
 ---
-
-# Gibran Rakabuming副总统视察 Yifang Group，深化教育与产业“产教融合”，助力印尼国家电动车生态系统建设
-
 教育与产业的深度融合，是培养高素质人才、迎接印尼电动车时代的重要基础。
 
 近年来，印度尼西亚电动车（Electric Vehicle，EV）产业持续快速发展。政府不仅着力推进基础设施建设和提升制造能力，更将人力资源（SDM）的培养作为构建可持续电动车生态系统的重要战略之一。

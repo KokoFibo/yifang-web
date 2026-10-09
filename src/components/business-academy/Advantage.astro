@@ -49,16 +49,11 @@ const a = data.advantage;
 </style>
 
 <script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealGroup } from "../../scripts/scrollReveal.js";
 
-  gsap.from(".ba-advantage-row", {
-    scrollTrigger: { trigger: ".ba-advantage-row", start: "top 85%" },
+  revealGroup(".ba-advantage-row", {
     x: -16,
-    opacity: 0,
     duration: 0.5,
     stagger: 0.08,
-    ease: "power2.out",
   });
 </script>

@@ -167,19 +167,11 @@ const { t1, t2, t3, t4, t5, t6, t7, t8 } = Astro.props;
 
 <script>
   import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
+  import { revealTimeline, floatLoop } from "../../scripts/scrollReveal.js";
 
   const initContactAnimations = () => {
-    const mainTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: "section",
-        start: "top 70%",
-      },
-    });
-
     // 1. Entrance Animation
-    mainTl
+    revealTimeline("section", "top 70%")
       .from("#contact-sub", { y: 20, opacity: 0, duration: 0.5 })
       .from(
         "#contact-title",
@@ -203,13 +195,7 @@ const { t1, t2, t3, t4, t5, t6, t7, t8 } = Astro.props;
       );
 
     // 2. Continuous Floating Animation untuk Icon
-    gsap.to(".icon-box", {
-      y: -8,
-      repeat: -1,
-      yoyo: true,
-      duration: 2,
-      ease: "sine.inOut",
-    });
+    floatLoop(".icon-box", { y: -8, duration: 2 });
 
     // 3. Mouse Interaction (Parallax Effect) pada Kartu
     const card = document.querySelector(".contact-card");
