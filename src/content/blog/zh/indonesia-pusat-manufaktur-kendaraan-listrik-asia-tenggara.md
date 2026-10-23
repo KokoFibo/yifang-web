@@ -2,7 +2,7 @@
 description: 了解印度尼西亚电动汽车产业生态的发展，从镍矿下游化、电池产业和零部件供应链，到易方集团在巴拉拉雅的电动汽车组装业务及产业人才培养。
 image: /images/blogs/indonesia-pusat-manufaktur-kendaraan-listrik-asia-tenggara.webp
 pubDate: 2026-10-16
-tags: ["电动汽车", "制造"]
+tags: ["电动汽车", "制造业"]
 title: 印度尼西亚迈向东南亚电动汽车制造中心：从上游到下游不断强化的产业链
 ---
 
