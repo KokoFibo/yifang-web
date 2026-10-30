@@ -1,6 +1,6 @@
 ---
 description: 探讨印度尼西亚电动汽车产业的投资机遇、TKDN提升挑战、制造业与人才发展，以及电动汽车生态系统对2030绿色经济议程的推动作用。
-image: /images/blogs/masa-depan-industri-kendaraan-listrik-indonesia-zh.webp
+image: /images/blogs/masa-depan-industri-kendaraan-listrik-indonesia.webp
 pubDate: 2026-10-30
 tags: ["电动汽车", "制造业"]
 title: 印度尼西亚电动汽车产业的未来：投资机遇、TKDN挑战与2030绿色经济发展方向
